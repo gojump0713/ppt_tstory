@@ -44,8 +44,18 @@ presentation/
 ├─ js/slides.js          장표별 비주얼 템플릿 · 진입 시퀀스 · 시연 화면
 ├─ js/app.js             내비게이션 · 스케일 · 발표자 UI · 미디어 로딩
 ├─ fonts/                Pretendard Variable
-└─ media/                Higgsfield 배경 영상/이미지 슬롯 (README 참고, 없어도 동작)
+├─ media/                Higgsfield 배경 영상/이미지 슬롯 (README 참고, 없어도 동작)
+├─ og-image.jpg          링크 공유 카드 1200×630 (tools/og.html 로 생성)
+├─ favicon.svg · favicon.ico · apple-touch-icon.png
+└─ tools/                QA·이미지 생성 스크립트 (배포에는 포함되지만 덱과 무관)
 ```
+
+## 링크 공유 (카카오톡·페이스북 등)
+`index.html` `<head>`의 Open Graph 태그가 공유 카드를 만듭니다. 제목·설명·이미지는 모두 그 자리에서 고칩니다.
+`og:image`는 **절대 URL**이어야 하므로 배포 주소가 바뀌면 `og:url`·`og:image`·`canonical`을 함께 바꿔야 합니다.
+카카오는 URL 단위로 카드를 캐시하므로, 이미지를 교체하면 `og:image` 뒤 `?v=` 숫자를 올리고
+[카카오 공유 디버거](https://developers.kakao.com/tool/debugger/sharing)에서 캐시를 초기화하세요.
+카드 이미지 자체를 다시 만드는 방법은 `tools/README.md` 참고.
 
 ## 문구·수치 수정
 `js/data.js`만 고치면 됩니다. 제목·거버닝 메시지는 `SLIDES`, 수치는 `METRICS`(파생값 5.2배·70.2%p 포함), 출처는 `SOURCES`, 낭독 멘트는 각 장표의 `note`입니다. 장표 안의 카드 문구는 `js/slides.js`의 해당 장표 템플릿에 있습니다.

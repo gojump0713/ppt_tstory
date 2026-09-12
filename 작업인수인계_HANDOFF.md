@@ -26,6 +26,10 @@
 - **목차**: `T`·`O`·`Esc` 키 또는 우하단 페이지 번호 클릭 → 18장 + 시연 항목 19개, 현재 장표 강조, 클릭 이동, Esc 닫기
 - `Esc`는 시연 중이면 발표 복귀 · 패널이 열려 있으면 닫기 · 그 외에는 목차 열기
 - **GitHub**: `gojump0713/ppt_tstory` · `main` 푸시 시 `.github/workflows/deploy.yml`이 `presentation/`을 Pages 사이트 루트로 게시 → https://gojump0713.github.io/ppt_tstory/
+- **링크 공유(Open Graph)**: `presentation/og-image.jpg`(1200×630, 18장 배경의 마법 동화책 + 제목)와 `index.html` head 의 og/twitter 태그
+  - 카드 원본은 `tools/og.html` · 생성은 `node tools/make_og.js` → PIL 로 JPG 변환 (`tools/README.md`)
+  - 이미지 교체 시 `og:image` 의 `?v=` 를 올리고 카카오 공유 디버거에서 캐시 초기화 필요
+- **파비콘**: `favicon.svg`(원본) → `favicon.ico`(16/32/48) · `apple-touch-icon.png`(180) · 생성은 `node tools/make_icons.js`
 - 시작 시 단축키 토스트 1회 노출 (`T·O·Esc 목차 · S 출처 · P 발표자 메모 · F 전체화면 · D 시연`)
 
 ## 4. 이번 세션에서 고친 것

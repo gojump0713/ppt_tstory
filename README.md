@@ -13,7 +13,9 @@ presentation/          배포되는 덱 (GitHub Pages 사이트 루트)
 ├─ js/ data.js · slides.js · app.js
 ├─ media/              장표 배경 영상·이미지 (27건)
 ├─ fonts/              Pretendard Variable
-└─ tools/              QA 스크립트 (배포 제외)
+├─ og-image.jpg        링크 공유 카드 (카카오톡·페이스북 등)
+├─ favicon.svg · favicon.ico · apple-touch-icon.png
+└─ tools/              QA·이미지 생성 스크립트
 
 AI시민동화책_공공도서관_발표멘트_최종.md        낭독 멘트·수치·출처 (콘텐츠 1차 기준)
 AI시민동화책_인터랙티브HTML_작업지시서_PRD.md   18장 구조·수치 무결성·UX 원칙
