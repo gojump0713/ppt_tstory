@@ -492,7 +492,7 @@ html.rm .wave i{height:var(--h)!important}
 .stages{display:flex;flex-direction:column;justify-content:space-between;gap:14px;height:100%}
 .stage-row{display:grid;grid-template-columns:72px 1fr;gap:18px;align-items:center;padding:16px 22px;border-radius:20px;background:var(--paper-card);border:1px solid var(--line)}
 .stage-row b{font-size:26px;font-weight:800;display:block}
-.stage-row span{display:block;font-size:22px;color:var(--ink-2);line-height:1.4;word-break:keep-all;margin-top:4px}
+.stage-row > div > span{display:block;font-size:22px;color:var(--ink-2);line-height:1.4;word-break:keep-all;margin-top:4px}
 .stage-row .icw{width:72px;height:72px}
 .outcome{display:flex;flex-direction:column;gap:14px}
 .outcome .card{padding:22px 26px}
@@ -514,9 +514,11 @@ html.rm .wave i{height:var(--h)!important}
 .orbit .vnode{position:absolute;width:290px;transform:translate(-50%,-50%);display:flex;gap:14px;align-items:center;padding:14px 18px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-card)}
 .orbit .vnode .icw{width:56px;height:56px;border-radius:16px}.orbit .vnode .icw .ic{width:30px;height:30px}
 .orbit .vnode b{display:block;font-size:22px;font-weight:800;letter-spacing:-.01em;line-height:1.2;word-break:keep-all}
-.orbit .vnode span{display:block;font-size:19px;color:var(--muted);line-height:1.35;margin-top:4px;word-break:keep-all}
+.orbit .vnode > div > span{display:block;font-size:19px;color:var(--muted);line-height:1.35;margin-top:4px;word-break:keep-all}
 .orbit .vnode .n{position:absolute;left:-12px;top:-12px;width:32px;height:32px;border-radius:50%;background:var(--ink-surface);color:#fff;font-size:18px;font-weight:800;display:grid;place-items:center}
-.orbit .vnode:hover{transform:translate(-50%,-50%) scale(1.04)}
+.orbit > svg .draw{stroke:rgba(21,32,43,.5);stroke-width:4.5;filter:drop-shadow(0 0 3px rgba(255,255,255,.9))}
+.orbit .vnode{z-index:1;transition:transform .22s var(--ease),box-shadow .22s var(--ease)}
+.orbit .vnode:hover{transform:translate(-50%,-50%) scale(1.1);z-index:3;box-shadow:0 22px 50px rgba(21,32,43,.28),0 0 0 2px rgba(92,108,255,.35)}
 
 /* ============================================================
    Slide 18 · 마무리
@@ -711,7 +713,7 @@ html:fullscreen .demo-keys,html:fullscreen .ba .hint{display:none}
 .chain{display:flex;flex-direction:column;align-items:stretch;width:100%}
 .chain .ch{display:flex;align-items:center;gap:18px;padding:18px 24px;border-radius:20px;background:var(--paper-card);border:1px solid var(--line)}
 .chain .ch b{display:block;font-size:26px;font-weight:800;letter-spacing:-.01em}
-.chain .ch span{display:block;font-size:21px;color:var(--muted);margin-top:3px;word-break:keep-all;line-height:1.35}
+.chain .ch > div > span{display:block;font-size:21px;color:var(--muted);margin-top:3px;word-break:keep-all;line-height:1.35}
 .chain .ch.hi{background:var(--ink-surface);border-color:transparent;color:#fff}
 .chain .ch.hi span{color:#C7CFDA}
 .chain .ln{display:block;width:4px;height:28px;margin:0 auto;background:linear-gradient(180deg,var(--ai),rgba(92,108,255,.2));border-radius:2px}
@@ -916,7 +918,7 @@ html.rm .linkviz .broken{opacity:0!important}
 html.rm .visits .vd{opacity:1!important;transform:none!important}
 .events .ev{display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:18px;background:#fff;border:1px solid var(--line)}
 .events .ev b{display:block;font-size:23px;font-weight:800;letter-spacing:-.01em;word-break:keep-all}
-.events .ev span{display:block;font-size:20px;color:var(--muted);margin-top:2px}
+.events .ev > div > span{display:block;font-size:20px;color:var(--muted);margin-top:2px}
 .events .ev-note{margin-top:auto;font-size:22px;line-height:1.45;color:var(--ink-2);word-break:keep-all}
 .events .ev-note b{color:var(--community)}
 .shelfviz{flex:1;display:flex;flex-direction:column;justify-content:flex-end;min-height:160px}
@@ -1003,6 +1005,7 @@ html.mediadark .bg.has-media ~ .slide-inner{
 html.mediadark .bg.has-media ~ .slide-inner .title,
 html.mediadark .bg.has-media ~ .slide-inner .gov{text-shadow:0 2px 20px rgba(6,10,15,.75),0 1px 3px rgba(6,10,15,.6)}
 html.mediadark .bg.has-media ~ .slide-inner .visual{text-shadow:0 1px 14px rgba(6,10,15,.55)}
+html.mediadark .bg.has-media ~ .slide-inner .orbit > svg .draw{stroke:rgba(255,255,255,.82);filter:drop-shadow(0 1px 5px rgba(6,10,15,.8))}
 
 /* 밝은 배경을 가진 요소 안에서는 토큰을 원래 값으로 복귀 */
 html.mediadark .bg.has-media ~ .slide-inner .card,
