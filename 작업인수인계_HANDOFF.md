@@ -26,7 +26,7 @@
 - **목차**: `T`·`O`·`Esc` 키 또는 우하단 페이지 번호 클릭 → 18장 + 시연 항목 19개, 현재 장표 강조, 클릭 이동, Esc 닫기
 - `Esc`는 시연 중이면 발표 복귀 · 패널이 열려 있으면 닫기 · 그 외에는 목차 열기
 - **GitHub**: `gojump0713/ppt_tstory` · `main` 푸시 시 `.github/workflows/deploy.yml`이 `presentation/`을 Pages 사이트 루트로 게시 → https://gojump0713.github.io/ppt_tstory/
-- 시작 시 단축키 토스트 1회 노출 (`T 목차 · S 출처 · P 발표자 메모 · F 전체화면 · D 시연`)
+- 시작 시 단축키 토스트 1회 노출 (`T·O·Esc 목차 · S 출처 · P 발표자 메모 · F 전체화면 · D 시연`)
 
 ## 4. 이번 세션에서 고친 것
 - 5장: 하단 문장과 출처 줄 완전 겹침 해소, `50%` 크기·색 위계 정상화(선택자 `.venn .circ span` → `> span`)
