@@ -225,6 +225,9 @@ html.rm *{transition-duration:0ms!important}
 .icw.ink{background:rgba(21,32,43,.08);color:var(--ink)}
 .icw.round{border-radius:50%}
 .icw.lg{width:88px;height:88px;border-radius:26px}.icw.lg .ic{width:46px;height:46px}
+/* .stage-row span · .vnode span 처럼 문맥 span 을 block 으로 바꾸는 규칙이 .icw 를 덮어써
+   아이콘이 박스 좌상단에 붙는 문제가 있었다. 선택자를 한 단계 더 올려 항상 정중앙을 보장한다. */
+.icw.icw{display:inline-grid;place-items:center}
 
 .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;font-size:22px;font-weight:600;line-height:1.2;
   background:#fff;border:1px solid var(--line);color:var(--ink-2);white-space:nowrap}
@@ -492,7 +495,7 @@ html.rm .wave i{height:var(--h)!important}
 .stages{display:flex;flex-direction:column;justify-content:space-between;gap:14px;height:100%}
 .stage-row{display:grid;grid-template-columns:72px 1fr;gap:18px;align-items:center;padding:16px 22px;border-radius:20px;background:var(--paper-card);border:1px solid var(--line)}
 .stage-row b{font-size:26px;font-weight:800;display:block}
-.stage-row span{display:block;font-size:22px;color:var(--ink-2);line-height:1.4;word-break:keep-all;margin-top:4px}
+.stage-row span:not(.icw){display:block;font-size:22px;color:var(--ink-2);line-height:1.4;word-break:keep-all;margin-top:4px}
 .stage-row .icw{width:72px;height:72px}
 .outcome{display:flex;flex-direction:column;gap:14px}
 .outcome .card{padding:22px 26px}
@@ -507,16 +510,16 @@ html.rm .wave i{height:var(--h)!important}
    ============================================================ */
 .orbit{position:relative;height:600px;margin-top:20px}
 .orbit > svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.orbit .core{position:absolute;left:840px;top:300px;transform:translate(-50%,-50%);width:300px;height:300px;border-radius:50%;background:var(--ink-surface);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:0 20px 60px rgba(21,32,43,.35);text-align:center}
+.orbit .core{position:absolute;z-index:1;left:840px;top:300px;transform:translate(-50%,-50%);width:300px;height:300px;border-radius:50%;background:var(--ink-surface);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:0 20px 60px rgba(21,32,43,.35);text-align:center}
 .orbit .core .ic{width:52px;height:52px;color:var(--warm);margin-bottom:6px}
 .orbit .core b{font-size:30px;font-weight:900;letter-spacing:-.02em}
 .orbit .core span{font-size:21px;color:#C7CFDA;line-height:1.35}
-.orbit .vnode{position:absolute;width:290px;transform:translate(-50%,-50%);display:flex;gap:14px;align-items:center;padding:14px 18px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-card)}
+.orbit .vnode{position:absolute;z-index:2;width:290px;transform:translate(-50%,-50%);display:flex;gap:14px;align-items:center;padding:14px 18px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-card);transition:transform 240ms var(--ease),box-shadow 240ms var(--ease)}
 .orbit .vnode .icw{width:56px;height:56px;border-radius:16px}.orbit .vnode .icw .ic{width:30px;height:30px}
 .orbit .vnode b{display:block;font-size:22px;font-weight:800;letter-spacing:-.01em;line-height:1.2;word-break:keep-all}
-.orbit .vnode span{display:block;font-size:19px;color:var(--muted);line-height:1.35;margin-top:4px;word-break:keep-all}
+.orbit .vnode span:not(.icw){display:block;font-size:19px;color:var(--muted);line-height:1.35;margin-top:4px;word-break:keep-all}
 .orbit .vnode .n{position:absolute;left:-12px;top:-12px;width:32px;height:32px;border-radius:50%;background:var(--ink-surface);color:#fff;font-size:18px;font-weight:800;display:grid;place-items:center}
-.orbit .vnode:hover{transform:translate(-50%,-50%) scale(1.04)}
+.orbit .vnode:hover{z-index:5;transform:translate(-50%,-50%) scale(1.11);box-shadow:0 26px 60px rgba(21,32,43,.30),0 0 0 2px rgba(92,108,255,.35)}
 
 /* ============================================================
    Slide 18 · 마무리
@@ -711,7 +714,7 @@ html:fullscreen .demo-keys,html:fullscreen .ba .hint{display:none}
 .chain{display:flex;flex-direction:column;align-items:stretch;width:100%}
 .chain .ch{display:flex;align-items:center;gap:18px;padding:18px 24px;border-radius:20px;background:var(--paper-card);border:1px solid var(--line)}
 .chain .ch b{display:block;font-size:26px;font-weight:800;letter-spacing:-.01em}
-.chain .ch span{display:block;font-size:21px;color:var(--muted);margin-top:3px;word-break:keep-all;line-height:1.35}
+.chain .ch span:not(.icw){display:block;font-size:21px;color:var(--muted);margin-top:3px;word-break:keep-all;line-height:1.35}
 .chain .ch.hi{background:var(--ink-surface);border-color:transparent;color:#fff}
 .chain .ch.hi span{color:#C7CFDA}
 .chain .ln{display:block;width:4px;height:28px;margin:0 auto;background:linear-gradient(180deg,var(--ai),rgba(92,108,255,.2));border-radius:2px}
@@ -916,7 +919,7 @@ html.rm .linkviz .broken{opacity:0!important}
 html.rm .visits .vd{opacity:1!important;transform:none!important}
 .events .ev{display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:18px;background:#fff;border:1px solid var(--line)}
 .events .ev b{display:block;font-size:23px;font-weight:800;letter-spacing:-.01em;word-break:keep-all}
-.events .ev span{display:block;font-size:20px;color:var(--muted);margin-top:2px}
+.events .ev span:not(.icw){display:block;font-size:20px;color:var(--muted);margin-top:2px}
 .events .ev-note{margin-top:auto;font-size:22px;line-height:1.45;color:var(--ink-2);word-break:keep-all}
 .events .ev-note b{color:var(--community)}
 .shelfviz{flex:1;display:flex;flex-direction:column;justify-content:flex-end;min-height:160px}
