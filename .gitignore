@@ -1,0 +1,14 @@
+# QA 도구 의존성·산출물 (배포에 불필요)
+presentation/tools/node_modules/
+presentation/tools/qa-shots/
+
+# Pretendard 원본 배포본 (57MB) — 덱은 presentation/fonts/PretendardVariable.woff2 만 사용
+font/
+
+# OS·에디터
+Thumbs.db
+.DS_Store
+*.log
+
+# Claude Code 로컬 설정
+.claude/settings.local.json

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>전 세대를 잇는 공공도서관 — AI 시민 동화책 제작 플랫폼 · 공공도서관 도입 제안</title>
+<meta name="description" content="공공도서관 담당 공무원·관리자 대상 AI 시민 동화책 제작 플랫폼 도입 제안 인터랙티브 발표자료 (18장 + 시연)">
+<link rel="stylesheet" href="css/presentation.css">
+</head>
+<body>
+
+<!-- ───────── SVG 아이콘 스프라이트 ───────── -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-book" viewBox="0 0 48 48"><path d="M8 10c5-2 10-2 16 1 6-3 11-3 16-1v28c-5-2-10-2-16 1-6-3-11-3-16-1z"/><path d="M24 11v28"/></symbol>
+    <symbol id="i-child" viewBox="0 0 48 48"><circle cx="24" cy="15" r="7"/><path d="M12 42v-6a12 12 0 0 1 24 0v6"/><path d="M18 9c2-3 10-3 12 0"/></symbol>
+    <symbol id="i-worker" viewBox="0 0 48 48"><circle cx="24" cy="13" r="6"/><path d="M10 42v-7a14 14 0 0 1 28 0v7"/><path d="M19 26h10v16H19z"/><path d="M19 32h10"/></symbol>
+    <symbol id="i-parent" viewBox="0 0 48 48"><circle cx="17" cy="12" r="6"/><circle cx="33" cy="20" r="4.5"/><path d="M5 42v-7a12 12 0 0 1 20-9"/><path d="M25 42v-5a8 8 0 0 1 16 0v5"/></symbol>
+    <symbol id="i-senior" viewBox="0 0 48 48"><circle cx="24" cy="13" r="6"/><path d="M10 42v-7a14 14 0 0 1 28 0v7"/><path d="M36 26v16"/><path d="M33 26a3 3 0 0 1 6 0"/></symbol>
+    <symbol id="i-librarian" viewBox="0 0 48 48"><circle cx="24" cy="12" r="6"/><path d="M8 42v-6a16 16 0 0 1 32 0v6"/><path d="M8 33h32"/><path d="M16 42v-9M32 42v-9"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 48 48"><path d="M8 40l3-11L33 7l8 8-22 22z"/><path d="M28 12l8 8"/><path d="M11 29l8 8"/></symbol>
+    <symbol id="i-image" viewBox="0 0 48 48"><rect x="7" y="9" width="34" height="30" rx="3"/><circle cx="17" cy="19" r="3.5"/><path d="M8 35l10-10 8 8 6-6 9 9"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 48 48"><rect x="18" y="6" width="12" height="22" rx="6"/><path d="M11 22a13 13 0 0 0 26 0"/><path d="M24 35v7M17 42h14"/></symbol>
+    <symbol id="i-print" viewBox="0 0 48 48"><path d="M14 18V8h20v10"/><rect x="8" y="18" width="32" height="16" rx="3"/><path d="M14 30h20v10H14z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 48 48"><path d="M9 25l10 10L39 14"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 48 48"><path d="M24 5l15 6v12c0 9-6 16-15 20-9-4-15-11-15-20V11z"/><path d="M17 24l5 5 9-10"/></symbol>
+    <symbol id="i-users" viewBox="0 0 48 48"><circle cx="18" cy="15" r="6"/><circle cx="33" cy="18" r="5"/><path d="M5 40v-5a13 13 0 0 1 26 0v5"/><path d="M33 29a9 9 0 0 1 9 9v2"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 48 48"><path d="M24 6l3.5 11.5L39 21l-11.5 3.5L24 36l-3.5-11.5L9 21l11.5-3.5z"/><path d="M38 34l1.5 4.5L44 40l-4.5 1.5L38 46l-1.5-4.5L32 40l4.5-1.5z"/></symbol>
+    <symbol id="i-library" viewBox="0 0 48 48"><path d="M6 18L24 7l18 11"/><path d="M9 18v22M39 18v22M6 40h36"/><path d="M16 22v18M24 22v18M32 22v18"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 48 48"><path d="M8 24h30"/><path d="M27 13l11 11-11 11"/></symbol>
+    <symbol id="i-dog" viewBox="0 0 48 48"><path d="M12 20c-4 0-6 3-6 7 0 4 4 8 8 8h20c4 0 6-3 6-7V17c0-3-2-5-5-5h-3l-4 5h-9l-4-5c-2-1-4 1-3 4z"/><circle cx="31" cy="21" r="1.5"/><path d="M14 35v7M32 35v7"/></symbol>
+    <symbol id="i-umbrella" viewBox="0 0 48 48"><path d="M6 25a18 18 0 0 1 36 0z"/><path d="M24 25v13a4 4 0 0 1-8 0"/><path d="M24 7v3"/></symbol>
+    <symbol id="i-bread" viewBox="0 0 48 48"><path d="M8 26c0-6 6-9 16-9s16 3 16 9c0 3-2 4-4 4v10H12V30c-2 0-4-1-4-4z"/><path d="M19 24c0-2 2-3 5-3s5 1 5 3"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 48 48"><path d="M13 6h22v36l-11-8-11 8z"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 48 48"><path d="M6 24h4M14 16v16M22 10v28M30 18v12M38 21v6"/></symbol>
+    <symbol id="i-home" viewBox="0 0 48 48"><path d="M8 22L24 8l16 14"/><path d="M12 20v20h24V20"/><path d="M20 40V28h8v12"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 48 48"><rect x="6" y="15" width="36" height="24" rx="3"/><path d="M17 15v-4a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4"/><path d="M6 25h36"/></symbol>
+    <symbol id="i-search" viewBox="0 0 48 48"><circle cx="21" cy="21" r="12"/><path d="M30 30l11 11"/></symbol>
+    <symbol id="i-share" viewBox="0 0 48 48"><circle cx="36" cy="10" r="5"/><circle cx="12" cy="24" r="5"/><circle cx="36" cy="38" r="5"/><path d="M16.5 21.5l15-9M16.5 26.5l15 9"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 48 48"><path d="M24 6l18 9-18 9L6 15z"/><path d="M6 24l18 9 18-9"/><path d="M6 33l18 9 18-9"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 48 48"><circle cx="24" cy="24" r="17"/><path d="M7 24h34M24 7c6 6 6 28 0 34M24 7c-6 6-6 28 0 34"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 48 48"><path d="M24 41S6 30 6 17a9 9 0 0 1 18-3 9 9 0 0 1 18 3c0 13-18 24-18 24z"/></symbol>
+    <symbol id="i-map" viewBox="0 0 48 48"><path d="M6 12l12-4 12 4 12-4v28l-12 4-12-4-12 4z"/><path d="M18 8v28M30 12v28"/></symbol>
+    <symbol id="i-frame" viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="28" rx="2"/><rect x="12" y="14" width="24" height="16"/><path d="M18 42h12M24 36v6"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 48 48"><path d="M8 10h32v22H20l-9 8v-8H8z"/><path d="M16 18h16M16 24h10"/></symbol>
+    <symbol id="i-question" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M18 19a6 6 0 1 1 8 5.6c-1.5.7-2 1.8-2 3.4"/><circle cx="24" cy="34" r="1.2"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 48 48"><rect x="7" y="18" width="34" height="8"/><path d="M10 26v14h28V26"/><path d="M24 18v22"/><path d="M24 18c-4-1-9-2-9-6a4 4 0 0 1 8 0c0 2 1 4 1 6zm0 0c4-1 9-2 9-6a4 4 0 0 0-8 0c0 2-1 4-1 6z"/></symbol>
+    <symbol id="i-coin" viewBox="0 0 48 48"><ellipse cx="24" cy="14" rx="14" ry="6"/><path d="M10 14v20c0 3 6 6 14 6s14-3 14-6V14"/><path d="M10 24c0 3 6 6 14 6s14-3 14-6"/></symbol>
+    <symbol id="i-edu" viewBox="0 0 48 48"><path d="M4 18l20-9 20 9-20 9z"/><path d="M12 22v10c0 3 6 6 12 6s12-3 12-6V22"/><path d="M44 18v12"/></symbol>
+    <symbol id="i-access" viewBox="0 0 48 48"><circle cx="24" cy="9" r="4"/><path d="M8 18h32"/><path d="M18 18v10l-5 13M30 18v10l5 13"/><path d="M18 28h12"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 48 48"><path d="M30 8a9 9 0 0 0-8 13L8 35l5 5 14-14a9 9 0 0 0 13-8l-6 2-4-4 2-6z"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="30" rx="3"/><path d="M6 19h36M15 6v8M33 6v8"/></symbol>
+    <symbol id="i-cloud-rain" viewBox="0 0 48 48"><path d="M14 30a8 8 0 0 1-1-16 11 11 0 0 1 21-3 8 8 0 0 1 2 19"/><path d="M16 34l-2 6M24 34l-2 6M32 34l-2 6"/></symbol>
+    <symbol id="i-bird" viewBox="0 0 48 48"><path d="M8 26c8-2 12-8 16-14 2 6 8 8 16 8-2 6-8 10-16 10H8z"/><path d="M20 30l-2 8M28 30l2 8"/><circle cx="26" cy="15" r="1.2"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 48 48"><path d="M30 6a16 16 0 1 0 12 22 13 13 0 0 1-12-22z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 48 48"><circle cx="24" cy="24" r="8"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M9.9 9.9l4.2 4.2M33.9 33.9l4.2 4.2M9.9 38.1l4.2-4.2M33.9 14.1l4.2-4.2"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 48 48"><rect x="5" y="8" width="38" height="26" rx="3"/><path d="M18 42h12M24 34v8"/></symbol>
+    <symbol id="i-read" viewBox="0 0 48 48"><circle cx="24" cy="12" r="6"/><path d="M8 42v-4c0-5 5-8 16-8s16 3 16 8v4"/><path d="M13 31c4-2 7-2 11 0 4-2 7-2 11 0"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 48 48"><rect x="10" y="21" width="28" height="20" rx="3"/><path d="M16 21v-6a8 8 0 0 1 16 0v6"/><circle cx="24" cy="31" r="2.5"/></symbol>
+  </defs>
+</svg>
+
+<!-- ───────── 발표 무대 (1920×1080 고정 캔버스, 화면에 맞춰 스케일) ───────── -->
+<div id="viewport">
+  <div id="stage" aria-label="발표 화면">
+    <div id="deck"></div>
+
+    <!-- 공통 크롬 -->
+    <div id="progress" aria-hidden="true"><i></i></div>
+    <div id="chapter" class="chrome" aria-live="polite"></div>
+    <button id="pageno" class="chrome" title="목차 (T · O · Esc)" aria-label="목차 열기"></button>
+
+    <button class="edge-nav prev" id="navPrev" aria-label="이전 장표"><svg class="ic"><use href="#i-arrow"/></svg></button>
+    <button class="edge-nav next" id="navNext" aria-label="다음 장표"><svg class="ic"><use href="#i-arrow"/></svg></button>
+
+    <!-- 발표자 메모 (P) -->
+    <aside id="presenter" class="overlay-panel" hidden aria-label="발표자 메모">
+      <div class="pn-head">
+        <span class="pn-title">PRESENTER NOTE</span>
+        <span class="pn-progress" id="pnProgress"></span>
+      </div>
+      <div class="pn-cue" id="pnCue"></div>
+      <div class="pn-body" id="pnBody"></div>
+      <div class="pn-next"><span>NEXT</span><b id="pnNext"></b></div>
+      <div class="pn-keys">← → 이동 · Home/End 처음/끝 · R 다시 재생 · F 전체화면 · M 모션최소화 · T/O/Esc 목차 · S 출처 · D 시연(Backspace 복귀) · P 닫기</div>
+    </aside>
+
+    <!-- 목차 (T) -->
+    <div id="toc" class="overlay-full" hidden aria-label="목차">
+      <div class="toc-head"><b>목차</b><span>클릭하면 해당 장표로 이동합니다 · Esc 닫기</span></div>
+      <ol id="tocList"></ol>
+    </div>
+
+    <!-- 출처 (S) -->
+    <div id="sources" class="overlay-full" hidden aria-label="인용 근거">
+      <div class="toc-head"><b>인용 근거와 활용 범위</b><span>Esc 닫기</span></div>
+      <p class="src-intro">아래 자료는 발표의 통계·정책·사례 설명을 뒷받침합니다. 이용 시나리오와 운영 방식은 <b>제안 내용</b>이며, 실제 이용자의 성과 사례로 소개하지 않습니다. <b>원문 확인 필요</b> 표시 자료는 외부 배포 전 원문·조문 대조가 필요합니다.</p>
+      <ol id="srcList"></ol>
+    </div>
+
+    <!-- 시연 (D / 18장 Enter · DEMO 버튼) -->
+    <div id="demo" class="overlay-full demo" hidden aria-label="서비스 시연 예시">
+      <div id="demoStage"></div>
+      <div class="demo-bar">
+        <span class="demo-tag">시연 · 서비스 이용 과정 예시 화면</span>
+        <span class="demo-steps" id="demoSteps"></span>
+        <span class="demo-keys">→ 다음 화면 · ← 이전 · Backspace / Esc 18장으로 복귀 · 마지막 화면에서 Enter → 18장</span>
+      </div>
+    </div>
+
+    <!-- 도움말 토스트 -->
+    <div id="toast" hidden></div>
+  </div>
+</div>
+
+<!-- 소형 화면 안내 -->
+<div id="small-notice" hidden>
+  <div>
+    <svg class="ic"><use href="#i-monitor"/></svg>
+    <b>이 프레젠테이션은 PC / 프로젝터 환경(가로 1024px 이상)에 최적화되어 있습니다.</b>
+    <span>노트북이나 데스크톱 브라우저에서 열어 주세요.</span>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/slides.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
