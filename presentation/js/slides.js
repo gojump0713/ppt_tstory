@@ -647,16 +647,20 @@ const VISUALS = {
         { ic: "heart", c: "red", t: "공동체 소속감", s: "내 책이 꽂힌 도서관" }
       ];
       const cx = 840, cy = 300, rx = 600, ry = 236;
-      let lines = "", nodes = "";
+      // 사진 배경 위에서도 선이 보이도록 흰 헤일로를 먼저 깔고 그 위에 짙은 선을 얹는다.
+      // 모든 선이 중심에서 뻗어 나오므로 헤일로를 전부 그린 뒤 본선을 그려야 중앙에서 겹치지 않는다.
+      let halos = "", cores = "", nodes = "";
       vals.forEach((v, i) => {
         const a = -Math.PI / 2 + (i / 7) * Math.PI * 2;
         const x = cx + Math.cos(a) * rx, y = cy + Math.sin(a) * ry;
-        lines += `<line class="draw" pathLength="1" x1="${cx}" y1="${cy}" x2="${x.toFixed(0)}" y2="${y.toFixed(0)}" stroke="rgba(21,32,43,.22)" stroke-width="3" stroke-dasharray="1" style="--d:${500 + i * 100}ms"/>`;
+        const seg = `pathLength="1" x1="${cx}" y1="${cy}" x2="${x.toFixed(0)}" y2="${y.toFixed(0)}" stroke-dasharray="1" style="--d:${500 + i * 100}ms"`;
+        halos += `<line class="draw" ${seg} stroke="rgba(255,255,255,.72)" stroke-width="10" stroke-linecap="round"/>`;
+        cores += `<line class="draw" ${seg} stroke="rgba(21,32,43,.58)" stroke-width="4" stroke-linecap="round"/>`;
         nodes += `<div class="vnode rv-scale" style="left:${x.toFixed(0)}px;top:${y.toFixed(0)}px;--d:${650 + i * 100}ms"><span class="n">${i + 1}</span><span class="icw ${v.c}">${ic(v.ic)}</span><div><b>${v.t}</b><span>${v.s}</span></div></div>`;
       });
       return `
       <div class="orbit">
-        <svg viewBox="0 0 1680 600" preserveAspectRatio="none">${lines}</svg>
+        <svg viewBox="0 0 1680 600" preserveAspectRatio="none">${halos}${cores}</svg>
         ${nodes}
         <div class="core rv-scale" ${d(150)}>${ic("library")}<b>공공도서관</b><span>${METRICS.valueCount}개 가치 모두<br>국가 · 도서관 정책과 겹칩니다</span></div>
       </div>`;
