@@ -893,7 +893,7 @@ html.rm .linkviz .broken{opacity:0!important}
 /* 15 Q&A 자동 Reveal */
 .qa3{display:flex;flex-direction:column;height:100%;gap:26px}
 .qcards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;flex:1}
-.qcard{position:relative;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:34px 36px;border-radius:28px;background:var(--paper-card);border:1px solid var(--line);box-shadow:var(--shadow-card);transition:transform 300ms var(--ease)}
+.qcard{position:relative;display:flex;flex-direction:column;justify-content:flex-start;gap:14px;padding:34px 36px;border-radius:28px;background:var(--paper-card);border:1px solid var(--line);box-shadow:var(--shadow-card);transition:transform 300ms var(--ease)}
 .qcard:hover{transform:scale(1.03)}
 .qcard .qn{position:absolute;right:30px;top:26px;font-size:20px;font-weight:800;letter-spacing:.14em;color:var(--muted)}
 .qcard h3{margin:10px 0 0;font-size:40px;font-weight:900;letter-spacing:-.02em}
