@@ -717,8 +717,226 @@ const VISUALS = {
       ctx.timer(() => el.querySelector(".lines")?.classList.add("dim"), rm ? 0 : 2400);
     },
     leave(el) { el.querySelector(".lines")?.classList.remove("dim"); }
+  },
+
+  /* ============================================================
+     PART Ⅱ · AI 동화 제작 서비스의 독서 활성화 방안 (19~26장)
+     기준 원고: reading-activation-16x9.html
+     ============================================================ */
+
+  /* ---------- 19 PART Ⅱ 표지 ---------- */
+  19: {
+    hero: true,
+    bg: { tone: "cool", seed: 71, extra: `<div class="light-on"></div>`, tint: "linear-gradient(180deg,rgba(244,246,248,.55) 0%,rgba(244,246,248,.86) 55%,rgba(244,246,248,.97) 100%)" },
+    html: () => `
+      <div class="hero r-hero">
+        <div class="r-swap">
+          <span class="no rv" ${d(300)}>${ic("monitor")}대체<i></i></span>
+          <span class="mid rv" ${d(800)}>${ic("arrow")}</span>
+          <span class="yes rv-scale" ${d(1000)}>${ic("book")}확장</span>
+        </div>
+        <div class="hero-kicker rv" ${d(1300)}>PART Ⅱ · 독서 활성화 방안</div>
+        <h1 class="hero-title rv" ${d(1450)}>AI 동화 제작 서비스의<br>독서 활성화 방안</h1>
+        <p class="hero-gov rv" ${d(1650)}>AI 동화책 서비스는 독서를 대체하는 것이 아니라,<br><b>독서의 진입장벽을 낮추고 독서 행동을 확장하는 도구</b>입니다.</p>
+        <div class="hero-keys r-keys rv" ${d(2400)}>
+          <span class="k"><i>1</i>시작하게 한다</span><span class="ln"></span>
+          <span class="k"><i>2</i>읽기를 만들기로</span><span class="ln"></span>
+          <span class="k"><i>3</i>혼자에서 함께로</span><span class="ln"></span>
+          <span class="k"><i>4</i>도서관 프로그램으로</span>
+        </div>
+      </div>`
+  },
+
+  /* ---------- 20 핵심 명제 · 대체가 아니라 확장 ---------- */
+  20: {
+    bg: { tone: "cool", seed: 73 }, tone: "cool",
+    html: () => {
+      const road = [
+        { n: "1", t: "시작하게 한다", s: "관심사 · 수준 · 낭독 · 다국어로 진입장벽을 낮춥니다", ic: "child", c: "" },
+        { n: "2", t: "읽기를 만들기로", s: "받아서 읽는 활동을 만들어 읽는 활동으로 바꿉니다", ic: "pencil", c: "warm" },
+        { n: "3", t: "혼자에서 함께로", s: "가족 독서와 반복 독서로 넓힙니다", ic: "users", c: "green" },
+        { n: "4", t: "도서관 프로그램으로", s: "방문 동기와 프로그램 지속성을 높입니다", ic: "library", c: "ink" }
+      ];
+      return `
+      <div class="r-claim-wrap">
+        <div class="r-claim">
+          <div class="card not rv-left" ${d(200)}>
+            <span class="kicker">대체하지 않습니다</span>
+            <ul>
+              <li>AI가 만든 이야기가 책을 밀어내지 않습니다.</li>
+              <li>화면에서 끝나는 일회성 디지털 체험으로 두지 않습니다.</li>
+            </ul>
+          </div>
+          <div class="and rv-scale" ${d(700)}>그리고</div>
+          <div class="card is accent-ai rv-right" ${d(200)}>
+            <span class="kicker">확장합니다</span>
+            <ul>
+              <li>읽기를 시작하는 <b>문턱을 낮춥니다.</b></li>
+              <li>만든 책을 읽고 다시 만드는 <b>순환</b>으로 독서 행동 자체를 늘립니다.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tag ai rv" ${d(1200)}>네 개의 흐름</div>
+        <div class="r-road">
+          ${road.map((r, i) => `<div class="rd rv" ${d(1350 + i * 180)}><span class="icw ${r.c}">${ic(r.ic)}</span><div><b><em>${r.n}</em>${r.t}</b><span>${r.s}</span></div></div>`).join(arr())}
+        </div>
+      </div>`;
+    }
+  },
+
+  /* ---------- 21 장 1 · 시작하게 한다 (2×2) ---------- */
+  21: {
+    bg: { tone: "warm", seed: 79 },
+    html: () => rCards([
+      { ic: "heart", c: "red", t: "아이의 관심사를 반영한 맞춤형 이야기", s: "책에 대한 첫 흥미를 높입니다.",
+        b: ["좋아하는 동물, 장소, 가족, 장래희망 등을 이야기 소재로 활용", "‘나와 관련된 이야기’라는 몰입감으로 자연스럽게 책 읽기를 시작"] },
+      { ic: "layers", c: "", t: "연령과 독서 수준에 맞는 콘텐츠", s: "수준 차이 때문에 생기는 진입장벽을 낮춥니다.",
+        b: ["연령별 어휘, 문장 길이, 페이지 수, 주제를 조절", "독서에 익숙하지 않은 어린이도 자신의 수준에 맞는 책부터 접근"] },
+      { ic: "mic", c: "warm", t: "음성 낭독", s: "글 읽기가 어려운 어린이도 책을 접할 수 있습니다.",
+        b: ["AI 음성 낭독과 텍스트를 함께 제공해 듣기와 읽기를 연계", "저연령 아동, 초기 독서 단계 어린이의 독서 접근성을 높임"] },
+      { ic: "globe", c: "green", t: "다국어 동화책", s: "다문화가정의 독서 참여를 확대합니다.",
+        b: ["한국어와 부모의 모국어를 함께 제공해 부모와 아이가 함께 읽는 환경 조성", "언어 차이로 참여하기 어려웠던 가족의 접근성을 높임"] }
+    ], "g2x2")
+  },
+
+  /* ---------- 22 장 2 · 읽기를 만들기로 (순환) ---------- */
+  22: {
+    bg: { tone: "cool", seed: 83 }, tone: "cool",
+    html: () => {
+      const steps = [
+        { ic: "pencil", t: "이야기 생성", s: "아이가 고른 소재로 이야기가 만들어집니다. 내가 넣은 요소가 글이 되는 순간, 결과물을 끝까지 확인하고 싶어집니다." },
+        { ic: "image", t: "삽화 생성", s: "글에 그림이 붙으면서 한 권의 형태가 잡힙니다. 장면을 고르는 과정에서 내용을 다시 읽게 됩니다." },
+        { ic: "read", t: "완성된 책 읽기", s: "직접 만든 책이라 애착이 높고, 낭독과 인쇄본으로 반복해서 읽습니다." },
+        { ic: "spark", t: "다시 만들기", s: "다른 이야기를 만들고 싶어지고, 그 과정이 다시 읽기로 이어집니다." }
+      ];
+      // 4개 노드: 상 · 우 · 하 · 좌 (원형 궤도)
+      const pos = [[300, 60], [540, 300], [300, 540], [60, 300]];
+      const nodes = steps.map((st, i) => `<div class="cn rv-scale" data-i="${i}" style="left:${pos[i][0]}px;top:${pos[i][1]}px;--d:${500 + i * 260}ms"><span class="icw">${ic(st.ic)}</span><b>${st.t}</b></div>`).join("");
+      const list = steps.map((st, i) => `<li class="cl rv" data-i="${i}" ${d(1700 + i * 160)}><span class="n">${i + 1}</span><div><b>${st.t}</b><span>${st.s}</span></div></li>`).join("");
+      return `
+      <div class="r-cyc">
+        <div class="cyc-box card rv" ${d(200)}>
+          <div class="orb">
+            <svg viewBox="0 0 600 600" aria-hidden="true">
+              <circle cx="300" cy="300" r="240" fill="none" stroke="rgba(21,32,43,.14)" stroke-width="3" stroke-dasharray="6 10"/>
+              <path class="draw" pathLength="1" d="M300 60 A240 240 0 0 1 540 300" fill="none" stroke="var(--ai)" stroke-width="5" stroke-linecap="round" style="--d:700ms"/>
+              <path class="draw" pathLength="1" d="M540 300 A240 240 0 0 1 300 540" fill="none" stroke="var(--ai)" stroke-width="5" stroke-linecap="round" style="--d:960ms"/>
+              <path class="draw" pathLength="1" d="M300 540 A240 240 0 0 1 60 300" fill="none" stroke="var(--ai)" stroke-width="5" stroke-linecap="round" style="--d:1220ms"/>
+              <path class="draw" pathLength="1" d="M60 300 A240 240 0 0 1 300 60" fill="none" stroke="var(--warm)" stroke-width="5" stroke-linecap="round" stroke-dasharray="14 12" style="--d:1480ms"/>
+              <polygon class="pop" points="288,42 314,60 288,78" fill="var(--warm)" style="--d:1900ms"/>
+            </svg>
+            ${nodes}
+            <div class="core rv-scale" ${d(1900)}>${ic("book")}<b>창작 ↔ 독서</b><span>반복되는 순환</span></div>
+          </div>
+        </div>
+        <div class="r-cyc-right">
+          <div class="card r-card sm rv" ${d(300)}>
+            <span class="icw warm">${ic("pencil")}</span>
+            <div><h3>수동적 ‘읽기’에서 능동적 ‘참여’로</h3><p class="sum">등장인물·배경·결말을 직접 선택하며 이야기 구성에 참여합니다. 책을 제공받는 것이 아니라 직접 만들어 보는 과정에서 독서에 대한 관심이 높아집니다.</p></div>
+          </div>
+          <ol class="r-cyc-list card">${list}</ol>
+        </div>
+      </div>`;
+    },
+    enter(el, ctx) {
+      const rm = document.documentElement.classList.contains("rm");
+      const nodes = el.querySelectorAll(".cn"), items = el.querySelectorAll(".cl");
+      if (rm) { nodes.forEach(n => n.classList.add("on")); items.forEach(n => n.classList.add("on")); return; }
+      let i = 0;
+      const tick = () => {
+        nodes.forEach(n => n.classList.toggle("on", +n.dataset.i === i));
+        items.forEach(n => n.classList.toggle("on", +n.dataset.i === i));
+        i = (i + 1) % 4;
+        ctx.timer(tick, 2200);
+      };
+      ctx.timer(tick, 2400);
+    },
+    leave(el) { el.querySelectorAll(".cn.on,.cl.on").forEach(n => n.classList.remove("on")); }
+  },
+
+  /* ---------- 23 장 3 · 혼자에서 함께로 (2) ---------- */
+  23: {
+    bg: { tone: "warm", seed: 89 },
+    html: () => rCards([
+      { ic: "users", c: "green", t: "가족이 함께 만드는 동화책", s: "가정 내 독서 활동을 촉진합니다.",
+        b: ["부모·조부모·형제의 이야기를 동화책으로 제작", "가족이 함께 만들고 읽는 과정을 통해 독서를 개인 활동에서 가족 문화로 확장"] },
+      { ic: "bookmark", c: "warm", t: "자신이 만든 책의 소장", s: "반복 독서를 유도합니다.",
+        b: ["PDF, 디지털 책, 실물 동화책으로 보관 가능", "직접 만든 책은 일반 콘텐츠보다 애착이 높아 반복적으로 읽을 가능성이 큼"] }
+    ], "g2", `<div class="r-foot rv" ${d(1500)}><span class="chip">개인 활동</span>${arr()}<span class="chip green">가족 문화</span><span class="sep"></span><span class="chip">한 번 읽는 콘텐츠</span>${arr()}<span class="chip warm">반복해 읽는 소장품</span></div>`)
+  },
+
+  /* ---------- 24 장 4 · 도서관 프로그램으로 (3) ---------- */
+  24: {
+    bg: { tone: "green", seed: 97 },
+    html: () => rCards([
+      { ic: "library", c: "warm", t: "방문 목적을 ‘책 대출’에서 ‘독서·창작 체험’으로", s: "도서관에 올 새로운 이유를 만듭니다.",
+        b: ["어린이에게 AI 동화책 만들기라는 새로운 방문 동기를 제공", "체험 후 관련 도서를 대출하는 프로그램으로 연계"] },
+      { ic: "calendar", c: "", t: "독서 프로그램의 참여율과 지속성", s: "일회성 체험이 아닌 지속형 프로그램으로 운영합니다.",
+        b: ["독서교실, 방학 프로그램, 가족 독서 프로그램, 학교 연계 프로그램 등에 활용", "책 읽기와 창작을 결합한 지속형 프로그램으로 운영"] },
+      { ic: "child", c: "green", t: "책에 관심이 낮은 어린이의 새로운 통로", s: "디지털에 익숙한 아이의 관심을 독서로 옮깁니다.",
+        b: ["AI·이미지 생성 등 디지털 경험에 익숙한 어린이의 관심을 활용", "AI가 재미있어서 참여 → 이야기가 궁금해서 읽음 → 다른 책도 찾아봄"] }
+    ], "g3", `<div class="r-foot rv" ${d(1600)}><span class="chip ai">AI가 재미있어서 참여</span>${arr()}<span class="chip">이야기가 궁금해서 읽음</span>${arr()}<span class="chip warm">다른 책도 찾아봄</span></div>`)
+  },
+
+  /* ---------- 25 운영 변화 · 도입 전/후 ---------- */
+  25: {
+    bg: { tone: "cool", seed: 101 }, tone: "cool",
+    html: () => {
+      const rows = [
+        ["방문 목적이 대출과 반납에 머무릅니다.", "책을 만들러 오는 <b>새로운 방문 동기</b>가 생깁니다."],
+        ["독서 프로그램은 회차가 끝나면 참여도 끝납니다.", "체험 뒤 관련 도서 대출로 이어지는 <b>연계 프로그램</b>을 운영할 수 있습니다."],
+        ["책에 관심이 낮은 어린이를 끌어올 계기가 마땅치 않습니다.", "만든 책을 다시 만들러 오면서 <b>참여가 이어집니다.</b>"],
+        ["언어가 다른 가정은 프로그램 참여가 어렵습니다.", "한국어와 부모의 모국어를 함께 제공해 <b>다문화가정도 참여</b>할 수 있습니다."]
+      ];
+      return `
+      <div class="r-cmp">
+        <div class="hd before rv" ${d(200)}><span class="lbl">도입 전</span><b>대출 중심의 이용</b></div>
+        <div class="hd mid"></div>
+        <div class="hd after rv" ${d(200)}><span class="lbl">도입 후</span><b>창작·독서 체험으로 확장</b></div>
+        ${rows.map((r, i) => `
+        <div class="row before rv" ${d(600 + i * 420)}><span class="dot"></span><span>${r[0]}</span></div>
+        <div class="row mid rv" ${d(800 + i * 420)}>${ic("arrow")}</div>
+        <div class="row after rv" ${d(900 + i * 420)}><span class="dot"></span><span>${r[1]}</span></div>`).join("")}
+      </div>`;
+    }
+  },
+
+  /* ---------- 26 마무리 → 시연 ---------- */
+  26: {
+    hero: true,
+    bg: { tone: "warm", seed: 103, extra: `<div class="light-on"></div>`, tint: "linear-gradient(180deg,rgba(247,244,236,.6) 0%,rgba(247,244,236,.9) 50%,rgba(247,244,236,.98) 100%)" },
+    html: () => `
+      <div class="closing r-closing">
+        <div class="r-chain">
+          <span class="st rv" ${d(300)}><span class="icw">${ic("spark")}</span><b>AI가 재미있어서</b><span>참여하고</span></span>
+          <span class="arr rv" ${d(700)}>${ic("arrow")}</span>
+          <span class="st rv" ${d(900)}><span class="icw warm">${ic("read")}</span><b>이야기가 궁금해서</b><span>읽고</span></span>
+          <span class="arr rv" ${d(1300)}>${ic("arrow")}</span>
+          <span class="st rv" ${d(1500)}><span class="icw green">${ic("search")}</span><b>그래서 다른 책도</b><span>찾아보게</span></span>
+        </div>
+        <div class="final rv" ${d(2300)}>읽기를 <em>대신하지 않고</em>,<br>읽기로 <em>데려갑니다</em>.</div>
+        <div class="req rv" ${d(2900)}>AI 동화책 서비스가 도서관에서 맡는 역할은 여기까지입니다.</div>
+        <div class="cta rv" ${d(3400)}>
+          <button class="demo-btn" id="demoBtn2">DEMO ${ic("arrow")}<small>Enter</small></button>
+        </div>
+      </div>`,
+    enter(el, ctx) { ctx.on(el.querySelector("#demoBtn2"), "click", () => ctx.openDemo()); }
   }
 };
+
+/* PART Ⅱ 방안 카드 (21·23·24장 공용) — 클릭 없이 근거까지 모두 노출 */
+function rCards(items, grid, foot = "") {
+  const cards = items.map((it, i) => `
+    <div class="card r-card rv" ${d(300 + i * 220)}>
+      <span class="icw ${it.c}">${ic(it.ic)}</span>
+      <div>
+        <h3>${it.t}</h3>
+        <p class="sum">${it.s}</p>
+        <ul>${it.b.map(x => `<li>${x}</li>`).join("")}</ul>
+      </div>
+    </div>`).join("");
+  return `<div class="r-cards-wrap"><div class="r-cards ${grid}">${cards}</div>${foot}</div>`;
+}
 
 /* ============================================================
    DEMO 화면 5단계 (서비스 이용 과정 예시 · 원고 9장의 5단계와 동일)

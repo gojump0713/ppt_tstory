@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 동화 제작 서비스의 독서 활성화 방안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cloth:#10312B; --cloth-2:#0A211D;
+  --gold:#D9A227; --gold-soft:#E9C877;
+  --paper:#F2F4F0; --paper-2:#FFFFFF;
+  --ink:#14241F; --teal:#2F7A6B;
+  --muted:#6E7B75; --rule:#D4DBD5;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:#0A0F0D; overflow:hidden;
+  font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","맑은 고딕",system-ui,sans-serif;
+  color:var(--ink);
+}
+h1,h2,h3,h4,.myeongjo{
+  font-family:"Nanum Myeongjo","AppleMyungjo","Batang","바탕",serif;
+  font-weight:700; letter-spacing:-.01em; margin:0;
+}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+
+/* ── 16:9 스테이지 ─────────────────────────── */
+#stage{
+  position:absolute; top:50%; left:50%;
+  width:1600px; height:900px;
+  transform-origin:center center;
+  background:var(--paper);
+  box-shadow:0 0 0 1px rgba(255,255,255,.06), 0 30px 90px rgba(0,0,0,.55);
+  overflow:hidden;
+}
+.slide{
+  position:absolute; inset:0;
+  padding:74px 86px 92px;
+  display:none; flex-direction:column;
+}
+.slide.on{display:flex}
+.slide.dark{background:var(--cloth);color:#F6F3E9}
+
+/* ── 슬라이드 머리 ─────────────────────────── */
+.head{display:flex;align-items:baseline;gap:20px;border-bottom:2px solid var(--cloth);padding-bottom:18px}
+.chap{font-family:"Nanum Myeongjo",serif;font-size:16px;letter-spacing:.14em;color:var(--gold);background:var(--cloth);padding:7px 14px;white-space:nowrap}
+.head h2{font-size:40px;flex:1}
+.sub{color:var(--muted);font-size:19px;margin-top:16px;margin-bottom:30px}
+
+/* ── 하단 러너 ─────────────────────────────── */
+.runner{
+  position:absolute;left:86px;right:86px;bottom:34px;
+  display:flex;align-items:center;gap:18px;
+  font-size:14px;color:var(--muted);
+}
+.dark .runner{color:rgba(246,243,233,.55)}
+.runner .bar{flex:1;height:2px;background:var(--rule);position:relative}
+.dark .runner .bar{background:rgba(217,162,39,.25)}
+.runner .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--gold);transition:width .35s ease}
+.runner .who{letter-spacing:.06em}
+.runner .no{font-family:"Nanum Myeongjo",serif;font-size:15px;color:var(--cloth)}
+.dark .runner .no{color:var(--gold)}
+
+/* ── 표지 ──────────────────────────────────── */
+#s1{justify-content:center;padding:96px}
+#s1 .frame{position:absolute;inset:34px;border:1px solid rgba(217,162,39,.45);pointer-events:none}
+#s1 .frame::before{content:"";position:absolute;inset:8px;border:1px solid rgba(217,162,39,.18)}
+.imprint{font-size:15px;letter-spacing:.2em;color:var(--gold);margin-bottom:40px}
+#s1 h1{font-size:72px;line-height:1.28;color:#FCF8EC;font-weight:800;margin-bottom:38px}
+.lede{font-size:22px;line-height:1.95;color:rgba(246,243,233,.82);max-width:34em}
+.lede strong{color:var(--gold-soft);font-weight:700}
+
+/* ── 핵심 명제 ─────────────────────────────── */
+.claim{display:grid;grid-template-columns:1fr auto 1fr;border:1px solid var(--rule);background:var(--paper-2);margin-bottom:38px}
+.claim>div{padding:34px 40px}
+.claim h3{font-size:24px;margin-bottom:12px}
+.claim .not h3,.claim .not p{color:var(--muted)}
+.claim .is{background:var(--paper)}
+.claim .is h3{color:var(--teal)}
+.claim p{font-size:18px;line-height:1.75}
+.claim .sep{width:1px;background:var(--rule);padding:0;position:relative}
+.claim .sep span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--paper-2);color:var(--gold);font-family:"Nanum Myeongjo",serif;font-size:15px;padding:10px 0;width:52px;text-align:center;border:1px solid var(--rule)}
+.toc{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.toc button{
+  background:var(--paper-2);border:1px solid var(--rule);border-left:3px solid var(--gold);
+  font:inherit;text-align:left;padding:22px 22px 24px;cursor:pointer;transition:background .2s;
+}
+.toc button:hover{background:#fff}
+.toc button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.toc b{display:block;font-family:"Nanum Myeongjo",serif;font-size:14px;letter-spacing:.12em;color:var(--gold);margin-bottom:10px}
+.toc strong{display:block;font-size:20px;font-family:"Nanum Myeongjo",serif;margin-bottom:8px}
+.toc span{font-size:14.5px;color:var(--muted);line-height:1.6}
+
+/* ── 방안 카드 ─────────────────────────────── */
+.cards{display:grid;gap:18px;flex:1;align-content:start}
+.g2x2{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:1fr 1fr}
+.card{
+  background:var(--paper-2);border:1px solid var(--rule);border-left:3px solid var(--teal);
+  padding:24px 26px;cursor:pointer;display:flex;flex-direction:column;
+  transition:border-left-color .25s,background .25s;
+}
+.card:hover{background:#fff}
+.card.open{border-left-color:var(--gold)}
+.card:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.card h3{font-size:22px;line-height:1.5;margin-bottom:9px}
+.card .sum{font-size:16px;color:var(--muted);line-height:1.6}
+.card ul{margin-top:16px;padding-top:14px;border-top:1px dotted var(--rule);opacity:0;transition:opacity .3s}
+.card.open ul{opacity:1}
+.card li{position:relative;padding:7px 0 0 18px;font-size:15.5px;line-height:1.65}
+.card li::before{content:"";position:absolute;left:0;top:17px;width:8px;height:1px;background:var(--gold)}
+
+/* ── 순환 다이어그램 ───────────────────────── */
+.split{display:grid;grid-template-columns:430px 1fr;gap:40px;flex:1}
+.cycbox{background:var(--paper-2);border:1px solid var(--rule);padding:22px 24px;display:flex;flex-direction:column}
+.cycbox svg{width:100%;height:auto;flex:1}
+.node{cursor:pointer}
+.node circle{fill:var(--paper);stroke:var(--rule);stroke-width:1.5;transition:fill .25s,stroke .25s}
+.node text{font-size:13px;fill:var(--muted);font-family:inherit;transition:fill .25s}
+.node:hover circle{stroke:var(--teal)}
+.node.on circle{fill:var(--cloth);stroke:var(--cloth)}
+.node.on text{fill:var(--gold-soft);font-weight:700}
+.node:focus-visible circle{stroke:var(--gold);stroke-width:3}
+.cycread{border-top:1px dotted var(--rule);padding-top:16px;margin-top:8px}
+.cycread h4{font-size:19px;margin-bottom:8px}
+.cycread p{font-size:15px;color:var(--muted);line-height:1.7;min-height:75px}
+
+/* ── 전/후 비교 ────────────────────────────── */
+.compare{display:grid;grid-template-columns:1fr 64px 1fr;flex:1;gap:0;align-items:stretch}
+.col{border:1px solid var(--rule);background:var(--paper-2);padding:30px 34px}
+.col.after{border-left:0;border-left:3px solid var(--gold)}
+.col h3{font-size:22px;margin-bottom:6px}
+.col.before h3{color:var(--muted)}
+.col .tag{font-size:14px;color:var(--muted);letter-spacing:.06em;margin-bottom:20px;display:block}
+.col li{padding:15px 0;border-bottom:1px dotted var(--rule);font-size:17px;line-height:1.6;position:relative;padding-left:20px}
+.col li:last-child{border-bottom:0}
+.col li::before{content:"";position:absolute;left:0;top:24px;width:9px;height:9px;border-radius:50%;border:1.5px solid var(--rule)}
+.col.after li::before{background:var(--gold);border-color:var(--gold)}
+.col.before li{color:var(--muted)}
+.arrows{display:flex;flex-direction:column;justify-content:space-around;align-items:center;padding:56px 0}
+.arrows span{color:var(--gold);font-size:20px;font-family:"Nanum Myeongjo",serif}
+
+/* ── 마무리 ────────────────────────────────── */
+#s8{justify-content:center;padding:96px}
+#s8 .rule{width:72px;height:2px;background:var(--gold);margin-bottom:38px}
+#s8 h2{font-size:46px;line-height:1.55;color:#FCF8EC;margin-bottom:34px}
+#s8 p{font-size:20px;color:rgba(246,243,233,.75);max-width:34em;line-height:1.85}
+
+/* ── 조작 UI ───────────────────────────────── */
+#ui{position:fixed;right:20px;bottom:18px;display:flex;gap:8px;z-index:10}
+#ui button{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+  color:rgba(255,255,255,.7);font:inherit;font-size:13px;
+  padding:8px 14px;cursor:pointer;border-radius:2px;transition:background .2s;
+}
+#ui button:hover{background:rgba(255,255,255,.16);color:#fff}
+#ui button:focus-visible{outline:2px solid var(--gold)}
+#hint{
+  position:fixed;left:20px;bottom:18px;color:rgba(255,255,255,.4);font-size:12.5px;z-index:10;
+}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@page{size:A4 landscape;margin:0}
+@media print{
+  body{overflow:visible;background:#fff}
+  #ui,#hint{display:none}
+  #stage{position:static;transform:none!important;width:100%;height:auto;box-shadow:none}
+  .slide{display:flex!important;position:relative;inset:auto;width:1600px;height:900px;page-break-after:always}
+  .card ul{opacity:1!important}
+}
+</style>
+</head>
+<body>
+
+<div id="stage">
+
+<!-- 1. 표지 -->
+<section class="slide dark on" id="s1">
+  <div class="frame"></div>
+  <div class="imprint">전국 공공도서관 AI 동화 창작 서비스 도입 제안</div>
+  <h1>AI 동화 제작 서비스의<br>독서 활성화 방안</h1>
+  <p class="lede">AI 동화책 서비스는 독서를 대체하는 것이 아니라,
+    <strong>독서의 진입장벽을 낮추고 독서 행동을 확장하는 도구</strong>입니다.</p>
+</section>
+
+<!-- 2. 핵심 명제 -->
+<section class="slide" id="s2">
+  <div class="head"><span class="chap">핵심 명제</span><h2>대체가 아니라 확장입니다</h2></div>
+  <p class="sub">열한 가지 방안을 네 개의 흐름으로 정리했습니다. 항목을 누르면 해당 장으로 이동합니다.</p>
+  <div class="claim">
+    <div class="not">
+      <h3>대체하지 않습니다</h3>
+      <p>AI가 만든 이야기가 책을 밀어내지 않습니다. 화면에서 끝나는 일회성 디지털 체험으로 두지 않습니다.</p>
+    </div>
+    <div class="sep"><span>그리고</span></div>
+    <div class="is">
+      <h3>확장합니다</h3>
+      <p>읽기를 시작하는 문턱을 낮추고, 만든 책을 읽고 다시 만드는 순환을 만들어 독서 행동 자체를 늘립니다.</p>
+    </div>
+  </div>
+  <div class="toc">
+    <button data-go="3"><b>장 1</b><strong>시작하게 한다</strong><span>관심사·수준·낭독·다국어로 진입장벽을 낮춥니다</span></button>
+    <button data-go="4"><b>장 2</b><strong>읽기를 만들기로</strong><span>받아서 읽는 활동을 만들어 읽는 활동으로 바꿉니다</span></button>
+    <button data-go="5"><b>장 3</b><strong>혼자에서 함께로</strong><span>가족 독서와 반복 독서로 넓힙니다</span></button>
+    <button data-go="6"><b>장 4</b><strong>도서관 프로그램으로</strong><span>방문 동기와 프로그램 지속성을 높입니다</span></button>
+  </div>
+</section>
+
+<!-- 3. 장 1 -->
+<section class="slide" id="s3">
+  <div class="head"><span class="chap">장 1</span><h2>시작하게 한다</h2></div>
+  <p class="sub">읽을 마음이 없거나, 읽기가 어렵거나, 언어가 달라 읽지 못하던 어린이의 진입장벽을 낮춥니다.</p>
+  <div class="cards g2x2" data-cards="ch1"></div>
+</section>
+
+<!-- 4. 장 2 -->
+<section class="slide" id="s4">
+  <div class="head"><span class="chap">장 2</span><h2>읽기를 만들기로 바꾼다</h2></div>
+  <p class="sub">받아서 읽는 활동을 직접 만들어 읽는 활동으로 바꿉니다.</p>
+  <div class="split">
+    <div class="cycbox">
+      <svg viewBox="0 0 320 300" role="img" aria-label="창작과 독서의 순환 구조">
+        <circle cx="160" cy="150" r="100" fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="4 6"/>
+        <path d="M160 40 a110 110 0 0 1 12 .7" fill="none" stroke="var(--gold)" stroke-width="2"/>
+        <polygon points="175,36 186,42 174,48" fill="var(--gold)"/>
+        <g class="node on" data-i="0" tabindex="0" role="button" aria-label="이야기 생성">
+          <circle cx="160" cy="50" r="44"/><text x="160" y="55" text-anchor="middle">이야기 생성</text></g>
+        <g class="node" data-i="1" tabindex="0" role="button" aria-label="삽화 생성">
+          <circle cx="260" cy="150" r="44"/><text x="260" y="155" text-anchor="middle">삽화 생성</text></g>
+        <g class="node" data-i="2" tabindex="0" role="button" aria-label="완성된 책 읽기">
+          <circle cx="160" cy="250" r="44"/><text x="160" y="255" text-anchor="middle">완성된 책 읽기</text></g>
+        <g class="node" data-i="3" tabindex="0" role="button" aria-label="다시 만들기">
+          <circle cx="60" cy="150" r="44"/><text x="60" y="155" text-anchor="middle">다시 만들기</text></g>
+      </svg>
+      <div class="cycread">
+        <h4 id="cyc-t">이야기 생성</h4>
+        <p id="cyc-d">아이가 고른 소재로 이야기가 만들어집니다. 내가 넣은 요소가 글이 되는 순간, 결과물을 끝까지 확인하고 싶어집니다.</p>
+      </div>
+    </div>
+    <div class="cards g2" style="grid-template-columns:1fr;grid-auto-rows:1fr" data-cards="ch2"></div>
+  </div>
+</section>
+
+<!-- 5. 장 3 -->
+<section class="slide" id="s5">
+  <div class="head"><span class="chap">장 3</span><h2>혼자 읽기에서 함께 읽기로</h2></div>
+  <p class="sub">독서를 개인 활동에서 가정의 문화로, 한 번 읽는 콘텐츠에서 반복해 읽는 소장품으로 넓힙니다.</p>
+  <div class="cards g2" data-cards="ch3"></div>
+</section>
+
+<!-- 6. 장 4 -->
+<section class="slide" id="s6">
+  <div class="head"><span class="chap">장 4</span><h2>도서관 프로그램으로 확장한다</h2></div>
+  <p class="sub">체험을 대출과 독서 프로그램으로 연결해 방문 동기와 참여 지속성을 함께 높입니다.</p>
+  <div class="cards g3" data-cards="ch4"></div>
+</section>
+
+<!-- 7. 전/후 -->
+<section class="slide" id="s7">
+  <div class="head"><span class="chap">운영 변화</span><h2>어린이실에서 달라지는 것</h2></div>
+  <p class="sub">대출 중심의 이용을 창작·독서 체험으로 넓히면 방문과 참여의 구조가 바뀝니다.</p>
+  <div class="compare">
+    <div class="col before">
+      <h3>도입 전</h3>
+      <span class="tag">대출 중심의 이용</span>
+      <ul>
+        <li>방문 목적이 대출과 반납에 머무릅니다.</li>
+        <li>독서 프로그램은 회차가 끝나면 참여도 끝납니다.</li>
+        <li>책에 관심이 낮은 어린이를 끌어올 계기가 마땅치 않습니다.</li>
+        <li>언어가 다른 가정은 프로그램 참여가 어렵습니다.</li>
+      </ul>
+    </div>
+    <div class="arrows"><span>→</span><span>→</span><span>→</span><span>→</span></div>
+    <div class="col after">
+      <h3>도입 후</h3>
+      <span class="tag">창작·독서 체험으로 확장</span>
+      <ul>
+        <li>책을 만들러 오는 새로운 방문 동기가 생깁니다.</li>
+        <li>체험 뒤 관련 도서 대출로 이어지는 연계 프로그램을 운영할 수 있습니다.</li>
+        <li>만든 책을 다시 만들러 오면서 참여가 이어집니다.</li>
+        <li>한국어와 부모의 모국어를 함께 제공해 다문화가정도 참여할 수 있습니다.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 8. 마무리 -->
+<section class="slide dark" id="s8">
+  <div class="rule"></div>
+  <h2>AI가 재미있어서 참여하고, 이야기가 궁금해서 읽고,<br>그래서 다른 책도 찾아보게 만드는 것.</h2>
+  <p>AI 동화책 서비스가 도서관에서 맡는 역할은 여기까지입니다. 읽기를 대신하지 않고, 읽기로 데려갑니다.</p>
+</section>
+
+</div>
+
+<div id="hint">← → 슬라이드 이동 · 카드를 누르면 세부 근거가 펼쳐집니다</div>
+<div id="ui">
+  <button id="prev">이전</button>
+  <button id="next">다음</button>
+  <button id="full">전체화면</button>
+</div>
+
+<script>
+const DATA={
+ch1:[
+ {t:"아이의 관심사를 반영한 맞춤형 이야기",s:"책에 대한 첫 흥미를 높입니다.",
+  b:["좋아하는 동물, 장소, 가족, 장래희망 등을 이야기 소재로 활용","‘나와 관련된 이야기’라는 몰입감을 통해 자연스럽게 책 읽기를 시작하게 함"]},
+ {t:"연령과 독서 수준에 맞는 콘텐츠",s:"수준 차이 때문에 생기는 진입장벽을 낮춥니다.",
+  b:["연령별 어휘, 문장 길이, 페이지 수, 주제를 조절할 수 있음","독서에 익숙하지 않은 어린이도 자신의 수준에 맞는 책부터 접근 가능"]},
+ {t:"음성 낭독",s:"글 읽기가 어려운 어린이도 책을 접할 수 있습니다.",
+  b:["AI 음성 낭독과 텍스트를 함께 제공해 듣기와 읽기를 연계","저연령 아동이나 초기 독서 단계 어린이의 독서 접근성을 높일 수 있음"]},
+ {t:"다국어 동화책",s:"다문화가정의 독서 참여를 확대합니다.",
+  b:["한국어와 부모의 모국어를 함께 제공하면 부모와 아이가 함께 책을 읽는 환경 조성 가능","언어 차이로 독서 활동에 참여하기 어려웠던 가족의 접근성을 높임"]}],
+ch2:[
+ {t:"수동적 ‘읽기’에서 능동적 ‘참여’로",s:"이야기를 받는 사람에서 만드는 사람으로 바뀝니다.",
+  b:["등장인물·배경·결말 등을 직접 선택하며 이야기 구성에 참여","책을 단순히 제공받는 것이 아니라 직접 만들어 보는 과정에서 독서에 대한 관심이 높아짐"]},
+ {t:"창작 경험이 완성된 책 읽기로 이어지는 구조",s:"한 번의 체험이 아니라 반복되는 순환을 만듭니다.",
+  b:["이야기 생성 → 삽화 생성 → 완성된 책 읽기 → 다시 만들기의 순환 구조","창작 경험 자체가 새로운 독서 활동을 지속적으로 유도"]}],
+ch3:[
+ {t:"가족이 함께 만드는 동화책",s:"가정 내 독서 활동을 촉진합니다.",
+  b:["부모·조부모·형제의 이야기를 동화책으로 제작","가족이 함께 만들고 읽는 과정을 통해 독서를 개인 활동에서 가족 문화로 확장"]},
+ {t:"자신이 만든 책의 소장",s:"반복 독서를 유도합니다.",
+  b:["PDF, 디지털 책, 실물 동화책으로 보관 가능","직접 만든 책은 일반 콘텐츠보다 애착이 높아 반복적으로 읽을 가능성이 큼"]}],
+ch4:[
+ {t:"방문 목적을 ‘책 대출’에서 ‘독서·창작 체험’으로",s:"도서관에 올 새로운 이유를 만듭니다.",
+  b:["어린이에게 AI 동화책 만들기라는 새로운 방문 동기를 제공","체험 후 관련 도서를 대출하는 프로그램으로 연계 가능"]},
+ {t:"독서 프로그램의 참여율과 지속성",s:"일회성 체험이 아닌 지속형 프로그램으로 운영합니다.",
+  b:["독서교실, 방학 프로그램, 가족 독서 프로그램, 학교 연계 프로그램 등에 활용","일회성 AI 체험이 아니라 책 읽기와 창작을 결합한 지속형 프로그램으로 운영 가능"]},
+ {t:"책에 관심이 낮은 어린이의 새로운 통로",s:"디지털에 익숙한 아이의 관심을 독서로 옮깁니다.",
+  b:["AI·이미지 생성 등 디지털 경험에 익숙한 어린이의 관심을 활용","‘AI가 재미있어서 참여 → 이야기가 궁금해서 읽음 → 다른 책도 찾아봄’의 흐름을 만들 수 있음"]}]
+};
+
+Object.keys(DATA).forEach(k=>{
+  const host=document.querySelector('[data-cards="'+k+'"]');
+  DATA[k].forEach(d=>{
+    const el=document.createElement('article');
+    el.className='card'; el.tabIndex=0; el.setAttribute('role','button'); el.setAttribute('aria-expanded','false');
+    el.innerHTML='<h3>'+d.t+'</h3><span class="sum">'+d.s+'</span><ul>'+d.b.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
+    const tog=()=>{const o=el.classList.toggle('open');el.setAttribute('aria-expanded',o);};
+    el.addEventListener('click',tog);
+    el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tog();}});
+    host.appendChild(el);
+  });
+});
+
+/* 러너 삽입 */
+const slides=[...document.querySelectorAll('.slide')];
+slides.forEach((s,i)=>{
+  const r=document.createElement('div');
+  r.className='runner';
+  r.innerHTML='<span class="who">AI 동화 제작 서비스의 독서 활성화 방안</span><span class="bar"><i style="width:'+((i+1)/slides.length*100)+'%"></i></span><span class="no">'+(i+1)+' / '+slides.length+'</span>';
+  s.appendChild(r);
+});
+
+/* 슬라이드 제어 */
+let cur=0;
+function go(i){
+  cur=Math.max(0,Math.min(slides.length-1,i));
+  slides.forEach((s,n)=>s.classList.toggle('on',n===cur));
+}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+document.querySelectorAll('.toc button').forEach(b=>b.onclick=()=>go(+b.dataset.go-1));
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1);}
+  if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1);}
+  if(e.key==='Home')go(0);
+  if(e.key==='End')go(slides.length-1);
+});
+document.getElementById('full').onclick=()=>{
+  if(document.fullscreenElement)document.exitFullscreen();
+  else document.documentElement.requestFullscreen();
+};
+
+/* 순환 다이어그램 */
+const CYC=[
+ ["이야기 생성","아이가 고른 소재로 이야기가 만들어집니다. 내가 넣은 요소가 글이 되는 순간, 결과물을 끝까지 확인하고 싶어집니다."],
+ ["삽화 생성","글에 그림이 붙으면서 한 권의 형태가 잡힙니다. 장면을 고르는 과정에서 내용을 다시 읽게 됩니다."],
+ ["완성된 책 읽기","직접 만든 책이라 애착이 높고, 낭독과 인쇄본으로 반복해서 읽습니다."],
+ ["다시 만들기","다른 이야기를 만들고 싶어지고, 그 과정이 다시 읽기로 이어집니다."]
+];
+const nodes=document.querySelectorAll('.node');
+function pick(i){
+  nodes.forEach(n=>n.classList.toggle('on',+n.dataset.i===i));
+  document.getElementById('cyc-t').textContent=CYC[i][0];
+  document.getElementById('cyc-d').textContent=CYC[i][1];
+}
+nodes.forEach(n=>{
+  n.addEventListener('click',e=>{e.stopPropagation();pick(+n.dataset.i);});
+  n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();pick(+n.dataset.i);}});
+});
+
+/* 16:9 맞춤 스케일 */
+const stage=document.getElementById('stage');
+function fit(){
+  const s=Math.min(window.innerWidth/1600,window.innerHeight/900);
+  stage.style.transform='translate(-50%,-50%) scale('+s+')';
+}
+window.addEventListener('resize',fit); fit();
+</script>
+</body>
+</html>

@@ -19,7 +19,8 @@ presentation/          배포되는 덱 (GitHub Pages 사이트 루트)
 
 AI시민동화책_공공도서관_발표멘트_최종.md        낭독 멘트·수치·출처 (콘텐츠 1차 기준)
 AI시민동화책_인터랙티브HTML_작업지시서_PRD.md   18장 구조·수치 무결성·UX 원칙
-AI시민동화책_인터랙티브HTML_화면설계서.md       장표별 제목·화면 문구·레이아웃
+AI시민동화책_인터랙티브HTML_화면설계서.md       장표별 제목·화면 문구·레이아웃 (19~26장 PART Ⅱ 포함)
+reading-activation-16x9.html                     PART Ⅱ(19~26장) 원본 문서 · 독서 활성화 방안
 AI시민동화책_인터랙티브HTML_Higgsfield_프롬프트.md  배경 미디어 프롬프트·파일명 규칙
 작업인수인계_HANDOFF.md                          작업 이력·남은 일
 ```
@@ -38,7 +39,7 @@ AI시민동화책_인터랙티브HTML_Higgsfield_프롬프트.md  배경 미디�
 | `M` | 모션 최소화 |
 | `B` | 배경 미디어 강조 토글 |
 | `R` | 장표 다시 재생 |
-| `D` / `Enter`(18장) | 실제 서비스 시연 (`Backspace`·`Esc` 복귀) |
+| `D` / `Enter`(마지막 장) / 18·26장 DEMO 버튼 | 실제 서비스 시연 (`Backspace`·`Esc` 로 시연을 연 장표로 복귀) |
 
 > `Esc` 는 시연 중이면 발표로 복귀, 패널이 열려 있으면 닫기, 그 외에는 목차를 엽니다.
 
@@ -55,6 +56,6 @@ AI시민동화책_인터랙티브HTML_Higgsfield_프롬프트.md  배경 미디�
 ```bash
 cd presentation/tools
 npm i                 # 최초 1회 (puppeteer-core)
-node qa.js            # 18장 순회 + 시연 + 넘침·잘림 검사
+node qa.js            # 26장 순회 + 시연 + 넘침·잘림 검사
 node audit_type.js    # 렌더 실측 글자 크기 검사
 ```

@@ -3,7 +3,7 @@
    - 1920×1080 캔버스 스케일 (Letterbox)
    - 한 번의 조작 = 정확히 한 장 (휠 디바운스 700ms)
    - 키보드: ↓→Space PgDn 다음 / ↑← PgUp 이전 / Home End / F P M T S D R
-   - 시연(DEMO)은 18장 뒤에 진행: 18장에서 Enter 또는 어느 장표에서든 D, 종료 시 18장으로 복귀
+   - 시연(DEMO): 마지막 장(26장)에서 Enter, 18·26장의 DEMO 버튼, 또는 어느 장표에서든 D. 종료 시 시연을 연 장표로 복귀
    - URL Hash #slide-NN 유지, 새로고침 시 복원
    - 장표 진입 시 자동 시퀀스 재생, 재진입 시 처음부터
    ============================================================ */
@@ -22,7 +22,7 @@
   let cur = -1;               // 현재 장표 index (0-based)
   let ctx = null;             // 현재 장표 lifecycle context
   let wheelLock = 0, lastWheelT = 0;
-  let demoOpen = false, demoIdx = 0, demoCtx = null;
+  let demoOpen = false, demoIdx = 0, demoCtx = null, demoFrom = N - 1;   // demoFrom: 시연을 연 장표 index (복귀 지점 · #demo-N 직접 진입 시 마지막 장)
 
   /* ---------- 유틸: lifecycle context ---------- */
   function makeCtx(extra = {}) {
@@ -82,7 +82,7 @@
 
     // 목차
     $("#tocList").innerHTML = SLIDES.map((s, i) => `<li data-i="${i}"><span class="n">${pad2(s.id)}</span><div><span class="t">${s.title}</span><span class="c">${s.chapter}</span></div></li>`).join("")
-      + `<li class="demo-row" data-demo="1"><span class="n">${ic("monitor")}</span><div><span class="t">서비스 시연 ${DEMO_SCREENS.length}화면</span><span class="c">18장 다음 · D 키</span></div></li>`;
+      + `<li class="demo-row" data-demo="1"><span class="n">${ic("monitor")}</span><div><span class="t">서비스 시연 ${DEMO_SCREENS.length}화면</span><span class="c">18장 · ${N}장 DEMO 버튼 · D 키</span></div></li>`;
     $$("#tocList li").forEach(li => li.addEventListener("click", () => {
       closeOverlays();
       if (li.dataset.demo) { goTo(SLIDES.length - 1); openDemo(); return; }
@@ -111,14 +111,14 @@
       if (!m || m.dataset.loaded) continue;
       m.dataset.loaded = "1";
       const bg = sec.querySelector(".bg");
-      const ok = () => { bg.classList.add("has-media"); m.classList.add("ready"); };
+      const ok = () => { bg.classList.add("has-media"); m.classList.add("ready"); if (k === cur) syncChromeMedia(); };
       // 실패 시: 영상 → 포스터 이미지 → CSS/SVG 배경 (PRD 폴백 순서)
       const fail = () => {
         if (m.tagName === "VIDEO" && m.dataset.poster) {
           const im = document.createElement("img");
           im.className = m.className.replace(/ready/, "").trim();
           im.alt = "";
-          im.addEventListener("load", () => { bg.classList.add("has-media"); im.classList.add("ready"); }, { once: true });
+          im.addEventListener("load", () => { bg.classList.add("has-media"); im.classList.add("ready"); if (k === cur) syncChromeMedia(); }, { once: true });
           im.addEventListener("error", () => im.remove(), { once: true });
           im.src = m.dataset.poster;
           m.replaceWith(im);
@@ -203,8 +203,15 @@
   const next = () => goTo(cur + 1);
   const prevS = () => goTo(cur - 1);
 
+  /* 현재 장표에 배경 미디어가 실제로 떠 있는지 → 장표 밖 크롬(챕터·쪽번호)의 밝은 글자 여부 */
+  function syncChromeMedia() {
+    const sec = deck.children[cur];
+    html.classList.toggle("cur-media", !!(sec && sec.querySelector(".bg.has-media")));
+  }
+
   function updateChrome() {
     const s = SLIDES[cur];
+    syncChromeMedia();
     $("#progress").style.setProperty("--p", (cur + 1) / N);
     $("#chapter").textContent = s.chapter;
     $("#pageno").textContent = `${pad2(s.id)} / ${N}`;
@@ -220,7 +227,7 @@
       $("#pnProgress").textContent = `DEMO ${demoIdx + 1} / ${DEMO_SCREENS.length}${dn.time ? ` · ${dn.time}` : ""}`;
       $("#pnCue").innerHTML = `<span>DEMO</span>${dn.cue}`;
       $("#pnBody").innerHTML = `<p>${dn.note}</p>`;
-      $("#pnNext").textContent = demoIdx < DEMO_SCREENS.length - 1 ? DEMO_SCREENS[demoIdx + 1].title : "18장으로 복귀 · 발표 종료";
+      $("#pnNext").textContent = demoIdx < DEMO_SCREENS.length - 1 ? DEMO_SCREENS[demoIdx + 1].title : `${pad2(SLIDES[demoFrom].id)}장으로 복귀 · 발표 종료`;
       return;
     }
     const s = SLIDES[cur];
@@ -253,6 +260,7 @@
   /* ---------- DEMO ---------- */
   function openDemo() {
     if (DECK_META.demoUrl) { window.open(DECK_META.demoUrl, "demo"); return; }
+    demoFrom = Math.max(0, cur);
     showDemo(0, true);
   }
   // 히스토리 복원(popstate/초기 진입)과 일반 진입을 한 경로로
@@ -274,14 +282,14 @@
     updatePresenter();
   }
   function demoNext() { if (demoIdx < DEMO_SCREENS.length - 1) { demoIdx++; renderDemo(); } else finishDemo(); }
-  const LAST = N - 1;   // 시연은 18장 뒤에 진행되므로 복귀 지점은 18장
-  function demoPrev() { if (demoIdx > 0) { demoIdx--; renderDemo(); } else closeDemo(LAST); }
+  const LAST = N - 1;   // 마지막 장에서 Enter → 시연
+  function demoPrev() { if (demoIdx > 0) { demoIdx--; renderDemo(); } else closeDemo(demoFrom); }
   function closeDemo(toIndex) {
     demoOpen = false; demoCtx?.kill(); demoCtx = null;
     $("#demo").hidden = true; $("#demoStage").innerHTML = "";
     if (toIndex !== undefined) { goTo(toIndex, { replace: true, force: true }); } else { updatePresenter(); history.replaceState(null, "", `#slide-${pad2(SLIDES[cur].id)}`); }
   }
-  function finishDemo() { closeDemo(LAST); }   // 18장으로 복귀
+  function finishDemo() { closeDemo(demoFrom); }   // 시연을 연 장표로 복귀
 
   /* ---------- 입력 ---------- */
   function onKey(e) {
@@ -294,7 +302,7 @@
 
     // Esc: 시연 중이면 복귀 · 패널이 열려 있으면 닫기 · 그 외에는 목차 열기 (O 키도 동일)
     if (k === "Escape") {
-      if (demoOpen) closeDemo(LAST);
+      if (demoOpen) closeDemo(demoFrom);
       else if (anyOverlay) closeOverlays();
       else toggle("#toc");
       return;
@@ -303,7 +311,7 @@
     if (demoOpen) {
       if (["ArrowRight", "ArrowDown", " ", "PageDown", "Enter"].includes(k)) { e.preventDefault(); demoNext(); }
       else if (["ArrowLeft", "ArrowUp", "PageUp"].includes(k)) { e.preventDefault(); demoPrev(); }
-      else if (k === "Backspace") { e.preventDefault(); closeDemo(LAST); }
+      else if (k === "Backspace") { e.preventDefault(); closeDemo(demoFrom); }
       else if (k === "p") togglePresenter();
       else if (k === "f") toggleFull();
       return;
@@ -345,7 +353,7 @@
     let m = /#slide-(\d+)/.exec(h);
     if (m) { const idx = SLIDES.findIndex(s => s.id === +m[1]); return { slide: idx >= 0 ? idx : 0 }; }
     m = /#demo-(\d+)/.exec(h);
-    if (m) return { slide: N - 1, demo: Math.max(0, Math.min(DEMO_SCREENS.length - 1, +m[1] - 1)) };
+    if (m) return { slide: demoFrom, demo: Math.max(0, Math.min(DEMO_SCREENS.length - 1, +m[1] - 1)) };
     return { slide: 0 };
   }
 
@@ -363,7 +371,7 @@
     $$("button", stage).forEach(b => b.addEventListener("click", () => b.blur()));   // 클릭 후 Enter가 버튼을 다시 누르지 않도록
     window.addEventListener("popstate", () => {
       const t = fromHash();
-      if (t.demo !== undefined) { if (!demoOpen) goTo(N - 1, { replace: true, force: true }); showDemo(t.demo, false); }
+      if (t.demo !== undefined) { if (!demoOpen) { goTo(demoFrom, { replace: true, force: true }); } showDemo(t.demo, false); }
       else { if (demoOpen) closeDemo(); goTo(t.slide, { replace: true }); }
     });
     const t = fromHash();

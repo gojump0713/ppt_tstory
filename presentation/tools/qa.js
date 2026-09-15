@@ -34,7 +34,7 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
   // 2) 처음부터 키보드로 순회
   await page.goto(URL, { waitUntil: "load" });
   await sleep(4800);
-  for (let i = 1; i <= 18; i++) {
+  for (let i = 1; i <= 26; i++) {
     if (i > 1) { await page.keyboard.press("ArrowRight"); await sleep(5200); }
     const st = await state();
     const extra = await page.evaluate((i) => {
@@ -57,7 +57,7 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
       o.overflow = over.slice(0, 5);
       // 텍스트가 카드 밖으로 넘치는지 (scrollHeight > clientHeight)
       let clip = [];
-      s.querySelectorAll(".card, .chip, .step, .vnode, .leaf, .barrier, .verb, .row, .bk").forEach(el => { if (el.scrollHeight > el.clientHeight + 2 && getComputedStyle(el).overflow !== "visible") clip.push(el.className); });
+      s.querySelectorAll(".card, .chip, .step, .vnode, .leaf, .barrier, .verb, .row, .bk, .r-card, .rd, .cn, .cl").forEach(el => { if (el.scrollHeight > el.clientHeight + 2 && getComputedStyle(el).overflow !== "visible") clip.push(el.className); });
       o.clipped = clip.slice(0, 5);
       return o;
     }, i);
@@ -66,7 +66,7 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
   }
   // 3) 뒤로 이동, End/Home
   await page.keyboard.press("ArrowLeft"); await sleep(900);
-  report.push({ test: "ArrowLeft from 18", ...(await state()) });
+  report.push({ test: "ArrowLeft from 26", ...(await state()) });
   await page.keyboard.press("Home"); await sleep(900);
   report.push({ test: "Home", ...(await state()) });
   await page.keyboard.press("End"); await sleep(900);
@@ -91,8 +91,8 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
   await page.screenshot({ path: path.join(OUT, "sources.png") });
   await page.keyboard.press("Escape"); await sleep(200);
 
-  // 6) 17장 → Enter → DEMO 4화면 → 18장
-  await page.goto(URL + "#slide-18", { waitUntil: "load" }); await sleep(3200);
+  // 6) 마지막 장(26) → Enter → DEMO 5화면 → 26장 복귀 (시연은 연 장표로 복귀)
+  await page.goto(URL + "#slide-26", { waitUntil: "load" }); await sleep(3200);
   await page.keyboard.press("Enter"); await sleep(4500);
   report.push({ test: "demo 1", hash: await page.evaluate(() => location.hash) });
   await page.screenshot({ path: path.join(OUT, "d1.png") });
@@ -106,11 +106,11 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
   await page.screenshot({ path: path.join(OUT, "d5.png") });
   report.push({ test: "demo 5", hash: await page.evaluate(() => location.hash), steps: await page.$$eval("#demoSteps i", a => a.length) });
   await page.keyboard.press("Enter"); await sleep(1500);
-  report.push({ test: "after demo Enter → expect 18", ...(await state()) });
+  report.push({ test: "after demo Enter → expect 26", ...(await state()) });
   // Backspace 복귀
   await page.keyboard.press("d"); await sleep(800);
   await page.keyboard.press("Backspace"); await sleep(800);
-  report.push({ test: "demo Backspace → expect 18", ...(await state()) });
+  report.push({ test: "demo Backspace → expect 26", ...(await state()) });
 
   // 7) 1366x768 스케일 + 1024 미만 안내
   await page.setViewport({ width: 1366, height: 768 });
