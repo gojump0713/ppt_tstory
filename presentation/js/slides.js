@@ -192,7 +192,7 @@ const VISUALS = {
       return `
       <div class="s03">
         <div class="fan-wrap">
-          <div class="fan-cap rv" ${d(200)}><span class="tag">사례 · 민음사 × GS25 문학빵</span><span class="note-line">빵 봉지 안에 문학 작품 표지를 활용한 책갈피가 20종 가운데 하나씩 무작위로 들어 있음</span></div>
+          <div class="fan-cap rv" ${d(200)}><span class="tag">사례 · 민음사 × GS25 문학빵</span><span class="note-line">빵 봉지 안에 문학 작품 표지를 활용한 책갈피가 20종 가운데 하나씩 무작위로 들어 있음</span><span class="note-line">봉지를 열어 어떤 책갈피가 나왔는지 확인하고, 마음에 드는 표지를 모으고, 사진으로 나누는 경험이 문학의 관심과 그 책을 다시 읽어보는 사례로 이야기 되고 있습니다.</span></div>
           <div class="fan">${fan}</div>
           <div class="pack rv-scale" ${d(200)}>${ic("bread")}<span>편의점 빵</span></div>
         </div>
@@ -200,7 +200,7 @@ const VISUALS = {
           <div class="s03-metrics">
             <div class="metric rv" ${d(500)}><div class="num"><span class="count" data-to="${METRICS.bookmarkKinds}" data-dur="900">0</span><small>종</small></div><div class="lbl">무작위 책갈피</div></div>
             <div class="metric rv" ${d(700)}><div class="num"><span class="count" data-to="${METRICS.saleDays}" data-dur="900">0</span><small>일</small></div><div class="lbl">출시 후 · 판매 보도 시점</div></div>
-            <div class="metric ai rv" ${d(900)}><div class="num"><span class="pre">최대</span><span class="count" data-to="${METRICS.saleMaxMan}" data-dur="1200">0</span><small>만 개</small></div><div class="lbl">판매 보도 <span class="caution">※ 판매량은 독서량 증가를 의미하지 않음</span></div></div>
+            <div class="metric ai rv" ${d(900)}><div class="num"><span class="pre">최대</span><span class="count" data-to="${METRICS.saleMaxMan}" data-dur="1200">0</span><small>만 개</small></div><div class="lbl">판매 보도</div></div>
           </div>
           <div>
             <div class="tag ai rv" ${d(1500)} style="margin-bottom:12px">만들어진 경험</div>
@@ -232,7 +232,7 @@ const VISUALS = {
         <div class="left">
           <div class="tag ai rv" ${d(150)}>대한민국 인공지능 행동계획 2026~2028 · <b>${METRICS.aiStrategyAreas}대 전략분야</b></div>
           <div class="nodes12">${nodes}</div>
-          <div class="legend rv" ${d(1500)}><span class="sw hi"></span>오늘 제안과 직접 연결되는 2개 전략 <span class="sw"></span>그 외 전략분야</div>
+          <div class="legend rv" ${d(1500)}>온 국민이 AI를 누리고, AI로 콘텐츠를 창작하는 지원체계를 만들겠다는 것</div>
         </div>
         <div class="right">
           <div class="chain">
@@ -254,9 +254,9 @@ const VISUALS = {
     bg: { tone: "green", seed: 14 },
     html: () => `
       <div class="venn">
-        <div class="circ c1 rv-scale" ${d(300)}><b>모두의 도서관</b><span>제4차 도서관발전종합계획</span><small>디지털 문해력 · 신기술 서비스</small></div>
+        <div class="circ c1 rv-scale" ${d(300)}><b>모두의 도서관</b><span>제4차 도서관발전종합계획</span><small>‘모두의 도서관’과 ‘도서관 혁신’을 목표로 디지털 문해력 교육과 신기술 서비스 확대 추진</small></div>
         <div class="circ c2 rv-scale" ${d(600)}><b>비독자의 독자 전환</b><span>제4차 독서문화진흥 기본계획</span><small>${METRICS.goalYear} 성인 독서율 목표</small><div class="badge"><span class="count" data-to="${METRICS.adultReadingGoal}" data-dur="1000">0</span>%</div></div>
-        <div class="circ c3 rv-scale" ${d(900)}><b>2026 책 읽는 대한민국</b><span>문화체육관광부 캠페인</span><small>AI 시대, 사유의 힘</small></div>
+        <div class="circ c3 rv-scale" ${d(900)}><b>2026 책 읽는 대한민국</b><span>문화체육관광부 캠페인</span><small>AI 시대에 사유의 힘을 기른다는 취지로 ‘책 읽는 대한민국’ 캠페인 선포</small></div>
         <div class="center rv-scale" ${d(1900)}>${ic("library")}<b>공공도서관<br>AI 동화 창작</b></div>
       </div>`
   },
