@@ -616,12 +616,12 @@ const VISUALS = {
           <div class="qcard rv" ${d(300)}>
             <span class="qn">Q1</span><span class="icw lg ink">${ic("globe")}</span>
             <h3>왜 정부가?</h3>
-            <div class="a rv" ${d(700)}>비용·기기·역량·연령에 따른 <b>배제를 줄이고</b> 안전한 접근을 보장</div>
+            <div class="a rv" ${d(700)}>비용·기기·역량·연령 때문에 시장에서 배제되는 시민에게 <b>안전한 기본 접근 보장</b>과 독서 정책과 연결</div>
           </div>
           <div class="qcard rv" ${d(1000)}>
             <span class="qn">Q2</span><span class="icw lg warm">${ic("library")}</span>
             <h3>왜 도서관이?</h3>
-            <div class="a rv" ${d(1400)}>아동부터 은퇴자까지 <b>전 생애가 자발적으로</b> 참여하는 공공문화 공간</div>
+            <div class="a rv" ${d(1400)}>아동부터 은퇴자까지 <b>전 생애가 자발적으로</b> 참여하는 공공문화 공간, 모든 세대가 안전하게 AI를 처음 경험할 수 있는 가장 가까운 공공기관</div>
           </div>
           <div class="qcard rv" ${d(1700)}>
             <span class="qn">Q3</span><span class="icw lg green">${ic("book")}</span>
