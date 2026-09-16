@@ -891,10 +891,279 @@ const VISUALS = {
         <div class="final rv" ${d(2300)}>읽기를 <em>대신하지 않고</em>,<br>읽기로 <em>데려갑니다</em>.</div>
         <div class="req rv" ${d(2900)}>AI 동화책 서비스가 도서관에서 맡는 역할은 여기까지입니다.</div>
         <div class="cta rv" ${d(3400)}>
-          <button class="demo-btn" id="demoBtn2">DEMO ${ic("arrow")}<small>Enter</small></button>
+          <button class="demo-btn" id="demoBtn2">DEMO ${ic("arrow")}<small>D</small></button>
         </div>
       </div>`,
     enter(el, ctx) { ctx.on(el.querySelector("#demoBtn2"), "click", () => ctx.openDemo()); }
+  },
+  /* ============================================================
+     PART Ⅲ · 기관용 AI동화책 운영 가이드 (26~32장)
+     기준: 운영가이드.pptx · 운영가이드_PRD.md
+     - 가격·수치는 data.js 의 OPS 에서만 가져온다 (화면에 숫자를 직접 쓰지 않는다)
+     - 디지털 = 초록 / 책제작 포함 = 코랄 로 색 의미를 끝까지 유지
+     ============================================================ */
+
+  /* ---------- 26 PART Ⅲ 표지 ---------- */
+  26: {
+    hero: true,
+    bg: { tone: "green", seed: 111, extra: `<div class="light-on"></div>`, tint: "linear-gradient(180deg,rgba(247,244,236,.58) 0%,rgba(247,244,236,.9) 55%,rgba(247,244,236,.98) 100%)" },
+    html: () => `
+      <div class="hero ops-hero">
+        <div class="ops-brand rv-scale" ${d(300)}><span class="icw round green">${ic("book")}</span>Tstory.ai</div>
+        <div class="hero-kicker rv" ${d(900)}>PART Ⅲ · 기관 운영 가이드</div>
+        <h1 class="hero-title rv" ${d(1050)}>기관용 AI동화책<br>운영 가이드</h1>
+        <p class="hero-gov rv" ${d(1250)}>학급방 만들기부터 <b>이용권 가격</b>, 실물 동화책 받기까지<br>도서관 · 문화센터 · 교육기관 담당자를 위한 안내입니다.</p>
+        <div class="hero-keys ops-keys rv" ${d(1900)}>
+          <span class="k"><i>1</i>서비스 흐름</span><span class="ln"></span>
+          <span class="k"><i>2</i>학급방 운영</span><span class="ln"></span>
+          <span class="k"><i>3</i>이용권 · 책 형태</span><span class="ln"></span>
+          <span class="k"><i>4</i>기관 예산</span>
+        </div>
+      </div>`
+  },
+
+  /* ---------- 27 서비스 흐름 4단계 ---------- */
+  27: {
+    bg: { tone: "green", seed: 113 },
+    html: () => {
+      const steps = [
+        { t: "이야기 쓰기", s: "주제와 인물을 정하고<br>아이가 직접 글을 써요", ic: "pencil", c: "" },
+        { t: "그림 그리기", s: `토큰을 사용하면<br>AI가 장면을 그려요`, ic: "image", c: "warm" },
+        { t: "다운로드", s: "PDF 동화책과<br>오디오북을 받아요", ic: "book", c: "green" },
+        { t: "실물 동화책", s: "인쇄·제본된 책을<br>기관으로 배송해요", ic: "print", c: "red" }
+      ];
+      const cards = steps.map((v, i) => `
+        <div class="card ops-step rv" ${d(300 + i * 200)}>
+          <span class="n">${i + 1}</span>
+          <span class="icw ${v.c}">${ic(v.ic)}</span>
+          <b>${v.t}</b>
+          <span class="s">${v.s}</span>
+        </div>`).join("");
+      return `
+      <div class="ops-flow">
+        <div class="ops-cards">${cards}</div>
+        <div class="ops-scopes">
+          <div class="ops-scope digital rv" ${d(1350)}>
+            <b>${OPS.plans.digital.label}</b>
+            <span>그림 생성 ${OPS.book.generate}회 · 수정 ${OPS.book.revise}회 · 1권 토큰 ${opsTokensPerBook()}개</span>
+          </div>
+          <div class="ops-scope print rv" ${d(1600)}>
+            <b>${OPS.plans.print.label}</b>
+            <span>디지털 구성 전체 + 실물 동화책 1권</span>
+          </div>
+        </div>
+      </div>`;
+    }
+  },
+
+  /* ---------- 28 학급방 운영 5단계 ---------- */
+  28: {
+    bg: { tone: "warm", seed: 117 },
+    html: () => {
+      const steps = [
+        { t: "담당자 가입", s: "기관 담당자 계정을 만들어요", ic: "librarian" },
+        { t: "학급방 만들기", s: "프로그램·기수별로 방을 만들어요", ic: "home" },
+        { t: "참여자 초대", s: `참여 링크를 공유해요 (최소 ${OPS.room.minMembers}명)`, ic: "share", hi: true },
+        { t: "동화책 만들기", s: "참여자가 각자 한 권씩 만들어요", ic: "pencil" },
+        { t: "검토·완성", s: "담당자가 작품을 확인하고 신청해요", ic: "check" }
+      ];
+      const rows = steps.map((v, i) => `
+        <div class="ops-row rv-left ${v.hi ? "hi" : ""}" ${d(300 + i * 180)}>
+          <span class="n">${i + 1}</span>
+          <span class="icw ${v.hi ? "red" : "ink"}">${ic(v.ic)}</span>
+          <div><b>${v.t}</b><span>${v.s}</span></div>
+        </div>`).join("");
+      return `
+      <div class="ops-room">
+        <div class="ops-rows">${rows}</div>
+        <div class="ops-min rv-right" ${d(900)}>
+          <span class="kicker">학급방 최소 인원</span>
+          <div class="num"><span class="count" data-to="${OPS.room.minMembers}" data-dur="800">0</span><small>명</small></div>
+          <p>참여자 ${OPS.room.minMembers}명 이상일 때<br>학급방을 만들 수 있어요.</p>
+          <div class="ops-min-foot">${ic("users")}담당자 1명이 여러 방을 운영할 수 있어요</div>
+        </div>
+      </div>`;
+    }
+  },
+
+  /* ---------- 29 이용권 두 가지 ---------- */
+  29: {
+    bg: { tone: "green", seed: 121 },
+    html: () => {
+      const dp = OPS.plans.digital, pp = OPS.plans.print, bk = opsDefaultBook();
+      const li = (items, sub) => items.map((x, i) => `<li>${ic("check")}<span>${x}${i === 0 && sub ? `<em>${sub}</em>` : ""}</span></li>`).join("");
+      return `
+      <div class="ops-plans">
+        <div class="ops-plan digital rv-left" ${d(250)}>
+          <span class="kicker">${dp.label}</span>
+          <div class="price"><span class="count" data-to="${dp.price}" data-dur="900">0</span>원</div>
+          <span class="punit">참여자 1인당</span>
+          <ul>${li(dp.items, `토큰 ${opsTokensPerBook()}개 · 생성 ${OPS.book.generate}회 · 수정 ${OPS.book.revise}회`)}</ul>
+        </div>
+        <div class="ops-plan print rv-right" ${d(450)}>
+          <span class="kicker">${pp.label}</span>
+          <div class="price"><span class="count" data-to="${bk.price}" data-dur="1100">0</span>원<i>~</i></div>
+          <span class="punit">참여자 1인당 · ${bk.label} 기준</span>
+          <ul>${li(pp.items)}</ul>
+        </div>
+        <div class="ops-token rv" ${d(1400)}>
+          <span class="tag ai">토큰 안내</span>
+          <span class="eq">그림 1장 = 토큰 <b>${OPS.token.perImage}개</b></span>
+          <span class="dot">·</span>
+          <span class="eq">동화책 1권 = 토큰 <b>${opsTokensPerBook()}개</b></span>
+          <span class="calc">(생성 ${OPS.book.generate} + 수정 ${OPS.book.revise}) × ${OPS.token.perImage}</span>
+        </div>
+        <p class="ops-notice rv" ${d(1700)}>※ ${OPS.notice}</p>
+      </div>`;
+    }
+  },
+
+  /* ---------- 30 실물 동화책 형태 4종 ---------- */
+  30: {
+    bg: { tone: "warm", seed: 127 },
+    html: () => {
+      const cards = OPS.books.map((b, i) => `
+        <div class="card ops-book rv ${b.default ? "is-default" : ""}" ${d(300 + i * 190)}>
+          ${b.badge ? `<span class="badge ${b.default ? "" : "pre"}">${b.badge}</span>` : ""}
+          <div class="shape">
+            <svg viewBox="0 0 120 110" aria-hidden="true">
+              <rect x="${(120 - b.w) / 2}" y="${(104 - b.h) / 2 + 3}" width="${b.w}" height="${b.h}" rx="4"/>
+              <line x1="${(120 - b.w) / 2 + 9}" y1="${(104 - b.h) / 2 + 6}" x2="${(120 - b.w) / 2 + 9}" y2="${(104 - b.h) / 2 + b.h}"/>
+            </svg>
+          </div>
+          <b>${b.label}</b>
+          <span class="s">${b.desc}</span>
+          <div class="p">${won(b.price)}</div>
+        </div>`).join("");
+      return `
+      <div class="ops-books">
+        <div class="ops-book-grid">${cards}</div>
+        <p class="ops-books-foot rv" ${d(1300)}>${ic("bookmark")}기관 프로그램 성격에 맞춰 <b>학급방 단위로 한 가지 형태</b>를 정하는 것을 권해요.</p>
+      </div>`;
+    }
+  },
+
+  /* ---------- 31 예산 계산 (인원·책 형태 버튼으로 즉석 계산) ---------- */
+  31: {
+    bg: { tone: "green", seed: 131 },
+    html: () => {
+      const bk = opsDefaultBook();
+      const chips = OPS.books.map(b => `<button class="chip bk ${b.id === bk.id ? "on" : ""}" data-book="${b.id}">${b.label}</button>`).join("");
+      const quick = OPS.budgetExamples.map(n => `<button class="chip qn ${n === 20 ? "on" : ""}" data-n="${n}">${n}명</button>`).join("");
+      const bars = OPS.budgetExamples.map(n => `
+        <div class="bar-row" data-row="${n}">
+          <span class="rn">${n}명</span>
+          <span class="bar d"><i></i><em></em></span>
+          <span class="bar p"><i></i><em></em></span>
+        </div>`).join("");
+      return `
+      <div class="ops-calc">
+        <div class="ops-input card rv-left" ${d(250)}>
+          <span class="kicker">참여 인원</span>
+          <div class="stepper">
+            <button class="sbtn" data-step="-1" aria-label="인원 줄이기">−</button>
+            <div class="nwrap"><b id="opsN">20</b><small>명</small></div>
+            <button class="sbtn" data-step="1" aria-label="인원 늘리기">+</button>
+          </div>
+          <div class="hint" id="opsHint">최소 ${OPS.room.minMembers}명 · 최대 100명</div>
+          <span class="kicker mt">빠른 선택</span>
+          <div class="chips">${quick}</div>
+          <span class="kicker mt">책 형태</span>
+          <div class="chips">${chips}</div>
+        </div>
+        <div class="ops-result rv-right" ${d(450)}>
+          <div class="res digital">
+            <span class="icw green">${ic("book")}</span>
+            <span class="kicker">${OPS.plans.digital.label}</span>
+            <b id="opsDigital">0원</b>
+            <span class="f" id="opsDigitalF"></span>
+            <span class="sub">동화책 1권 제작 · PDF · 오디오북</span>
+          </div>
+          <div class="res print">
+            <span class="icw red">${ic("print")}</span>
+            <span class="kicker" id="opsPrintLabel">${OPS.plans.print.label}</span>
+            <b id="opsPrint">0원</b>
+            <span class="f" id="opsPrintF"></span>
+            <span class="sub">디지털 구성 + 실물 1권 + 기관 배송</span>
+          </div>
+          <div class="res token">
+            <span class="icw">${ic("spark")}</span>
+            <span class="kicker">필요 토큰</span>
+            <b id="opsToken">0개</b>
+            <span class="f">1권 ${opsTokensPerBook()}개 × 인원</span>
+            <span class="sub">그림 생성 ${OPS.book.generate}회 · 수정 ${OPS.book.revise}회</span>
+          </div>
+        </div>
+        <div class="ops-bars rv" ${d(900)}>
+          <div class="bar-head"><span class="lg d">${ic("book")}디지털</span><span class="lg p">${ic("print")}책제작 포함</span></div>
+          ${bars}
+        </div>
+      </div>`;
+    },
+    /* 인원·책 형태 버튼 → 즉시 재계산. 입력창이 없으므로 발표 단축키와 충돌하지 않는다. */
+    enter(el, ctx) {
+      const $$$ = (s) => Array.from(el.querySelectorAll(s));
+      const state = { n: 20, book: opsDefaultBook() };
+      const MIN = OPS.room.minMembers, MAX = 100;
+      const set = (k, v) => { state[k] = v; render(); };
+
+      const render = () => {
+        const dUnit = OPS.plans.digital.price, pUnit = state.book.price;
+        el.querySelector("#opsN").textContent = state.n;
+        el.querySelector("#opsHint").textContent =
+          state.n === MIN ? `학급방은 ${MIN}명 이상일 때 만들 수 있어요` : `최소 ${MIN}명 · 최대 ${MAX}명`;
+        el.querySelector("#opsHint").classList.toggle("warn", state.n === MIN);
+        el.querySelector("#opsDigital").textContent = won(dUnit * state.n);
+        el.querySelector("#opsDigitalF").textContent = `${won(dUnit)} × ${state.n}명`;
+        el.querySelector("#opsPrintLabel").textContent = `${OPS.plans.print.label} · ${state.book.label}`;
+        el.querySelector("#opsPrint").textContent = won(pUnit * state.n);
+        el.querySelector("#opsPrintF").textContent = `${won(pUnit)} × ${state.n}명`;
+        el.querySelector("#opsToken").textContent = (opsTokensPerBook() * state.n).toLocaleString("ko-KR") + "개";
+        $$$(".ops-result b").forEach(b => { b.classList.remove("pulse"); void b.offsetWidth; b.classList.add("pulse"); });
+        $$$(".chip.qn").forEach(c => c.classList.toggle("on", +c.dataset.n === state.n));
+        $$$(".chip.bk").forEach(c => c.classList.toggle("on", c.dataset.book === state.book.id));
+        // 규모별 비교 막대 — 가장 큰 금액을 100%로
+        const max = Math.max(...OPS.budgetExamples.map(n => pUnit * n));
+        $$$(".bar-row").forEach(row => {
+          const n = +row.dataset.row;
+          row.classList.toggle("cur", n === state.n);
+          const d0 = dUnit * n, p0 = pUnit * n;
+          row.querySelector(".bar.d i").style.width = (d0 / max * 100) + "%";
+          row.querySelector(".bar.p i").style.width = (p0 / max * 100) + "%";
+          row.querySelector(".bar.d em").textContent = won(d0);
+          row.querySelector(".bar.p em").textContent = won(p0);
+        });
+      };
+
+      $$$(".sbtn").forEach(b => ctx.on(b, "click", () =>
+        set("n", Math.max(MIN, Math.min(MAX, state.n + (+b.dataset.step))))));
+      $$$(".chip.qn").forEach(b => ctx.on(b, "click", () => set("n", +b.dataset.n)));
+      $$$(".chip.bk").forEach(b => ctx.on(b, "click", () =>
+        set("book", OPS.books.find(x => x.id === b.dataset.book))));
+
+      state.n = 20; state.book = opsDefaultBook();
+      render();
+    }
+  },
+
+  /* ---------- 32 마무리 · 문의 ---------- */
+  32: {
+    hero: true,
+    bg: { tone: "green", seed: 137, extra: `<div class="light-on"></div>`, tint: "linear-gradient(180deg,rgba(247,244,236,.6) 0%,rgba(247,244,236,.9) 50%,rgba(247,244,236,.98) 100%)" },
+    html: () => {
+      const bk = opsDefaultBook();
+      return `
+      <div class="closing ops-closing">
+        <div class="final rv" ${d(300)}>우리 기관의 <em>작은 작가들</em>,<br>Tstory.ai와 함께 시작해요.</div>
+        <div class="ops-sum rv" ${d(1100)}>
+          <span class="st"><b>${OPS.room.minMembers}명</b><span>학급방 최소 인원</span></span>
+          <span class="st"><b>${won(OPS.plans.digital.price)}</b><span>1인당 디지털 이용권</span></span>
+          <span class="st"><b>${won(bk.price)}</b><span>1인당 실물 포함 · ${bk.label}</span></span>
+        </div>
+        <div class="req rv" ${d(1700)}>학급방 개설 · 단체 견적 · 실물 제작 신청 문의 — 틸론(Tilon) Tstory.ai 담당</div>
+        <p class="ops-notice center rv" ${d(2000)}>※ ${OPS.notice}</p>
+      </div>`;
+    }
   }
 };
 

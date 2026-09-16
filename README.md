@@ -21,6 +21,7 @@ AI시민동화책_공공도서관_발표멘트_최종.md        낭독 멘트·�
 AI시민동화책_인터랙티브HTML_작업지시서_PRD.md   18장 구조·수치 무결성·UX 원칙
 AI시민동화책_인터랙티브HTML_화면설계서.md       장표별 제목·화면 문구·레이아웃 (19~25장 PART Ⅱ 포함)
 reading-activation-16x9.html                     PART Ⅱ(19~25장) 원본 문서 · 독서 활성화 방안
+운영가이드.pptx · 운영가이드_PRD.md               PART Ⅲ(26~32장) 원본 · 기관 운영 가이드·가격
 AI시민동화책_인터랙티브HTML_Higgsfield_프롬프트.md  배경 미디어 프롬프트·파일명 규칙
 작업인수인계_HANDOFF.md                          작업 이력·남은 일
 ```
@@ -56,6 +57,6 @@ AI시민동화책_인터랙티브HTML_Higgsfield_프롬프트.md  배경 미디�
 ```bash
 cd presentation/tools
 npm i                 # 최초 1회 (puppeteer-core)
-node qa.js            # 25장 순회 + 시연 + 넘침·잘림 검사
+node qa.js            # 32장 순회 + 시연 + 넘침·잘림 검사
 node audit_type.js    # 렌더 실측 글자 크기 검사
 ```

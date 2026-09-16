@@ -63,7 +63,7 @@
 ## 6. 검증 도구 (`presentation/tools`)
 ```bash
 npm i puppeteer-core@23        # 최초 1회
-node qa.js                     # 25장 순회 + 시연 + 스케일 + 넘침/잘림 → qa-shots/report.json
+node qa.js                     # 32장 순회 + 시연 + 스케일 + 넘침/잘림 → qa-shots/report.json
 node shot.js 01 07 d1 d5       # 지정 장표 스크린샷
 node shot_toc.js               # 목차 화면 스크린샷·동작 확인
 node audit_type.js             # 화면에 실제 렌더된 22px 미만 글자 목록
