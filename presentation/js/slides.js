@@ -335,6 +335,7 @@ const VISUALS = {
             ${hbar("학생", METRICS.libStudent, 100, "var(--community)", 2200)}
             ${hbar("성인", METRICS.libAdult, 100, "var(--gap)", 2400)}
           </div>
+          <p class="cmp-foot rv" ${d(2700)}>이 목표를 달성하기 위해서는 <b>AI창작서비스와 독서를 연계한 새로운 방식</b>이 필요합니다.</p>
         </div>
       </div>`
   },

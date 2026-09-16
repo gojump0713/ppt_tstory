@@ -786,6 +786,8 @@ html.rm .gapviz .gcol i{height:var(--h)!important}
 .gap-note{margin-top:40px;font-size:22px;color:var(--ink-2);font-weight:600}
 .gap-note b{color:var(--gap)}
 .s07n .right{display:flex;flex-direction:column;justify-content:center;gap:22px}
+.s07n .cmp-foot{margin:-4px 0 0 4px;font-size:20px;line-height:1.5;color:var(--ink-2)}
+.s07n .cmp-foot b{color:var(--ink);font-weight:700}
 .cmp{padding:22px 28px;border-radius:22px;background:var(--paper-card);border:1px solid var(--line)}
 .cmp-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
 .cmp-h .derived{font-size:22px;color:var(--ink-2);font-weight:600}
