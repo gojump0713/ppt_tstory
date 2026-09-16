@@ -915,7 +915,7 @@ const VISUALS = {
         <div class="ops-scopes">
           <div class="ops-scope digital rv" ${d(1350)}>
             <b>${OPS.plans.digital.label}</b>
-            <span>그림 생성 ${OPS.book.generate}회 · 수정 ${OPS.book.revise}회 · 1권 토큰 ${opsTokensPerBook()}개</span>
+            <span>그림 만들기 ${OPS.book.generate}회 · 다시 그리기 ${OPS.book.revise}회 · 1권 토큰 ${opsTokensPerBook()}개</span>
           </div>
           <div class="ops-scope print rv" ${d(1600)}>
             <b>${OPS.plans.print.label}</b>
@@ -931,7 +931,7 @@ const VISUALS = {
     bg: { tone: "warm", seed: 117 },
     html: () => {
       const steps = [
-        { t: "담당자 가입", s: "기관 담당자 계정을 만들어요", ic: "librarian" },
+        { t: "담당자 가입", s: "담당자 계정을 만들어요", ic: "librarian" },
         { t: "학급방 만들기", s: "프로그램·기수별로 방을 만들어요", ic: "home" },
         { t: "참여자 초대", s: `참여 링크를 공유해요 (최소 ${OPS.room.minMembers}명)`, ic: "share", hi: true },
         { t: "동화책 만들기", s: "참여자가 각자 한 권씩 만들어요", ic: "pencil" },
@@ -968,7 +968,7 @@ const VISUALS = {
           <span class="kicker">${dp.label}</span>
           <div class="price"><span class="count" data-to="${dp.price}" data-dur="900">0</span>원</div>
           <span class="punit">참여자 1인당</span>
-          <ul>${li(dp.items, `토큰 ${opsTokensPerBook()}개 · 생성 ${OPS.book.generate}회 · 수정 ${OPS.book.revise}회`)}</ul>
+          <ul>${li(dp.items, `토큰 ${opsTokensPerBook()}개 · 그림 만들기 ${OPS.book.generate}회 · 다시 그리기 ${OPS.book.revise}회`)}</ul>
         </div>
         <div class="ops-plan print rv-right" ${d(450)}>
           <span class="kicker">${pp.label}</span>
@@ -1058,7 +1058,7 @@ const VISUALS = {
             <span class="kicker">필요 토큰</span>
             <b id="opsToken">0개</b>
             <span class="f">1권 ${opsTokensPerBook()}개 × 인원</span>
-            <span class="sub">그림 생성 ${OPS.book.generate}회 · 수정 ${OPS.book.revise}회</span>
+            <span class="sub">그림 만들기 ${OPS.book.generate}회 · 다시 그리기 ${OPS.book.revise}회</span>
           </div>
         </div>
         <div class="ops-bars rv" ${d(900)}>
