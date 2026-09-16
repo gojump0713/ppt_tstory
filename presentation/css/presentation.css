@@ -166,6 +166,14 @@ html.rm *{transition-duration:0ms!important}
 .pn-keys{font-size:14px;color:#8E99A9}
 
 .overlay-full{position:absolute;z-index:45;inset:0;padding:100px 120px;background:rgba(247,244,236,.97);backdrop-filter:blur(8px);overflow:hidden}
+/* 목차·출처: 항목이 많으면 목록만 세로 스크롤 (머리말은 고정) */
+#toc, #sources{display:flex;flex-direction:column}
+#toc[hidden], #sources[hidden]{display:none}
+#toc .toc-head, #sources .toc-head, #sources .src-intro{flex:none}
+#tocList, #srcList{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-right:14px;align-content:start}
+#tocList::-webkit-scrollbar, #srcList::-webkit-scrollbar{width:10px}
+#tocList::-webkit-scrollbar-thumb, #srcList::-webkit-scrollbar-thumb{background:rgba(21,32,43,.22);border-radius:999px}
+#tocList::-webkit-scrollbar-track, #srcList::-webkit-scrollbar-track{background:transparent}
 .overlay-full[hidden]{display:none}
 .toc-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:36px}
 .toc-head b{font-size:40px;font-weight:800;letter-spacing:-.02em}

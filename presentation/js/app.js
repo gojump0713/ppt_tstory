@@ -61,6 +61,9 @@
     return `<div class="bg">${shelvesSVG(b.seed || slide.id, b.tone || "warm")}<div class="tint" style="background:${tint}"></div>${media}<div class="veil"></div>${b.extra || ""}</div>`;
   }
 
+  /* 제목의 <br> 는 장표에서만 줄바꿈으로 쓰고, 목차·읽기 표시·메모에서는 공백으로 */
+  const plain = (s) => s.replace(/<br\s*\/?>/gi, " ");
+
   /* ---------- 장표 DOM 생성 ---------- */
   function build() {
     deck.innerHTML = SLIDES.map((s, i) => {
@@ -75,14 +78,14 @@
              <div class="visual">${vis.html()}</div>
            </div>`;
       const src = sourceHTML(s.sources);
-      return `<section class="slide" id="sec-${pad2(s.id)}" data-id="${s.id}" data-tone="${vis.tone || "warm"}" data-media-mode="${vis.hero ? "hero" : "normal"}" style="--i:${i}" aria-label="${s.id}. ${s.title}">
+      return `<section class="slide" id="sec-${pad2(s.id)}" data-id="${s.id}" data-tone="${vis.tone || "warm"}" data-media-mode="${vis.hero ? "hero" : "normal"}" style="--i:${i}" aria-label="${s.id}. ${plain(s.title)}">
         ${bgHTML(s, vis)}${inner}${src ? `<div class="source">${src}</div>` : ""}
       </section>`;
     }).join("");
 
     // 목차
-    $("#tocList").innerHTML = SLIDES.map((s, i) => `<li data-i="${i}"><span class="n">${pad2(s.id)}</span><div><span class="t">${s.title}</span><span class="c">${s.chapter}</span></div></li>`).join("")
-      + `<li class="demo-row" data-demo="1"><span class="n">${ic("monitor")}</span><div><span class="t">서비스 시연 ${DEMO_SCREENS.length}화면</span><span class="c">18장 · ${N}장 DEMO 버튼 · D 키</span></div></li>`;
+    $("#tocList").innerHTML = SLIDES.map((s, i) => `<li data-i="${i}"><span class="n">${pad2(s.id)}</span><div><span class="t">${plain(s.title)}</span><span class="c">${s.chapter}</span></div></li>`).join("")
+      + `<li class="demo-row" data-demo="1"><span class="n">${ic("monitor")}</span><div><span class="t">서비스 시연 ${DEMO_SCREENS.length}화면</span><span class="c">18장 · 25장 DEMO 버튼 · D 키</span></div></li>`;
     $$("#tocList li").forEach(li => li.addEventListener("click", () => {
       closeOverlays();
       if (li.dataset.demo) { goTo(SLIDES.length - 1); openDemo(); return; }
@@ -234,7 +237,7 @@
     $("#pnProgress").textContent = `${pad2(s.id)} / ${N}${s.time ? ` · ${s.time}` : ""}`;
     $("#pnCue").innerHTML = `<span>${s.cue.split(" ")[0]}</span>${s.cue}`;
     $("#pnBody").innerHTML = s.note.map(t => `<p>${t}</p>`).join("");
-    $("#pnNext").textContent = cur < N - 1 ? `${pad2(SLIDES[cur + 1].id)}. ${SLIDES[cur + 1].title}` : "실제 서비스 시연 (Enter 또는 D) → 종료";
+    $("#pnNext").textContent = cur < N - 1 ? `${pad2(SLIDES[cur + 1].id)}. ${plain(SLIDES[cur + 1].title)}` : "실제 서비스 시연 (Enter 또는 D) → 종료";
   }
   function togglePresenter() { const p = $("#presenter"); p.hidden = !p.hidden; updatePresenter(); toast(p.hidden ? "발표자 메모 OFF" : "발표자 메모 ON"); }
 

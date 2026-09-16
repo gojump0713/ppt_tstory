@@ -1161,7 +1161,6 @@ const VISUALS = {
           <span class="st"><b>${won(bk.price)}</b><span>1인당 실물 포함 · ${bk.label}</span></span>
         </div>
         <div class="req rv" ${d(1700)}>학급방 개설 · 단체 견적 · 실물 제작 신청 문의 — 틸론(Tilon) Tstory.ai 담당</div>
-        <p class="ops-notice center rv" ${d(2000)}>※ ${OPS.notice}</p>
       </div>`;
     }
   }
