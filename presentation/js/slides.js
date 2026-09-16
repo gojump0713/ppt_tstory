@@ -731,7 +731,7 @@ const VISUALS = {
   },
 
   /* ============================================================
-     PART Ⅱ · AI 동화 제작 서비스의 독서 활성화 방안 (19~26장)
+     PART Ⅱ · AI 동화 제작 서비스의 독서 활성화 방안 (19~25장)
      기준 원고: reading-activation-16x9.html
      ============================================================ */
 
@@ -758,45 +758,8 @@ const VISUALS = {
       </div>`
   },
 
-  /* ---------- 20 핵심 명제 · 대체가 아니라 확장 ---------- */
+  /* ---------- 20 장 1 · 시작하게 한다 (2×2) ---------- */
   20: {
-    bg: { tone: "cool", seed: 73 }, tone: "cool",
-    html: () => {
-      const road = [
-        { n: "1", t: "시작하게 한다", s: "관심사 · 수준 · 낭독 · 다국어로 진입장벽을 낮춥니다", ic: "child", c: "" },
-        { n: "2", t: "읽기를 만들기로", s: "받아서 읽는 활동을 만들어 읽는 활동으로 바꿉니다", ic: "pencil", c: "warm" },
-        { n: "3", t: "혼자에서 함께로", s: "가족 독서와 반복 독서로 넓힙니다", ic: "users", c: "green" },
-        { n: "4", t: "도서관 프로그램으로", s: "방문 동기와 프로그램 지속성을 높입니다", ic: "library", c: "ink" }
-      ];
-      return `
-      <div class="r-claim-wrap">
-        <div class="r-claim">
-          <div class="card not rv-left" ${d(200)}>
-            <span class="kicker">대체하지 않습니다</span>
-            <ul>
-              <li>AI가 만든 이야기가 책을 밀어내지 않습니다.</li>
-              <li>화면에서 끝나는 일회성 디지털 체험으로 두지 않습니다.</li>
-            </ul>
-          </div>
-          <div class="and rv-scale" ${d(700)}>그리고</div>
-          <div class="card is accent-ai rv-right" ${d(200)}>
-            <span class="kicker">확장합니다</span>
-            <ul>
-              <li>읽기를 시작하는 <b>문턱을 낮춥니다.</b></li>
-              <li>만든 책을 읽고 다시 만드는 <b>순환</b>으로 독서 행동 자체를 늘립니다.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="tag ai rv" ${d(1200)}>네 개의 흐름</div>
-        <div class="r-road">
-          ${road.map((r, i) => `<div class="rd rv" ${d(1350 + i * 180)}><span class="icw ${r.c}">${ic(r.ic)}</span><div><b><em>${r.n}</em>${r.t}</b><span>${r.s}</span></div></div>`).join(arr())}
-        </div>
-      </div>`;
-    }
-  },
-
-  /* ---------- 21 장 1 · 시작하게 한다 (2×2) ---------- */
-  21: {
     bg: { tone: "warm", seed: 79 },
     html: () => rCards([
       { ic: "heart", c: "red", t: "아이의 관심사를 반영한 맞춤형 이야기", s: "책에 대한 첫 흥미를 높입니다.",
@@ -810,8 +773,8 @@ const VISUALS = {
     ], "g2x2")
   },
 
-  /* ---------- 22 장 2 · 읽기를 만들기로 (순환) ---------- */
-  22: {
+  /* ---------- 21 장 2 · 읽기를 만들기로 (순환) ---------- */
+  21: {
     bg: { tone: "cool", seed: 83 }, tone: "cool",
     html: () => {
       const steps = [
@@ -865,8 +828,8 @@ const VISUALS = {
     leave(el) { el.querySelectorAll(".cn.on,.cl.on").forEach(n => n.classList.remove("on")); }
   },
 
-  /* ---------- 23 장 3 · 혼자에서 함께로 (2) ---------- */
-  23: {
+  /* ---------- 22 장 3 · 혼자에서 함께로 (2) ---------- */
+  22: {
     bg: { tone: "warm", seed: 89 },
     html: () => rCards([
       { ic: "users", c: "green", t: "가족이 함께 만드는 동화책", s: "가정 내 독서 활동을 촉진합니다.",
@@ -876,8 +839,8 @@ const VISUALS = {
     ], "g2", `<div class="r-foot rv" ${d(1500)}><span class="chip">개인 활동</span>${arr()}<span class="chip green">가족 문화</span><span class="sep"></span><span class="chip">한 번 읽는 콘텐츠</span>${arr()}<span class="chip warm">반복해 읽는 소장품</span></div>`)
   },
 
-  /* ---------- 24 장 4 · 도서관 프로그램으로 (3) ---------- */
-  24: {
+  /* ---------- 23 장 4 · 도서관 프로그램으로 (3) ---------- */
+  23: {
     bg: { tone: "green", seed: 97 },
     html: () => rCards([
       { ic: "library", c: "warm", t: "방문 목적을 ‘책 대출’에서 ‘독서·창작 체험’으로", s: "도서관에 올 새로운 이유를 만듭니다.",
@@ -889,8 +852,8 @@ const VISUALS = {
     ], "g3", `<div class="r-foot rv" ${d(1600)}><span class="chip ai">AI가 재미있어서 참여</span>${arr()}<span class="chip">이야기가 궁금해서 읽음</span>${arr()}<span class="chip warm">다른 책도 찾아봄</span></div>`)
   },
 
-  /* ---------- 25 운영 변화 · 도입 전/후 ---------- */
-  25: {
+  /* ---------- 24 운영 변화 · 도입 전/후 ---------- */
+  24: {
     bg: { tone: "cool", seed: 101 }, tone: "cool",
     html: () => {
       const rows = [
@@ -912,8 +875,8 @@ const VISUALS = {
     }
   },
 
-  /* ---------- 26 마무리 → 시연 ---------- */
-  26: {
+  /* ---------- 25 마무리 → 시연 ---------- */
+  25: {
     hero: true,
     bg: { tone: "warm", seed: 103, extra: `<div class="light-on"></div>`, tint: "linear-gradient(180deg,rgba(247,244,236,.6) 0%,rgba(247,244,236,.9) 50%,rgba(247,244,236,.98) 100%)" },
     html: () => `

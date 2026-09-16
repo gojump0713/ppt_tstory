@@ -16,7 +16,7 @@
 | `AI시민동화책_인터랙티브HTML_Higgsfield_프롬프트.md` | 장표별 배경 영상/이미지 프롬프트·파일명 규칙 |
 
 ## 3. 현재 상태 (완료)
-- 2026-09-15: PART Ⅱ(19~26장, `reading-activation-16x9.html` 기반 독서 활성화 방안) 추가 → 총 26장. 시연은 18·26장 DEMO 버튼/D 키로 열고 연 장표로 복귀. 장표 밖 크롬(챕터·쪽번호)은 배경 미디어가 실제로 뜬 장표에서만 밝은 글자(`html.cur-media`)
+- 2026-09-15: PART Ⅱ(19~25장, `reading-activation-16x9.html` 기반 독서 활성화 방안) 추가 → 총 26장. 시연은 18·26장 DEMO 버튼/D 키로 열고 연 장표로 복귀. 장표 밖 크롬(챕터·쪽번호)은 배경 미디어가 실제로 뜬 장표에서만 밝은 글자(`html.cur-media`)
 - 18장 + 시연 5화면 구현 완료. 기능 QA 전 항목 통과, 페이지 오류 0건, 넘침·잘림 0건
 - **배경 미디어 27건 제작 완료** (Higgsfield MCP, 약 560크레딧)
   - 영상 9건 `seedance_2_5` 16:9 7~8초 · 이미지 9건 + 포스터 9건 `gpt_image_2` 16:9 2K
@@ -63,7 +63,7 @@
 ## 6. 검증 도구 (`presentation/tools`)
 ```bash
 npm i puppeteer-core@23        # 최초 1회
-node qa.js                     # 26장 순회 + 시연 + 스케일 + 넘침/잘림 → qa-shots/report.json
+node qa.js                     # 25장 순회 + 시연 + 스케일 + 넘침/잘림 → qa-shots/report.json
 node shot.js 01 07 d1 d5       # 지정 장표 스크린샷
 node shot_toc.js               # 목차 화면 스크린샷·동작 확인
 node audit_type.js             # 화면에 실제 렌더된 22px 미만 글자 목록

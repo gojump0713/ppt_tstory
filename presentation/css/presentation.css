@@ -1117,9 +1117,12 @@ html.mediadark .bg.has-media ~ .slide-inner .caution{color:#FF9A94}
 .s02-grid .card.col{justify-content:center}
 
 /* ============================================================
-   v3 · PART Ⅱ 독서 활성화 방안 (19~26장)
+   v3 · PART Ⅱ 독서 활성화 방안 (19~25장)
    기준 원고: reading-activation-16x9.html
    ============================================================ */
+
+/* 20 ① 시작하게 한다 — 거버닝 메시지를 줄바꿈 없이 한 줄로 (실측 1498px < 본문 폭 1680px) */
+.slide[data-id="20"] .gov{max-width:none;white-space:nowrap}
 
 /* 19 표지 · 대체 → 확장 */
 .r-swap{display:flex;align-items:center;gap:26px;margin-bottom:22px}
@@ -1157,7 +1160,7 @@ html.mediadark .bg.has-media ~ .slide-inner .caution{color:#FF9A94}
 .r-road .arr{align-self:center;color:var(--muted);opacity:.7}
 .r-road .arr .ic{width:30px;height:30px}
 
-/* 21 · 23 · 24 방안 카드 */
+/* 20 · 22 · 23 방안 카드 */
 .r-cards-wrap{display:flex;flex-direction:column;height:100%;gap:22px}
 .r-cards{display:grid;gap:22px;flex:1;min-height:0}
 .r-cards.g2x2{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}

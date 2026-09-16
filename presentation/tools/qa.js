@@ -34,7 +34,7 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
   // 2) 처음부터 키보드로 순회
   await page.goto(URL, { waitUntil: "load" });
   await sleep(4800);
-  for (let i = 1; i <= 26; i++) {
+  for (let i = 1; i <= 25; i++) {
     if (i > 1) { await page.keyboard.press("ArrowRight"); await sleep(5200); }
     const st = await state();
     const extra = await page.evaluate((i) => {
@@ -66,7 +66,7 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
   }
   // 3) 뒤로 이동, End/Home
   await page.keyboard.press("ArrowLeft"); await sleep(900);
-  report.push({ test: "ArrowLeft from 26", ...(await state()) });
+  report.push({ test: "ArrowLeft from 25", ...(await state()) });
   await page.keyboard.press("Home"); await sleep(900);
   report.push({ test: "Home", ...(await state()) });
   await page.keyboard.press("End"); await sleep(900);
@@ -91,8 +91,8 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
   await page.screenshot({ path: path.join(OUT, "sources.png") });
   await page.keyboard.press("Escape"); await sleep(200);
 
-  // 6) 마지막 장(26) → Enter → DEMO 5화면 → 26장 복귀 (시연은 연 장표로 복귀)
-  await page.goto(URL + "#slide-26", { waitUntil: "load" }); await sleep(3200);
+  // 6) 마지막 장(25) → Enter → DEMO 5화면 → 25장 복귀 (시연은 연 장표로 복귀)
+  await page.goto(URL + "#slide-25", { waitUntil: "load" }); await sleep(3200);
   await page.keyboard.press("Enter"); await sleep(4500);
   report.push({ test: "demo 1", hash: await page.evaluate(() => location.hash) });
   await page.screenshot({ path: path.join(OUT, "d1.png") });
