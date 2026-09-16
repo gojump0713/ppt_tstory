@@ -192,7 +192,7 @@ const VISUALS = {
       return `
       <div class="s03">
         <div class="fan-wrap">
-          <div class="fan-cap rv" ${d(200)}><span class="tag">사례 · 민음사 × GS25 문학빵</span><span class="note-line">빵 봉지 안에 문학 작품 표지를 활용한 책갈피가 20종 가운데 하나씩 무작위로 들어 있음</span><span class="note-line">봉지를 열어 어떤 책갈피가 나왔는지 확인하고, 마음에 드는 표지를 모으고, 사진으로 나누는 경험이 문학의 관심과 그 책을 다시 읽어보는 사례로 이야기 되고 있습니다.</span></div>
+          <div class="fan-cap rv" ${d(200)}><span class="tag">사례 · 민음사 × GS25 문학빵</span><span class="note-line">빵 봉지 안에 문학 작품 표지를 활용한 책갈피가 20종 가운데 하나씩 무작위로 들어 있음</span><span class="note-line">빵 표지에 문학 작품 이미지와 책갈피를 넣었더니 대박이 났습니다.</span><span class="note-line">봉지를 열어 어떤 책갈피가 나왔는지 확인하고, 마음에 드는 표지를 모으고, 사진으로 나누는 경험이 문학의 관심과 그 책을 다시 읽어보는 사례로 이야기 되고 있습니다.</span></div>
           <div class="fan">${fan}</div>
           <div class="pack rv-scale" ${d(200)}>${ic("bread")}<span>편의점 빵</span></div>
         </div>
@@ -213,8 +213,19 @@ const VISUALS = {
             <span class="chip">상품</span>${arr()}<span class="chip">수집 경험</span>${arr()}<span class="chip warm">문학 관심</span>${arr()}<span class="lib">${ic("library")}도서관 프로그램</span>
           </div>
         </div>
+        <img class="s03-photo" src="media/s03_munhakppang_minumsa.png" width="1034" height="512" alt="민음사 × GS25 문학빵 책갈피 사진">
       </div>`;
-    }
+    },
+    /* 문학빵 사진: 장표 정중앙에 원본 크기로 겹쳐 두고, 화면을 클릭하면 사진만 사라진다 */
+    enter(el, ctx) {
+      const photo = el.querySelector(".s03-photo");
+      if (!photo) return;
+      if (photo.parentElement !== el) el.appendChild(photo);   // .slide 직계로 올려 화면(1920×1080) 정중앙 기준
+      photo.classList.remove("is-out");
+      // 이 장표로 넘어오게 한 클릭이 그대로 사진을 숨기지 않도록 다음 틱에 연결
+      ctx.timer(() => ctx.on(document, "click", () => photo.classList.add("is-out")), 0);
+    },
+    leave(el) { el.querySelector(".s03-photo")?.classList.remove("is-out"); }
   },
 
   /* ---------- 04 AI 3대 강국 · 12대 전략분야 ---------- */

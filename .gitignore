@@ -1,6 +1,8 @@
 # QA 도구 의존성·산출물 (배포에 불필요)
 presentation/tools/node_modules/
 presentation/tools/qa-shots/
+# 덱에서 내보낸 PPTX (필요할 때 재생성)
+dist/
 
 # Pretendard 원본 배포본 (57MB) — 덱은 presentation/fonts/PretendardVariable.woff2 만 사용
 font/
