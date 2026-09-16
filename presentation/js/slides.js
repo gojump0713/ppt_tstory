@@ -192,7 +192,7 @@ const VISUALS = {
       return `
       <div class="s03">
         <div class="fan-wrap">
-          <div class="fan-cap rv" ${d(200)}><span class="tag">사례 · 민음사 × GS25 문학빵</span><span class="note-line">빵 봉지 안에 문학 작품 표지를 활용한 책갈피가 20종 가운데 하나씩 무작위로 들어 있음</span><span class="note-line">빵 표지에 문학 작품 이미지와 책갈피를 넣었더니 대박이 났습니다.</span><span class="note-line">봉지를 열어 어떤 책갈피가 나왔는지 확인하고, 마음에 드는 표지를 모으고, 사진으로 나누는 경험이 문학의 관심과 그 책을 다시 읽어보는 사례로 이야기 되고 있습니다.</span></div>
+          <div class="fan-cap rv" ${d(200)}><span class="tag">사례 · 민음사 × GS25 문학빵</span><span class="note-line tight">빵 봉지 안에 문학 작품 표지를 활용한 책갈피가 20종 가운데 하나씩 무작위로 들어 있음</span><span class="note-line tight">빵 표지에 문학 작품 이미지와 책갈피를 넣었더니 대박</span><span class="note-line">봉지를 열어 어떤 책갈피가 나왔는지 확인하고, 마음에 드는 표지를 모으고, 사진으로 나누는 경험이 문학의 관심과 그 책을 다시 읽어보는 사례로 이야기 되고 있습니다.</span></div>
           <div class="fan">${fan}</div>
           <div class="pack rv-scale" ${d(200)}>${ic("bread")}<span>편의점 빵</span></div>
         </div>

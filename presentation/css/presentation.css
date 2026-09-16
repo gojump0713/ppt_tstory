@@ -338,6 +338,9 @@ html.rm .converge .book,html.rm .converge .glow{opacity:1!important}
 html.rm .fan .bm{opacity:1!important;transform:rotate(var(--r))!important}
 .fan-cap{position:absolute;left:0;top:8px;display:flex;flex-direction:column;gap:10px;white-space:nowrap}
 .fan-cap .note-line{font-size:20px;white-space:normal;max-width:700px;word-break:keep-all}
+/* 앞의 두 줄은 한 묶음으로 읽히도록 줄간격을 좁힌다 */
+.fan-cap .note-line.tight{line-height:1.35}
+.fan-cap .note-line.tight + .note-line.tight{margin-top:-6px}
 .s03-right{display:flex;flex-direction:column;justify-content:space-between;gap:30px;padding-top:6px;padding-bottom:10px}
 .s03-metrics{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:20px}
 .s03-metrics .metric .num{font-size:96px}
