@@ -339,38 +339,8 @@ const VISUALS = {
       </div>`
   },
 
-  /* ---------- 08 정책 공백 4개 · Missing Link ---------- */
+  /* ---------- 08 서비스 5단계 ---------- */
   8: {
-    bg: { tone: "warm", seed: 23 },
-    html: () => `
-      <div class="gaps">
-        <div class="gside l">
-          <div class="gcard rv-left" ${d(400)}><span class="k">1 · 프로그램 이후</span><b>다음 행동으로 이어지지 않음</b></div>
-          <div class="gcard rv-left" ${d(700)}><span class="k">2 · 창작 장벽</span><b>글쓰기·그림 기술이 참여층을 제한</b></div>
-        </div>
-        <div class="gmid">
-          <div class="end a rv" ${d(200)}><span class="icw lg warm">${ic("library")}</span><b>도서관의 강점</b><span>장서 · 사서 · 공간</span></div>
-          <div class="linkviz">
-            <svg viewBox="0 0 120 420" preserveAspectRatio="none">
-              <path class="broken" d="M60 0 V150" stroke="rgba(21,32,43,.25)" stroke-width="6" stroke-dasharray="14 12" fill="none"/>
-              <path class="broken" d="M60 270 V420" stroke="rgba(21,32,43,.25)" stroke-width="6" stroke-dasharray="14 12" fill="none"/>
-              <path class="draw fix" pathLength="1" d="M60 0 V420" stroke="var(--ai)" stroke-width="8" fill="none" stroke-linecap="round" style="--d:2600ms"/>
-            </svg>
-            <div class="missing"><span>MISSING LINK</span>연결 장치 부재</div>
-            <div class="plat rv-scale" ${d(3000)}>${ic("spark")}AI 시민 동화책 플랫폼</div>
-          </div>
-          <div class="end b rv" ${d(200)}><span class="icw lg green">${ic("pencil")}</span><b>시민 창작자</b><span>수동적 수혜자 → 능동적 창작자</span></div>
-        </div>
-        <div class="gside r">
-          <div class="gcard rv-right" ${d(1000)}><span class="k">3 · 민간 AI 격차</span><b>비용·기기·안전·역량을 개인에게 전가</b></div>
-          <div class="gcard rv-right" ${d(1300)}><span class="k">4 · 운영 도구 부재</span><b>사서가 활용할 표준 관리도구 부족</b></div>
-        </div>
-        <div class="gaps-foot rv" ${d(3300)}><b>AI 시민 동화책 플랫폼</b> = 네 가지 공백을 잇는 운영형 서비스</div>
-      </div>`
-  },
-
-  /* ---------- 09 서비스 5단계 ---------- */
-  9: {
     bg: { tone: "warm", seed: 27 },
     html: () => {
       const steps = [
@@ -416,8 +386,8 @@ const VISUALS = {
     }
   },
 
-  /* ---------- 10 공공도서관 전용 설계 ---------- */
-  10: {
+  /* ---------- 09 공공도서관 전용 설계 ---------- */
+  9: {
     bg: { tone: "cool", seed: 31 }, tone: "cool",
     html: () => `
       <div class="s10n">
@@ -453,8 +423,8 @@ const VISUALS = {
       </div>`
   },
 
-  /* ---------- 11 어린이·청소년 · 3컷 ---------- */
-  11: {
+  /* ---------- 10 어린이·청소년 · 3컷 ---------- */
+  10: {
     bg: { tone: "green", seed: 37 },
     html: () => `
       <div class="comic3">
@@ -470,8 +440,8 @@ const VISUALS = {
       </div>`
   },
 
-  /* ---------- 12 청년·직장인 · 낮→저녁 ---------- */
-  12: {
+  /* ---------- 11 청년·직장인 · 낮→저녁 ---------- */
+  11: {
     bg: { tone: "warm", seed: 41 },
     html: () => {
       let stars = "";
@@ -525,8 +495,8 @@ const VISUALS = {
     leave(el) { el.querySelector("#scene12")?.classList.remove("evening"); }
   },
 
-  /* ---------- 13 부모·양육자 · Before/After ---------- */
-  13: {
+  /* ---------- 12 부모·양육자 · Before/After ---------- */
+  12: {
     bg: { tone: "warm", seed: 43 },
     html: () => `
       <div class="s12">
@@ -593,8 +563,8 @@ const VISUALS = {
     leave(el) { const ba = el.querySelector("#ba13"); if (ba) ba.style.setProperty("--x", "0%"); }
   },
 
-  /* ---------- 14 노년층 · 목소리 → 책 ---------- */
-  14: {
+  /* ---------- 13 노년층 · 목소리 → 책 ---------- */
+  13: {
     bg: { tone: "warm", seed: 47 },
     html: () => `
       <div class="s13">
@@ -618,8 +588,8 @@ const VISUALS = {
       </div>`
   },
 
-  /* ---------- 15 왜 정부 · 왜 도서관 · 왜 동화 (Q&A 자동 Reveal) ---------- */
-  15: {
+  /* ---------- 14 왜 정부 · 왜 도서관 · 왜 동화 (Q&A 자동 Reveal) ---------- */
+  14: {
     bg: { tone: "cool", seed: 53 }, tone: "cool",
     html: () => `
       <div class="qa3">
@@ -644,8 +614,8 @@ const VISUALS = {
       </div>`
   },
 
-  /* ---------- 16 공공적 가치 7가지 (Orbit) ---------- */
-  16: {
+  /* ---------- 15 공공적 가치 7가지 (Orbit) ---------- */
+  15: {
     bg: { tone: "green", seed: 59 },
     html: () => {
       const vals = [
@@ -674,8 +644,8 @@ const VISUALS = {
     }
   },
 
-  /* ---------- 17 재방문 · 행사 · 지역 아카이브 ---------- */
-  17: {
+  /* ---------- 16 재방문 · 행사 · 지역 아카이브 ---------- */
+  16: {
     bg: { tone: "warm", seed: 61 },
     html: () => {
       const visits = ["창작", "수정", "인쇄 확인"];
@@ -706,8 +676,8 @@ const VISUALS = {
     }
   },
 
-  /* ---------- 18 마무리 → 시연 ---------- */
-  18: {
+  /* ---------- 17 마무리 → 시연 ---------- */
+  17: {
     hero: true,
     bg: { tone: "warm", seed: 67, extra: `<div class="light-on"></div>`, tint: "linear-gradient(180deg,rgba(247,244,236,.6) 0%,rgba(247,244,236,.9) 50%,rgba(247,244,236,.98) 100%)" },
     html: () => `
@@ -731,12 +701,12 @@ const VISUALS = {
   },
 
   /* ============================================================
-     PART Ⅱ · AI 동화 제작 서비스의 독서 활성화 방안 (19~25장)
+     PART Ⅱ · AI 동화 제작 서비스의 독서 활성화 방안 (18~24장)
      기준 원고: reading-activation-16x9.html
      ============================================================ */
 
-  /* ---------- 19 PART Ⅱ 표지 ---------- */
-  19: {
+  /* ---------- 18 PART Ⅱ 표지 ---------- */
+  18: {
     hero: true,
     bg: { tone: "cool", seed: 71, extra: `<div class="light-on"></div>`, tint: "linear-gradient(180deg,rgba(244,246,248,.55) 0%,rgba(244,246,248,.86) 55%,rgba(244,246,248,.97) 100%)" },
     html: () => `
@@ -758,8 +728,8 @@ const VISUALS = {
       </div>`
   },
 
-  /* ---------- 20 장 1 · 시작하게 한다 (2×2) ---------- */
-  20: {
+  /* ---------- 19 장 1 · 시작하게 한다 (2×2) ---------- */
+  19: {
     bg: { tone: "warm", seed: 79 },
     html: () => rCards([
       { ic: "heart", c: "red", t: "아이의 관심사를 반영한 맞춤형 이야기", s: "책에 대한 첫 흥미를 높입니다.",
@@ -773,8 +743,8 @@ const VISUALS = {
     ], "g2x2")
   },
 
-  /* ---------- 21 장 2 · 읽기를 만들기로 (순환) ---------- */
-  21: {
+  /* ---------- 20 장 2 · 읽기를 만들기로 (순환) ---------- */
+  20: {
     bg: { tone: "cool", seed: 83 }, tone: "cool",
     html: () => {
       const steps = [
@@ -828,8 +798,8 @@ const VISUALS = {
     leave(el) { el.querySelectorAll(".cn.on,.cl.on").forEach(n => n.classList.remove("on")); }
   },
 
-  /* ---------- 22 장 3 · 혼자에서 함께로 (2) ---------- */
-  22: {
+  /* ---------- 21 장 3 · 혼자에서 함께로 (2) ---------- */
+  21: {
     bg: { tone: "warm", seed: 89 },
     html: () => rCards([
       { ic: "users", c: "green", t: "가족이 함께 만드는 동화책", s: "가정 내 독서 활동을 촉진합니다.",
@@ -839,8 +809,8 @@ const VISUALS = {
     ], "g2", `<div class="r-foot rv" ${d(1500)}><span class="chip">개인 활동</span>${arr()}<span class="chip green">가족 문화</span><span class="sep"></span><span class="chip">한 번 읽는 콘텐츠</span>${arr()}<span class="chip warm">반복해 읽는 소장품</span></div>`)
   },
 
-  /* ---------- 23 장 4 · 도서관 프로그램으로 (3) ---------- */
-  23: {
+  /* ---------- 22 장 4 · 도서관 프로그램으로 (3) ---------- */
+  22: {
     bg: { tone: "green", seed: 97 },
     html: () => rCards([
       { ic: "library", c: "warm", t: "방문 목적을 ‘책 대출’에서 ‘독서·창작 체험’으로", s: "도서관에 올 새로운 이유를 만듭니다.",
@@ -852,8 +822,8 @@ const VISUALS = {
     ], "g3", `<div class="r-foot rv" ${d(1600)}><span class="chip ai">AI가 재미있어서 참여</span>${arr()}<span class="chip">이야기가 궁금해서 읽음</span>${arr()}<span class="chip warm">다른 책도 찾아봄</span></div>`)
   },
 
-  /* ---------- 24 운영 변화 · 도입 전/후 ---------- */
-  24: {
+  /* ---------- 23 운영 변화 · 도입 전/후 ---------- */
+  23: {
     bg: { tone: "cool", seed: 101 }, tone: "cool",
     html: () => {
       const rows = [
@@ -875,8 +845,8 @@ const VISUALS = {
     }
   },
 
-  /* ---------- 25 마무리 → 시연 ---------- */
-  25: {
+  /* ---------- 24 마무리 → 시연 ---------- */
+  24: {
     hero: true,
     bg: { tone: "warm", seed: 103, extra: `<div class="light-on"></div>`, tint: "linear-gradient(180deg,rgba(247,244,236,.6) 0%,rgba(247,244,236,.9) 50%,rgba(247,244,236,.98) 100%)" },
     html: () => `
@@ -897,21 +867,21 @@ const VISUALS = {
     enter(el, ctx) { ctx.on(el.querySelector("#demoBtn2"), "click", () => ctx.openDemo()); }
   },
   /* ============================================================
-     PART Ⅲ · 기관용 AI동화책 운영 가이드 (26~32장)
+     PART Ⅲ · 도서관용 AI동화책 운영 가이드 (25~31장)
      기준: 운영가이드.pptx · 운영가이드_PRD.md
      - 가격·수치는 data.js 의 OPS 에서만 가져온다 (화면에 숫자를 직접 쓰지 않는다)
      - 디지털 = 초록 / 책제작 포함 = 코랄 로 색 의미를 끝까지 유지
      ============================================================ */
 
-  /* ---------- 26 PART Ⅲ 표지 ---------- */
-  26: {
+  /* ---------- 25 PART Ⅲ 표지 ---------- */
+  25: {
     hero: true,
     bg: { tone: "green", seed: 111, extra: `<div class="light-on"></div>`, tint: "linear-gradient(180deg,rgba(247,244,236,.58) 0%,rgba(247,244,236,.9) 55%,rgba(247,244,236,.98) 100%)" },
     html: () => `
       <div class="hero ops-hero">
         <div class="ops-brand rv-scale" ${d(300)}><span class="icw round green">${ic("book")}</span>Tstory.ai</div>
-        <div class="hero-kicker rv" ${d(900)}>PART Ⅲ · 기관 운영 가이드</div>
-        <h1 class="hero-title rv" ${d(1050)}>기관용 AI동화책<br>운영 가이드</h1>
+        <div class="hero-kicker rv" ${d(900)}>PART Ⅲ · 운영 가이드</div>
+        <h1 class="hero-title rv" ${d(1050)}>도서관용 AI동화책<br>운영 가이드</h1>
         <p class="hero-gov rv" ${d(1250)}>학급방 만들기부터 <b>이용권 가격</b>, 실물 동화책 받기까지<br>도서관 · 문화센터 · 교육기관 담당자를 위한 안내입니다.</p>
         <div class="hero-keys ops-keys rv" ${d(1900)}>
           <span class="k"><i>1</i>서비스 흐름</span><span class="ln"></span>
@@ -922,8 +892,8 @@ const VISUALS = {
       </div>`
   },
 
-  /* ---------- 27 서비스 흐름 4단계 ---------- */
-  27: {
+  /* ---------- 26 서비스 흐름 4단계 ---------- */
+  26: {
     bg: { tone: "green", seed: 113 },
     html: () => {
       const steps = [
@@ -949,15 +919,15 @@ const VISUALS = {
           </div>
           <div class="ops-scope print rv" ${d(1600)}>
             <b>${OPS.plans.print.label}</b>
-            <span>디지털 구성 전체 + 실물 동화책 1권</span>
+            <span>AI동화책 만들기 + 실물 동화책 1권</span>
           </div>
         </div>
       </div>`;
     }
   },
 
-  /* ---------- 28 학급방 운영 5단계 ---------- */
-  28: {
+  /* ---------- 27 학급방 운영 5단계 ---------- */
+  27: {
     bg: { tone: "warm", seed: 117 },
     html: () => {
       const steps = [
@@ -986,8 +956,8 @@ const VISUALS = {
     }
   },
 
-  /* ---------- 29 이용권 두 가지 ---------- */
-  29: {
+  /* ---------- 28 이용권 두 가지 ---------- */
+  28: {
     bg: { tone: "green", seed: 121 },
     html: () => {
       const dp = OPS.plans.digital, pp = OPS.plans.print, bk = opsDefaultBook();
@@ -1011,15 +981,13 @@ const VISUALS = {
           <span class="eq">그림 1장 = 토큰 <b>${OPS.token.perImage}개</b></span>
           <span class="dot">·</span>
           <span class="eq">동화책 1권 = 토큰 <b>${opsTokensPerBook()}개</b></span>
-          <span class="calc">(생성 ${OPS.book.generate} + 수정 ${OPS.book.revise}) × ${OPS.token.perImage}</span>
         </div>
-        <p class="ops-notice rv" ${d(1700)}>※ ${OPS.notice}</p>
       </div>`;
     }
   },
 
-  /* ---------- 30 실물 동화책 형태 4종 ---------- */
-  30: {
+  /* ---------- 29 실물 동화책 형태 4종 ---------- */
+  29: {
     bg: { tone: "warm", seed: 127 },
     html: () => {
       const cards = OPS.books.map((b, i) => `
@@ -1038,13 +1006,12 @@ const VISUALS = {
       return `
       <div class="ops-books">
         <div class="ops-book-grid">${cards}</div>
-        <p class="ops-books-foot rv" ${d(1300)}>${ic("bookmark")}기관 프로그램 성격에 맞춰 <b>학급방 단위로 한 가지 형태</b>를 정하는 것을 권해요.</p>
       </div>`;
     }
   },
 
-  /* ---------- 31 예산 계산 (인원·책 형태 버튼으로 즉석 계산) ---------- */
-  31: {
+  /* ---------- 30 예산 계산 (인원·책 형태 버튼으로 즉석 계산) ---------- */
+  30: {
     bg: { tone: "green", seed: 131 },
     html: () => {
       const bk = opsDefaultBook();
@@ -1095,7 +1062,7 @@ const VISUALS = {
           </div>
         </div>
         <div class="ops-bars rv" ${d(900)}>
-          <div class="bar-head"><span class="lg d">${ic("book")}디지털</span><span class="lg p">${ic("print")}책제작 포함</span></div>
+          <div class="bar-head"><span class="lg d">${ic("book")}수업용 AI동화책 만들기 이용권</span><span class="lg p">${ic("print")}책제작 포함</span></div>
           ${bars}
         </div>
       </div>`;
@@ -1146,27 +1113,26 @@ const VISUALS = {
     }
   },
 
-  /* ---------- 32 마무리 · 문의 ---------- */
-  32: {
+  /* ---------- 31 마무리 · 문의 ---------- */
+  31: {
     hero: true,
     bg: { tone: "green", seed: 137, extra: `<div class="light-on"></div>`, tint: "linear-gradient(180deg,rgba(247,244,236,.6) 0%,rgba(247,244,236,.9) 50%,rgba(247,244,236,.98) 100%)" },
     html: () => {
       const bk = opsDefaultBook();
       return `
       <div class="closing ops-closing">
-        <div class="final rv" ${d(300)}>우리 기관의 <em>작은 작가들</em>,<br>Tstory.ai와 함께 시작해요.</div>
+        <div class="final rv" ${d(300)}>Tstory.ai와 함께 시작해요.</div>
         <div class="ops-sum rv" ${d(1100)}>
           <span class="st"><b>${OPS.room.minMembers}명</b><span>학급방 최소 인원</span></span>
-          <span class="st"><b>${won(OPS.plans.digital.price)}</b><span>1인당 디지털 이용권</span></span>
+          <span class="st"><b>${won(OPS.plans.digital.price)}</b><span>1인당 AI동화책 만들기 이용권</span></span>
           <span class="st"><b>${won(bk.price)}</b><span>1인당 실물 포함 · ${bk.label}</span></span>
         </div>
-        <div class="req rv" ${d(1700)}>학급방 개설 · 단체 견적 · 실물 제작 신청 문의 — 틸론(Tilon) Tstory.ai 담당</div>
       </div>`;
     }
   }
 };
 
-/* PART Ⅱ 방안 카드 (21·23·24장 공용) — 클릭 없이 근거까지 모두 노출 */
+/* PART Ⅱ 방안 카드 (19·21·22장 공용) — 클릭 없이 근거까지 모두 노출 */
 function rCards(items, grid, foot = "") {
   const cards = items.map((it, i) => `
     <div class="card r-card rv" ${d(300 + i * 220)}>
@@ -1181,7 +1147,7 @@ function rCards(items, grid, foot = "") {
 }
 
 /* ============================================================
-   DEMO 화면 5단계 (서비스 이용 과정 예시 · 원고 9장의 5단계와 동일)
+   DEMO 화면 5단계 (서비스 이용 과정 예시 · 원고 8장의 5단계와 동일)
    ============================================================ */
 const DEMO_STEPS = ["기획", "글 다듬기", "일러스트", "오디오북", "실물 출판"];
 function demoSide(active, who) {

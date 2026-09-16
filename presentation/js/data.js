@@ -37,14 +37,14 @@ const METRICS = {
   libStudent: 84.0,           // 도서관 이용 학생
   libAdult: 13.8,             // 도서관 이용 성인
   diffLib: 70.2,              // 84.0 - 13.8 = 70.2%p (derived)
-  // 9장
+  // 8장
   stepCount: 5,
   minutesMin: 1, minutesMax: 5,     // 한 권 1~5분
-  // 10장
+  // 9장
   surveyedServices: "20여",         // 국내외 AI 동화 서비스 20여 종
-  // 16장
+  // 15장
   valueCount: 7,
-  // 17장
+  // 16장
   revisitMin: 3, revisitMax: 4,     // 재방문 3~4회
   annualArchiveCount: null          // ○○○권 — 사업계획 확정 후 입력
 };
@@ -88,7 +88,7 @@ const CHAPTERS = {
   c6: "CHAPTER Ⅵ · 도서관 지표 개선",
   outro: "CLOSING · 마무리 → 시연",
   p2: "PART Ⅱ · 독서 활성화 방안",
-  p3: "PART Ⅲ · 기관 운영 가이드"
+  p3: "PART Ⅲ · 운영 가이드"
 };
 
 /* ── PART Ⅲ 운영 가이드 설정값 (운영가이드.pptx · 운영가이드_PRD.md 기준) ──
@@ -98,10 +98,10 @@ const OPS = {
   book: { generate: 16, revise: 10 },          // 1권 토큰 = (16+10)×10 = 260
   room: { minMembers: 3 },
   plans: {
-    digital: { label: "디지털 이용권", price: 4000,
+    digital: { label: "AI동화책 만들기 이용권", price: 4000,
       items: ["동화책 1권 제작", "PDF 동화책 다운로드", "오디오북 다운로드"] },
     print:   { label: "책제작 포함 이용권",
-      items: ["디지털 이용권 전체 구성", "실물 동화책 1권", "인쇄·제본 후 기관으로 배송"] }
+      items: ["AI동화책 만들기 이용권 전체 구성", "실물 동화책 1권", "인쇄·제본 후 기관으로 배송"] }
   },
   books: [
     { id: "insta",    label: "인스타북",      desc: "가볍고 부담 없는 정사각 소형 책", price: 18000, w: 78, h: 78 },
@@ -117,7 +117,7 @@ const opsTokensPerBook = () => (OPS.book.generate + OPS.book.revise) * OPS.token
 const opsDefaultBook = () => OPS.books.find(b => b.default) || OPS.books[0];
 const won = (n) => n.toLocaleString("ko-KR") + "원";
 
-/* 32장 슬라이드 데이터 (1~18 본편 · 19~25 PART Ⅱ 독서 활성화 방안 · 26~32 PART Ⅲ 기관 운영 가이드)
+/* 31장 슬라이드 데이터 (1~17 본편 · 18~24 PART Ⅱ 독서 활성화 방안 · 25~31 PART Ⅲ 운영 가이드)
    - title / gov(거버닝 메시지) 는 화면 노출 (화면설계서 기준, 일부 길이 압축)
    - note 는 발표자 메모(P)로만 노출 (원고 낭독 멘트 그대로)
    - cue: 동작 큐
@@ -196,17 +196,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 8, chapter: CHAPTERS.c2, cue: "4개 공백 → 연결선 완성 → NEXT",
-    title: "도서관의 강점은 충분합니다. 빠진 것은 ‘창작으로 이어지는 연결 장치’입니다",
-    gov: "AI창작서비스는 시민을 보다 능동적 창작자로 바꾸고, 공공도서관에서 AI를 안전하고 반복 가능한 프로그램으로 운영할 표준 연결 장치가 될 것입니다.",
-    sources: [],
-    note: [
-      "도서관이 낙후되었다는 말씀이 아닙니다. 장서, 사서, 공간이라는 강점은 그대로인데, 시민을 수동적 수혜자에서 능동적 창작자로 바꾸는 연결장치가 빠져 있습니다.",
-      "① 독서 프로그램이 참여 후 다음 행동으로 이어지지 않습니다. ② 글쓰기와 그림의 기술 장벽이 창작 참여층을 제한합니다. ③ 민간 AI는 비용·기기·안전·역량의 차이를 개인에게 맡깁니다. ④ 사서에게는 시민의 AI 활용을 안내할 표준 운영도구가 없습니다. 이 네 가지 공백을 메우는 것이 이 플랫폼의 역할입니다."
-    ]
-  },
-  {
-    id: 9, chapter: CHAPTERS.c3, cue: "5단계 자동 진행 → NEXT",
+    id: 8, chapter: CHAPTERS.c3, cue: "5단계 자동 진행 → NEXT",
     title: "아이디어에서 실물 책까지, 시민이 5단계로 직접 완성합니다",
     gov: "AI가 클릭 한 번으로 책을 대신 만드는 서비스가 아닙니다. 시민이 매 단계에서 읽고, 선택하고, 고치며 자신의 이야기를 완성하고, 글·그림·낭독·실물 출판까지 하나의 창작 경험으로 이어갑니다.",
     sources: [],
@@ -216,7 +206,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 10, chapter: CHAPTERS.c3, cue: "NEXT",
+    id: 9, chapter: CHAPTERS.c3, cue: "NEXT",
     title: "개인용 AI 동화 서비스가 아니라, 공공도서관 운영을 기준으로 설계합니다",
     gov: "조사한 국내외 AI 동화 서비스 다수는 개인 구독을 중심으로 설계되어 있습니다. 공공도서관용 플랫폼은 시민 안전, 실물 결과물, 사서의 운영·통계를 하나의 관리 체계로 묶어야 실제 공공서비스로 운영할 수 있습니다.",
     sources: [],
@@ -226,7 +216,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 11, chapter: CHAPTERS.c4, cue: "NEXT",
+    id: 10, chapter: CHAPTERS.c4, cue: "NEXT",
     title: "내 이야기를 만든 경험이<br>‘다른 책도 읽어보고 싶다’는 호기심으로 이어집니다",
     gov: "어린이와 청소년에게 독서를 먼저 요구하기보다 자신의 하루를 주인공이 되어 만들어보게 합니다. 자신의 아이디어가 활자가 되고 삽화로 완성되는 과정에서 자연스럽게 ‘다른 작가들은 어떻게 썼을까’라는 호기심으로 이어지고, 관련 도서 대출로 연결됩니다.",
     sources: [],
@@ -236,7 +226,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 12, chapter: CHAPTERS.c4, cue: "낮 → 저녁 전환 → NEXT",
+    id: 11, chapter: CHAPTERS.c4, cue: "낮 → 저녁 전환 → NEXT",
     title: "퇴근 후 도서관이 ‘나만의 이야기를 만드는 감성 커뮤니티’가 됩니다",
     gov: "청년과 직장인에게 도서관을 공부하는 공간만으로 남겨두지 않고, 퇴근 후 자신의 반려동물·꿈·고민을 동화의 은유로 풀어내는 창작 프로그램으로 확장합니다. 야간 문화강좌와 결합하면 성인 이용자가 도서관으로 다시 들어오는 새로운 이유가 생깁니다.",
     sources: [],
@@ -246,7 +236,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 13, chapter: CHAPTERS.c4, cue: "Before/After 자동 재생 → NEXT",
+    id: 12, chapter: CHAPTERS.c4, cue: "Before/After 자동 재생 → NEXT",
     title: "아이의 낙서와 한마디가 세상에 하나뿐인 가족 그림책이 됩니다",
     gov: "부모와 아이가 함께 자녀의 말과 그림을 고르고 AI로 다듬어 한 권의 가족 그림책을 완성합니다. 가족에게는 함께 만든 기록이 남고, 도서관에는 주말에 성인 양육자가 다시 들어오는 새로운 이용 접점이 생깁니다.",
     sources: [],
@@ -256,7 +246,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 14, chapter: CHAPTERS.c4, cue: "파형 → 문장 → 책 → NEXT",
+    id: 13, chapter: CHAPTERS.c4, cue: "파형 → 문장 → 책 → NEXT",
     title: "자판이 아니라 목소리로 시작하면, 어르신의 삶도 한 권의 동화가 됩니다",
     gov: "기기가 낯선 어르신도 목소리로 시작할 수 있습니다.",
     sources: [],
@@ -266,7 +256,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 15, chapter: CHAPTERS.c5, cue: "질문 1→2→3 답변 자동 공개 → NEXT",
+    id: 14, chapter: CHAPTERS.c5, cue: "질문 1→2→3 답변 자동 공개 → NEXT",
     title: "왜 정부가, 왜 도서관이, 왜 ‘동화’여야 합니까?",
     gov: "정부는 시장에서 배제될 수 있는 시민에게 안전한 기본 접근을 보장하고, 도서관은 전 생애 시민이 평가 부담 없이 AI를 경험할 수 있는 가장 가까운 공공문화 공간입니다. 동화는 짧은 서사·그림·낭독을 결합해 처음 창작하는 사람도 시작하기 쉬운 형식입니다.",
     sources: [],
@@ -277,7 +267,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 16, chapter: CHAPTERS.c5, cue: "7개 노드 시계방향 등장 → NEXT",
+    id: 15, chapter: CHAPTERS.c5, cue: "7개 노드 시계방향 등장 → NEXT",
     title: "한 개의 창작 서비스가 7개의 공공가치를 동시에 만듭니다",
     gov: "AI 동화책 창작은 단순한 체험 프로그램이 아니라 독서문화, 디지털 포용, AI 리터러시, 지역문화 기록, 세대 연결, 문화격차 해소, 공동체 소속감을 한 서비스 안에서 연결합니다. 이 7개 가치는 앞서 본 국가·도서관 정책의 방향과 겹칩니다.",
     sources: [],
@@ -287,7 +277,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 17, chapter: CHAPTERS.c6, cue: "방문 점등 → 전시 → 아카이브 축적 → NEXT",
+    id: 16, chapter: CHAPTERS.c6, cue: "방문 점등 → 전시 → 아카이브 축적 → NEXT",
     title: "한 번의 체험을 재방문·행사·지역 아카이브로 확장합니다",
     gov: "시민은 창작·수정·인쇄 확인을 위해 한 번이 아니라 여러 번 도서관을 찾고, 완성된 책은 전시회와 공모전의 콘텐츠가 됩니다. 결국 시민은 독서 수혜자에서 지역 이야기를 기록하는 시민 작가로 전환되고, 도서관에는 고유한 지역자료가 축적됩니다.",
     sources: [],
@@ -297,7 +287,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 18, chapter: CHAPTERS.outro, cue: "3문장 → 최종 문장 → 멘트 종료 후 DEMO (Enter 또는 D)",
+    id: 17, chapter: CHAPTERS.outro, cue: "3문장 → 최종 문장 → 멘트 종료 후 DEMO (Enter 또는 D)",
     title: "지식의 보관소에서, 시민 상상력의 발원지로",
     gov: "이 제안은 이미 수립된 AI·독서·도서관·디지털 포용 정책을 시민이 직접 체감하는 창작 경험으로 바꾸는 사업입니다. AI가 동화를 대신 쓰는 것이 아니라 시민이 읽고, 질문하고, 고쳐서 자기 책을 완성하게 만드는 것이 핵심입니다.",
     sources: [],
@@ -308,10 +298,10 @@ const SLIDES = [
     ]
   },
 
-  /* ---------- PART Ⅱ · AI 동화 제작 서비스의 독서 활성화 방안 (19~25장)
+  /* ---------- PART Ⅱ · AI 동화 제작 서비스의 독서 활성화 방안 (18~24장)
      기준 원고: reading-activation-16x9.html — 수치 없음, 방안·구조 설명만 ---------- */
   {
-    id: 19, chapter: CHAPTERS.p2, cue: "표지 → NEXT",
+    id: 18, chapter: CHAPTERS.p2, cue: "표지 → NEXT",
     title: "AI 동화 제작 서비스의 독서 활성화 방안",
     gov: "AI 동화책 서비스는 독서를 대체하는 것이 아니라, 독서의 진입장벽을 낮추고 독서 행동을 확장하는 도구입니다.",
     sources: [],
@@ -321,7 +311,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 20, chapter: CHAPTERS.p2, cue: "4개 방안 카드 순차 등장 → NEXT",
+    id: 19, chapter: CHAPTERS.p2, cue: "4개 방안 카드 순차 등장 → NEXT",
     title: "① 시작하게 한다 — 독서의 진입장벽을 낮춥니다",
     gov: "읽을 마음이 없거나, 읽기가 어렵거나, 언어가 달라 읽지 못하던 어린이의 진입장벽을 관심사·수준·낭독·다국어 네 가지로 낮춥니다.",
     sources: [],
@@ -331,7 +321,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 21, chapter: CHAPTERS.p2, cue: "순환 4단계 점등 (반복) → NEXT",
+    id: 20, chapter: CHAPTERS.p2, cue: "순환 4단계 점등 (반복) → NEXT",
     title: "② 읽기를 만들기로 바꿉니다",
     gov: "받아서 읽는 활동을 직접 만들어 읽는 활동으로 바꿉니다. 이야기 생성 → 삽화 생성 → 완성된 책 읽기 → 다시 만들기의 순환이 한 번의 체험이 아니라 반복되는 독서를 만듭니다.",
     sources: [],
@@ -341,7 +331,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 22, chapter: CHAPTERS.p2, cue: "2개 카드 등장 → NEXT",
+    id: 21, chapter: CHAPTERS.p2, cue: "2개 카드 등장 → NEXT",
     title: "③ 혼자 읽기에서 함께 읽기로",
     gov: "독서를 개인 활동에서 가정의 문화로, 한 번 읽는 콘텐츠에서 반복해 읽는 소장품으로 넓힙니다.",
     sources: [],
@@ -351,7 +341,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 23, chapter: CHAPTERS.p2, cue: "3개 카드 등장 → 흐름 라인 → NEXT",
+    id: 22, chapter: CHAPTERS.p2, cue: "3개 카드 등장 → 흐름 라인 → NEXT",
     title: "④ 도서관 프로그램으로 확장합니다",
     gov: "체험을 대출과 독서 프로그램으로 연결해 방문 동기와 참여 지속성을 함께 높이고, 책에 관심이 낮은 어린이에게 독서로 가는 새로운 통로를 만듭니다.",
     sources: [],
@@ -361,7 +351,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 24, chapter: CHAPTERS.p2, cue: "도입 전 → 도입 후 4쌍 순차 → NEXT",
+    id: 23, chapter: CHAPTERS.p2, cue: "도입 전 → 도입 후 4쌍 순차 → NEXT",
     title: "어린이실에서 달라지는 것",
     gov: "대출 중심의 이용을 창작·독서 체험으로 넓히면 방문과 참여의 구조가 바뀝니다.",
     sources: [],
@@ -371,7 +361,7 @@ const SLIDES = [
     ]
   },
   {
-    id: 25, chapter: CHAPTERS.p2, cue: "3단 흐름 → 마무리 문장 → DEMO (Enter 또는 D)",
+    id: 24, chapter: CHAPTERS.p2, cue: "3단 흐름 → 마무리 문장 → DEMO (Enter 또는 D)",
     title: "읽기를 대신하지 않고, 읽기로 데려갑니다",
     gov: "AI가 재미있어서 참여하고, 이야기가 궁금해서 읽고, 그래서 다른 책도 찾아보게 만드는 것. AI 동화책 서비스가 도서관에서 맡는 역할은 여기까지입니다.",
     sources: [],
@@ -381,11 +371,11 @@ const SLIDES = [
     ]
   },
 
-  /* ---------- PART Ⅲ · 기관용 AI동화책 운영 가이드 (26~32장)
+  /* ---------- PART Ⅲ · 도서관용 AI동화책 운영 가이드 (25~31장)
      기준: 운영가이드.pptx(6장) · 운영가이드_PRD.md — 가격·수치는 OPS 단일 관리 ---------- */
   {
-    id: 26, chapter: CHAPTERS.p3, cue: "표지 → NEXT",
-    title: "기관용 AI동화책 운영 가이드",
+    id: 25, chapter: CHAPTERS.p3, cue: "표지 → NEXT",
+    title: "도서관용 AI동화책 운영 가이드",
     gov: "학급방 만들기부터 이용권 가격, 실물 동화책 받기까지 — 도서관·문화센터·교육기관 담당자를 위한 운영 안내입니다.",
     sources: [],
     note: [
@@ -394,19 +384,19 @@ const SLIDES = [
     ]
   },
   {
-    id: 27, chapter: CHAPTERS.p3, cue: "① → ④ 카드 순차 등장 → 이용권 범위 표시 → NEXT",
+    id: 26, chapter: CHAPTERS.p3, cue: "① → ④ 카드 순차 등장 → 이용권 범위 표시 → NEXT",
     title: "아이가 작가가 되는 AI동화책",
     gov: "이야기는 아이가 쓰고, 그림은 AI가 함께 그립니다. 네 단계 가운데 어디까지 이용할지에 따라 이용권이 나뉩니다.",
     sources: [],
     note: [
       "제작 과정은 네 단계입니다. 주제와 인물을 정해 아이가 직접 글을 쓰고, 토큰을 사용하면 AI가 장면을 그립니다. 완성한 책은 PDF와 오디오북으로 받습니다.",
-      "여기까지가 디지털 이용권이고, 인쇄·제본한 실물 동화책을 기관으로 배송받는 것까지가 책제작 포함 이용권입니다. 한 권에는 그림 생성 16회와 수정 10회가 들어 있습니다."
+      "여기까지가 AI동화책 만들기 이용권이고, 인쇄·제본한 실물 동화책을 기관으로 배송받는 것까지가 책제작 포함 이용권입니다. 한 권에는 그림 생성 16회와 수정 10회가 들어 있습니다."
     ]
   },
   {
-    id: 28, chapter: CHAPTERS.p3, cue: "5단계 순차 점등 → 최소 인원 카운트업 → NEXT",
+    id: 27, chapter: CHAPTERS.p3, cue: "5단계 순차 점등 → 최소 인원 카운트업 → NEXT",
     title: "학급방으로 한 번에 운영합니다",
-    gov: "담당자가 방을 만들고 참여자는 링크로 들어옵니다. 참여자 3명부터 학급방을 만들 수 있습니다.",
+    gov: "담당자가 방을 만들고 참여자는 링크로 들어옵니다. 참여자는 복잡한 절차없이 바로 참여할 수 있습니다.",
     sources: [],
     note: [
       "운영은 담당자 가입, 학급방 만들기, 참여자 초대, 동화책 만들기, 검토·완성 다섯 단계입니다. 프로그램이나 기수별로 방을 만들고 참여 링크만 공유하면 됩니다.",
@@ -414,19 +404,19 @@ const SLIDES = [
     ]
   },
   {
-    id: 29, chapter: CHAPTERS.p3, cue: "두 이용권 카드 → 가격 카운트업 → 토큰 안내 → NEXT",
+    id: 28, chapter: CHAPTERS.p3, cue: "두 이용권 카드 → 가격 카운트업 → 토큰 안내 → NEXT",
     title: "이용권은 두 가지입니다",
-    gov: "참여자 1인당 가격입니다. 디지털까지 이용할지, 실물 동화책까지 받을지에 따라 선택하시면 됩니다.",
+    gov: "참여자 1인당 가격입니다.",
     sources: [],
     note: [
-      "디지털 이용권은 1인당 4,000원으로, 동화책 한 권 제작과 PDF·오디오북 다운로드가 포함됩니다. 한 권에 들어가는 토큰은 260개입니다.",
+      "AI동화책 만들기 이용권은 1인당 4,000원으로, 동화책 한 권 제작과 PDF·오디오북 다운로드가 포함됩니다. 한 권에 들어가는 토큰은 260개입니다.",
       "책제작 포함 이용권은 세로형 포토북 기준 1인당 20,000원이고, 디지털 구성 전부에 실물 동화책 한 권과 기관 배송이 더해집니다. 가격은 확정 전 초안으로, 부가세와 배송비 기준은 확정 후 반영합니다."
     ]
   },
   {
-    id: 30, chapter: CHAPTERS.p3, cue: "책 4종 순차 등장 → 기본 형태 강조 → NEXT",
+    id: 29, chapter: CHAPTERS.p3, cue: "책 4종 순차 등장 → 기본 형태 강조 → NEXT",
     title: "실물 동화책 형태를 고를 수 있습니다",
-    gov: "책제작 포함 이용권 1인당 가격입니다. 디지털 구성이 모두 포함된 금액입니다.",
+    gov: "AI동화책 만들기와 실물 동화책 1권이 포함된 1인당 가격입니다.",
     sources: [],
     note: [
       "실물 책은 네 가지 형태 가운데 고르실 수 있습니다. 인스타북 18,000원, 세로형 포토북 20,000원, 포토진 23,000원, 정방형 포토북 30,000원입니다.",
@@ -434,22 +424,22 @@ const SLIDES = [
     ]
   },
   {
-    id: 31, chapter: CHAPTERS.p3, cue: "기본 20명·세로형 → 인원·형태 버튼으로 즉석 계산 → NEXT",
-    title: "우리 기관 예산을 계산해 봅니다",
+    id: 30, chapter: CHAPTERS.p3, cue: "기본 20명·세로형 → 인원·형태 버튼으로 즉석 계산 → NEXT",
+    title: "예산을 계산해 봅니다",
     gov: "참여 인원과 책 형태를 고르면 바로 계산됩니다. 화면의 버튼을 눌러 기관 규모에 맞춰 확인하실 수 있습니다.",
     sources: [],
     note: [
-      "여기 계신 기관의 인원을 넣어 바로 계산해 보겠습니다. 인원 버튼과 책 형태 버튼을 누르면 디지털 이용권과 책제작 포함 이용권 금액이 즉시 바뀝니다.",
+      "여기 계신 기관의 인원을 넣어 바로 계산해 보겠습니다. 인원 버튼과 책 형태 버튼을 누르면 AI동화책 만들기 이용권과 책제작 포함 이용권 금액이 즉시 바뀝니다.",
       "세로형 포토북 기준으로 3명은 12,000원과 60,000원, 10명은 40,000원과 200,000원, 20명은 80,000원과 400,000원, 30명은 120,000원과 600,000원입니다."
     ]
   },
   {
-    id: 32, chapter: CHAPTERS.p3, cue: "마무리 문장 → 운영 요약 → 문의 안내",
-    title: "우리 기관의 작은 작가들과 함께 시작합니다",
+    id: 31, chapter: CHAPTERS.p3, cue: "마무리 문장 → 운영 요약 → 문의 안내",
+    title: "Tstory.ai와 함께 시작합니다",
     gov: "학급방 개설과 단체 견적, 실물 제작 신청은 담당자에게 문의해 주시면 안내드리겠습니다.",
     sources: [],
     note: [
-      "정리하겠습니다. 참여자 3명부터 학급방을 만들 수 있고, 1인당 디지털 이용권은 4,000원, 실물 동화책을 포함하면 세로형 포토북 기준 20,000원입니다.",
+      "정리하겠습니다. 참여자 3명부터 학급방을 만들 수 있고, 1인당 AI동화책 만들기 이용권은 4,000원, 실물 동화책을 포함하면 세로형 포토북 기준 20,000원입니다.",
       "학급방 개설과 단체 견적, 실물 제작 신청은 틸론 Tstory.ai 담당자에게 문의해 주시기 바랍니다. 감사합니다."
     ]
   }
@@ -461,7 +451,7 @@ const DEMO_NOTES = [
   { cue: "② 글 다듬기 — 시작·사건·결말", note: "진행 메모: AI 제안 문장을 시민이 읽고 고르고 고치는 과정. AI 제안은 표시되고, 최종 문장은 시민이 결정한다는 점을 강조합니다." },
   { cue: "③ 일러스트 — 수채화·클레이·동양화", note: "진행 메모: 스타일을 골라 장면마다 그림을 만들고, 마음에 맞는 후보를 선택합니다. 후보는 AI 생성물로 표시됩니다." },
   { cue: "④ 오디오북 — 내 목소리로 낭독", note: "진행 메모: 본인 목소리로 낭독본을 녹음하는 화면. 발표자료의 파형은 시각 효과이며 실제 음성을 재생하지 않습니다." },
-  { cue: "⑤ 실물 출판 — 인쇄·제본 연동, 사서 관리 화면", note: "진행 메모: 완성본을 화면에서 읽고 인쇄·제본 기업과 연동해 실물 책으로 받는 과정, 그리고 사서 관리자 화면(AI 토큰·결과물·이용 통계)을 보여준 뒤 18장으로 복귀합니다." }
+  { cue: "⑤ 실물 출판 — 인쇄·제본 연동, 사서 관리 화면", note: "진행 메모: 완성본을 화면에서 읽고 인쇄·제본 기업과 연동해 실물 책으로 받는 과정, 그리고 사서 관리자 화면(AI 토큰·결과물·이용 통계)을 보여준 뒤 17장으로 복귀합니다." }
 ];
 
 /* 배경 미디어 슬롯 (Higgsfield 제작물이 media/ 폴더에 있으면 자동 사용, 없으면 CSS/SVG 배경으로 동작)
@@ -474,15 +464,14 @@ const MEDIA = {
   5:  { type: "video", src: "media/s05_policy_read_create_loop.mp4",      poster: "media/s05_policy_read_create_loop.jpg" },
   6:  { type: "image", src: "media/s06_policy_function_mapping_bg.jpg" },
   7:  { type: "image", src: "media/s07_reading_gap_library.jpg" },
-  8:  { type: "image", src: "media/s08_missing_link_library.jpg" },
-  9:  { type: "video", src: "media/s09_five_step_creation.mp4",           poster: "media/s09_five_step_creation.jpg" },
-  10: { type: "image", src: "media/s10_librarian_dashboard_scene.jpg" },
-  11: { type: "video", src: "media/s11_child_story_to_borrow.mp4",        poster: "media/s11_child_story_to_borrow.jpg" },
-  12: { type: "video", src: "media/s12_after_work_story_program.mp4",     poster: "media/s12_after_work_story_program.jpg" },
-  13: { type: "image", src: "media/s13_family_picture_book.jpg" },
-  14: { type: "video", src: "media/s14_senior_memory_to_book.mp4",        poster: "media/s14_senior_memory_to_book.jpg" },
-  15: { type: "image", src: "media/s15_public_library_qa_bg.jpg" },
-  16: { type: "image", src: "media/s16_public_value_circle.jpg" },
-  17: { type: "video", src: "media/s17_revisit_exhibit_archive.mp4",      poster: "media/s17_revisit_exhibit_archive.jpg" },
-  18: { type: "video", src: "media/s18_closing_origin_of_imagination.mp4", poster: "media/s18_closing_origin_of_imagination.jpg" }
+  8:  { type: "video", src: "media/s08_five_step_creation.mp4",           poster: "media/s08_five_step_creation.jpg" },
+  9:  { type: "image", src: "media/s09_librarian_dashboard_scene.jpg" },
+  10: { type: "video", src: "media/s10_child_story_to_borrow.mp4",        poster: "media/s10_child_story_to_borrow.jpg" },
+  11: { type: "video", src: "media/s11_after_work_story_program.mp4",     poster: "media/s11_after_work_story_program.jpg" },
+  12: { type: "image", src: "media/s12_family_picture_book.jpg" },
+  13: { type: "video", src: "media/s13_senior_memory_to_book.mp4",        poster: "media/s13_senior_memory_to_book.jpg" },
+  14: { type: "image", src: "media/s14_public_library_qa_bg.jpg" },
+  15: { type: "image", src: "media/s15_public_value_circle.jpg" },
+  16: { type: "video", src: "media/s16_revisit_exhibit_archive.mp4",      poster: "media/s16_revisit_exhibit_archive.jpg" },
+  17: { type: "video", src: "media/s17_closing_origin_of_imagination.mp4", poster: "media/s17_closing_origin_of_imagination.jpg" }
 };

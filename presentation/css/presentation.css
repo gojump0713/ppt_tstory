@@ -94,7 +94,7 @@ html.rm #deck{transition-duration:0ms}
 .bg.has-media ~ .source{text-shadow:0 1px 0 rgba(247,244,236,.9),0 1px 8px rgba(247,244,236,.95)}
 .slide[data-media-mode="hero"] .bg.has-media ~ .slide-inner .title,
 .slide[data-media-mode="hero"] .bg.has-media ~ .slide-inner .gov{text-shadow:0 2px 18px rgba(10,16,22,.65),0 1px 3px rgba(10,16,22,.5)}
-/* 히어로(1·18장)에 영상/이미지가 실제로 로드되면 어두운 베일 위에서 글자를 밝게 */
+/* 히어로(1·17장)에 영상/이미지가 실제로 로드되면 어두운 베일 위에서 글자를 밝게 */
 .slide[data-media-mode="hero"] .bg.has-media ~ .hero .hero-title,
 .slide[data-media-mode="hero"] .bg.has-media ~ .hero .hero-gov,
 .slide[data-media-mode="hero"] .bg.has-media ~ .hero .hero-meta,
@@ -650,7 +650,7 @@ html.rm .fade-in{animation:none}
 /* 전체화면(F) 발표 중에는 발표자용 조작 안내를 숨긴다 */
 html:fullscreen .demo-keys,html:fullscreen .ba .hint{display:none}
 
-/* role3 카드 (10장 재사용) */
+/* role3 카드 (9장 재사용) */
 .role3{display:flex;flex-direction:column;gap:14px;padding:26px 30px}
 .role3 .head{display:flex;align-items:center;gap:16px}
 .role3 .head b{font-size:30px;font-weight:800}
@@ -799,30 +799,6 @@ html.rm .gapviz .gcol i{height:var(--h)!important}
 html.rm .hb-t i{width:var(--w)!important}
 .hb-v{font-size:28px;font-weight:900;letter-spacing:-.02em;text-align:right;font-variant-numeric:tabular-nums}
 .hb-v small{font-size:19px;font-weight:700;margin-left:2px}
-
-/* 08 정책 공백 · Missing Link */
-.gaps{display:grid;grid-template-columns:1fr 420px 1fr;grid-template-rows:1fr auto;gap:22px 40px;height:100%}
-.gside{display:flex;flex-direction:column;justify-content:center;gap:22px}
-.gcard{padding:24px 30px;border-radius:22px;background:var(--paper-card);border:1px solid var(--line);border-left:8px solid var(--gap)}
-.gcard .k{display:block;font-size:19px;letter-spacing:.1em;font-weight:800;color:var(--gap);text-transform:uppercase;margin-bottom:8px}
-.gcard b{font-size:26px;font-weight:800;letter-spacing:-.01em;line-height:1.3;word-break:keep-all}
-.gmid{display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center}
-.gmid .end{display:flex;flex-direction:column;align-items:center;gap:6px}
-.gmid .end b{font-size:24px;font-weight:800;margin-top:6px}
-.gmid .end span{font-size:20px;color:var(--muted);font-weight:600}
-.linkviz{position:relative;flex:1;width:100%;min-height:200px;display:flex;align-items:center;justify-content:center}
-.linkviz svg{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:100%}
-.linkviz .missing{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:max-content;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 22px;border-radius:14px;background:#fff;border:2px dashed var(--gap);color:var(--gap);font-size:21px;font-weight:700;transition:opacity 500ms 2500ms;white-space:nowrap}
-.linkviz .missing span{font-size:18px;letter-spacing:.2em}
-.slide.is-active .linkviz .missing{opacity:0}
-html.rm .linkviz .missing{opacity:0!important}
-.linkviz .plat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:max-content;display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;background:var(--ai);color:#fff;font-size:22px;font-weight:800;box-shadow:0 14px 34px rgba(92,108,255,.4);white-space:nowrap}
-.linkviz .plat .ic{width:26px;height:26px}
-.slide.is-active .linkviz .broken{animation:fadeOut 400ms ease 2600ms both}
-@keyframes fadeOut{to{opacity:0}}
-html.rm .linkviz .broken{opacity:0!important}
-.gaps-foot{grid-column:1 / -1;text-align:center;font-size:28px;font-weight:700;color:var(--ink-2)}
-.gaps-foot b{color:var(--ai)}
 
 /* 09 서비스 5단계 */
 .s09n{position:relative}
@@ -1026,7 +1002,6 @@ html.mediadark .bg.has-media ~ .slide-inner .orbit > svg .draw{stroke:rgba(255,2
 /* 밝은 배경을 가진 요소 안에서는 토큰을 원래 값으로 복귀 */
 html.mediadark .bg.has-media ~ .slide-inner .card,
 html.mediadark .bg.has-media ~ .slide-inner .qcard,
-html.mediadark .bg.has-media ~ .slide-inner .gcard,
 html.mediadark .bg.has-media ~ .slide-inner .cmp,
 html.mediadark .bg.has-media ~ .slide-inner .cut,
 html.mediadark .bg.has-media ~ .slide-inner .ch,
@@ -1052,7 +1027,6 @@ html.mediadark .bg.has-media ~ .slide-inner .who,
 html.mediadark .bg.has-media ~ .slide-inner .paper,
 html.mediadark .bg.has-media ~ .slide-inner .example,
 html.mediadark .bg.has-media ~ .slide-inner .expand,
-html.mediadark .bg.has-media ~ .slide-inner .missing,
 html.mediadark .bg.has-media ~ .slide-inner .app,
 html.mediadark .bg.has-media ~ .slide-inner .dpane,
 html.mediadark .bg.has-media ~ .slide-inner .field,
@@ -1061,7 +1035,6 @@ html.mediadark .bg.has-media ~ .slide-inner .kid,
 html.mediadark .bg.has-media ~ .slide-inner .mini-book,
 html.mediadark .bg.has-media ~ .slide-inner .callout,
 html.mediadark .bg.has-media ~ .slide-inner .scene-line,
-html.mediadark .bg.has-media ~ .slide-inner .plat,
 html.mediadark .bg.has-media ~ .slide-inner .badge-row,
 html.mediadark .bg.has-media ~ .slide-inner .shelf,
 html.mediadark .bg.has-media ~ .slide-inner .nd,
@@ -1078,13 +1051,13 @@ html.mediadark .bg.has-media ~ .slide-inner .pub{
   text-shadow:none;
 }
 /* 원래 어두운 배경을 쓰는 요소는 밝은 글자 유지 */
-html.mediadark .bg.has-media ~ .slide-inner :is(.center,.chip.ink,.nd.hi,.ch.hi,.plat,.demo-btn,
+html.mediadark .bg.has-media ~ .slide-inner :is(.center,.chip.ink,.nd.hi,.ch.hi,.demo-btn,
   .card.dark,.orbit .core,.orbit .vnode .n,.s03-bridge .lib,.s11-right .sum,.outcome .final,
   .hero-concl,.closing .lines .ln .n,.recbar,.ba .handle i){
   --ink:#fff; --ink-2:rgba(255,255,255,.92); --muted:rgba(255,255,255,.72); color:#fff}
 
 /* 슬라이드 밖 크롬 */
-/* 배경 미디어가 실제로 떠 있는 장표(html.cur-media)에서만 밝은 글자 — 미디어 없는 장표(19~26장 등)는 기본 색 유지 */
+/* 배경 미디어가 실제로 떠 있는 장표(html.cur-media)에서만 밝은 글자 — 미디어 없는 장표(18~24장 등)는 기본 색 유지 */
 html.mediadark.cur-media #chapter{color:rgba(255,255,255,.84);text-shadow:0 1px 10px rgba(6,10,15,.85)}
 html.mediadark.cur-media #pageno{color:rgba(255,255,255,.74);text-shadow:0 1px 10px rgba(6,10,15,.85)}
 html.mediadark.cur-media #pageno:hover{background:rgba(255,255,255,.12);color:#fff}
@@ -1113,7 +1086,7 @@ html.mediadark .bg.has-media ~ .slide-inner .scene-line b{color:#FFE0AE}
 
 /* 배경이 유난히 밝은 장표는 베일을 한 단계 더 */
 html.mediadark .slide[data-id="3"] .bg.has-media .veil,
-html.mediadark .slide[data-id="9"] .bg.has-media .veil{background:
+html.mediadark .slide[data-id="8"] .bg.has-media .veil{background:
   linear-gradient(180deg,rgba(10,15,21,.70) 0%,rgba(10,15,21,.56) 36%,rgba(10,15,21,.58) 70%,rgba(10,15,21,.78) 100%)}
 
 /* 3장 수치군: 밝은 책갈피 사진 위에 놓이므로 국소 스크림으로 분리 */
@@ -1125,14 +1098,14 @@ html.mediadark .bg.has-media ~ .slide-inner .caution{color:#FF9A94}
 .s02-grid .card.col{justify-content:center}
 
 /* ============================================================
-   v3 · PART Ⅱ 독서 활성화 방안 (19~25장)
+   v3 · PART Ⅱ 독서 활성화 방안 (18~24장)
    기준 원고: reading-activation-16x9.html
    ============================================================ */
 
-/* 20 ① 시작하게 한다 — 거버닝 메시지를 줄바꿈 없이 한 줄로 (실측 1498px < 본문 폭 1680px) */
-.slide[data-id="20"] .gov{max-width:none;white-space:nowrap}
+/* 19 ① 시작하게 한다 — 거버닝 메시지를 줄바꿈 없이 한 줄로 (실측 1498px < 본문 폭 1680px) */
+.slide[data-id="19"] .gov{max-width:none;white-space:nowrap}
 
-/* 19 표지 · 대체 → 확장 */
+/* 18 표지 · 대체 → 확장 */
 .r-swap{display:flex;align-items:center;gap:26px;margin-bottom:22px}
 .r-swap .no,.r-swap .yes{display:inline-flex;align-items:center;gap:12px;font-size:38px;font-weight:800;letter-spacing:-.01em;padding:12px 30px;border-radius:999px}
 .r-swap .no{color:var(--muted);background:rgba(21,32,43,.07);position:relative}
@@ -1181,7 +1154,7 @@ html.mediadark .bg.has-media ~ .slide-inner .caution{color:#FF9A94}
 .r-card ul{margin:18px 0 0;padding:18px 0 0;border-top:1px dashed rgba(21,32,43,.18);list-style:none;display:flex;flex-direction:column;gap:10px}
 .r-card li{position:relative;padding-left:24px;font-size:24px;line-height:1.45;color:var(--ink-2);word-break:keep-all}
 .r-card li::before{content:"";position:absolute;left:0;top:15px;width:12px;height:3px;border-radius:2px;background:var(--warm)}
-/* 2·3장 구성(23·24장)은 아이콘을 위에 두는 세로 배치 · 2장 구성은 큰 타이포 */
+/* 2·3장 구성(22·23장)은 아이콘을 위에 두는 세로 배치 · 2장 구성은 큰 타이포 */
 .r-cards.g2 .r-card,.r-cards.g3 .r-card{flex-direction:column;align-items:flex-start;justify-content:center;gap:22px;padding:40px 44px}
 .r-cards.g2 .r-card{padding:44px 56px}
 .r-cards.g2 .r-card .icw,.r-cards.g3 .r-card .icw{width:92px;height:92px;border-radius:28px}
@@ -1253,17 +1226,17 @@ html.mediadark .bg.has-media ~ .slide-inner .caution{color:#FF9A94}
 .slide[data-media-mode="hero"] .bg.has-media ~ .r-closing .r-chain .st{--ink:#15202B;--muted:#6B7480;color:var(--ink)}
 
 /* ============================================================
-   v4 · PART Ⅲ 기관 운영 가이드 (26~32장)
+   v4 · PART Ⅲ 기관 운영 가이드 (25~31장)
    기준: 운영가이드.pptx · 운영가이드_PRD.md
    디지털 = 초록(--ops-d) / 책제작 포함 = 코랄(--ops-p) 로 색 의미 고정
    ============================================================ */
-.slide[data-id="26"], .slide[data-id="27"], .slide[data-id="28"], .slide[data-id="29"],
-.slide[data-id="30"], .slide[data-id="31"], .slide[data-id="32"]{
+.slide[data-id="25"], .slide[data-id="26"], .slide[data-id="27"], .slide[data-id="28"],
+.slide[data-id="29"], .slide[data-id="30"], .slide[data-id="31"]{
   --ops-d:#3E7B5C; --ops-d-soft:rgba(62,123,92,.12);
   --ops-p:#E9785A; --ops-p-soft:rgba(233,120,90,.14);
 }
 
-/* 26 표지 */
+/* 25 표지 */
 .ops-hero .ops-brand{display:flex;align-items:center;gap:18px;font-size:44px;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin-bottom:26px}
 .ops-hero .ops-brand .icw{width:72px;height:72px}
 .ops-keys .k i{background:var(--ops-d)}

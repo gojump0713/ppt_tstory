@@ -3,7 +3,7 @@
 
 - 기준 원고: `AI시민동화책_공공도서관_발표멘트_최종.md`
 - 화면 기준: 1920×1080 / 16:9 / Full-screen Presentation
-- 발표 순서: 원고의 실제 등장 순서에 맞춰 **18장으로 재정렬**
+- 발표 순서: 원고의 실제 등장 순서에 맞춰 **17장으로 재정렬**
 - 원고의 `Ⅰ~Ⅵ` 장 구분은 별도 장표로 만들지 않고 각 화면의 Chapter Label로 사용
 - 발표 방식: **PC/프로젝터 전용** 세로 스크롤 + 스냅 + 키보드/클리커 이동
 - 패럴랙스: **사용하지 않음**
@@ -412,50 +412,7 @@ Gap:
 
 ---
 
-# Slide 08 — 정책 공백
-**Chapter:** Ⅱ. 현장 문제  
-**원문 기준:** [7] 정책 공백
-
-### 제목
-**도서관의 강점은 충분합니다. 빠진 것은 ‘창작으로 이어지는 연결 장치’입니다**
-
-### 거버닝 메시지
-AI창작서비스는 시민을 보다 능동적 창작자로 바꾸고, 공공도서관에서 AI를 안전하고 반복 가능한 프로그램으로 운영할 표준 연결 장치가 될 것입니다.
-
-### 본문 화면 문구
-중앙: **MISSING LINK**
-
-4개 공백:
-1. `프로그램 이후`  
-   **다음 행동으로 이어지지 않음**
-2. `창작 장벽`  
-   **글쓰기·그림 기술이 참여층을 제한**
-3. `민간 AI 격차`  
-   **비용·기기·안전·역량을 개인에게 전가**
-4. `운영 도구 부재`  
-   **사서가 활용할 표준 관리도구 부족**
-
-하단: **AI 시민 동화책 플랫폼 = 네 가지 공백을 잇는 운영형 서비스**
-
-### 레이아웃
-4개의 섬이 중앙의 끊어진 다리를 둘러싼 구조 → 마지막에 다리가 완성
-
-
-### 배경 미디어
-- **정적 또는 미세 루프 배경 권장**
-- 연결장치 부재를 상징하는 메타포형 보조 배경 가능
-- 카드 정보가 우선
-### 애니메이션
-- 4카드가 순차 등장
-- 중앙 Broken Line
-- 마지막에 연결선이 이어지며 `플랫폼` 레이어 등장
-
-### Higgsfield 보조 이미지 프롬프트
-`Metaphorical editorial scene inside a public library: four separate activity areas for reading, writing, digital access, and librarian support, visually disconnected at first, with a subtle pathway converging toward one shared creative table, realistic architectural photography, warm public-service tone, no futuristic interface, no text, no logos`
-
----
-
-# Slide 09 — 서비스 5단계
+# Slide 08 — 서비스 5단계
 **Chapter:** Ⅲ. 서비스 구조  
 **원문 기준:** [9] 기획부터 실물 출판까지 5단계
 
@@ -507,7 +464,7 @@ Hero Badge:
 
 ---
 
-# Slide 10 — 공공도서관 전용 설계
+# Slide 09 — 공공도서관 전용 설계
 **Chapter:** Ⅲ. 서비스 구조  
 **원문 기준:** [10] 공공도서관 전용 설계
 
@@ -550,7 +507,7 @@ Hero Badge:
 
 ---
 
-# Slide 11 — 어린이·청소년
+# Slide 10 — 어린이·청소년
 **Chapter:** Ⅳ. 생애주기별 활용  
 **원문 기준:** [11]
 
@@ -585,7 +542,7 @@ Callout:
 
 ---
 
-# Slide 12 — 청년·직장인
+# Slide 11 — 청년·직장인
 **Chapter:** Ⅳ. 생애주기별 활용  
 **원문 기준:** [12]
 
@@ -624,7 +581,7 @@ Callout:
 
 ---
 
-# Slide 13 — 부모·양육자
+# Slide 12 — 부모·양육자
 **Chapter:** Ⅳ. 생애주기별 활용  
 **원문 기준:** [13]
 
@@ -662,7 +619,7 @@ Before/After Slider:
 
 ---
 
-# Slide 14 — 노년층
+# Slide 13 — 노년층
 **Chapter:** Ⅳ. 생애주기별 활용  
 **원문 기준:** [14]
 
@@ -698,7 +655,7 @@ Waveform이 문장 Line으로 바뀌고 → 그림 페이지의 선으로 이어
 
 ---
 
-# Slide 15 — 왜 정부·도서관·동화인가
+# Slide 14 — 왜 정부·도서관·동화인가
 **Chapter:** Ⅴ. 도입 타당성과 공공적 가치  
 **원문 기준:** [15]
 
@@ -736,7 +693,7 @@ Q3 **왜 동화가?**
 
 ---
 
-# Slide 16 — 공공적 가치 7가지
+# Slide 15 — 공공적 가치 7가지
 **Chapter:** Ⅴ. 도입 타당성과 공공적 가치  
 **원문 기준:** [16]
 
@@ -776,7 +733,7 @@ Radial Orbit 7개 노드. 중앙 도서관이 각 가치와 연결.
 
 ---
 
-# Slide 17 — 도서관 지표 개선
+# Slide 16 — 도서관 지표 개선
 **Chapter:** Ⅵ. 도서관 지표 개선  
 **원문 기준:** [17]
 
@@ -829,7 +786,7 @@ Hero Metric:
 
 ---
 
-# Slide 18 — 마무리
+# Slide 17 — 마무리
 **원문 기준:** [18]
 
 ### 제목
@@ -864,7 +821,7 @@ CTA:
 - 3문장 순차 등장
 - 마지막 문장 등장 시 나머지 2문장은 투명도 35%로
 - `DEMO →` 클릭 시 발표 자료 종료가 아니라 별도 서비스 URL/로컬 데모 페이지로 전환
-- 뒤로가기 시 Slide 18 상태 보존
+- 뒤로가기 시 Slide 17 상태 보존
 
 ### Higgsfield 영상 프롬프트
 `Poetic cinematic closing shot in a modern Korean public library: shelves full of books, subtle paper-like particles and warm light gently converge toward one open blank picture book on a wooden table, symbolizing citizens' imagination becoming books, elegant slow camera push-in, hopeful public-cultural tone, realistic materials, warm daylight, seamless 8 second loop, no text, no logos, no watermark`
@@ -916,15 +873,15 @@ CTA:
 | `s04_civic_ai.jpg` | 4 | 이미지 | Higgsfield |
 | `s05_read_create_cycle.mp4` | 5 | 영상 | Higgsfield |
 | `s07_reading_gap.jpg` | 7 | 이미지 | Higgsfield |
-| `s09_five_steps.mp4` | 9 | 영상 | Higgsfield |
-| `s10_librarian_dashboard.jpg` | 10 | 이미지 | Higgsfield |
-| `s11_child_read_create.mp4` | 11 | 영상 | Higgsfield |
-| `s12_afterwork_library.mp4` | 12 | 영상 | Higgsfield |
-| `s13_family_book.jpg` | 13 | 이미지 | Higgsfield |
-| `s14_senior_story.mp4` | 14 | 영상 | Higgsfield |
-| `s16_community_circle.jpg` | 16 | 이미지 | Higgsfield |
-| `s17_library_archive.mp4` | 17 | 영상 | Higgsfield |
-| `s18_imagination_origin.mp4` | 18 | 영상 | Higgsfield |
+| `s08_five_steps.mp4` | 8 | 영상 | Higgsfield |
+| `s09_librarian_dashboard.jpg` | 9 | 이미지 | Higgsfield |
+| `s10_child_read_create.mp4` | 10 | 영상 | Higgsfield |
+| `s11_afterwork_library.mp4` | 11 | 영상 | Higgsfield |
+| `s12_family_book.jpg` | 12 | 이미지 | Higgsfield |
+| `s13_senior_story.mp4` | 13 | 영상 | Higgsfield |
+| `s15_community_circle.jpg` | 15 | 이미지 | Higgsfield |
+| `s16_library_archive.mp4` | 16 | 영상 | Higgsfield |
+| `s17_imagination_origin.mp4` | 17 | 영상 | Higgsfield |
 
 ---
 
@@ -957,34 +914,34 @@ AI 기본사회 + 모두의 도서관 + 비독자의 독자 전환 + 디지털 �
 
 ---
 
-# PART Ⅱ — AI 동화 제작 서비스의 독서 활성화 방안 (Slide 19~25)
+# PART Ⅱ — AI 동화 제작 서비스의 독서 활성화 방안 (Slide 18~24)
 **원문 기준:** `reading-activation-16x9.html` (수치 없음 · 방안·구조 설명만) · 챕터 라벨 `PART Ⅱ · 독서 활성화 방안`
 **배경 미디어:** 없음 (CSS/SVG 서가 배경) — 필요 시 `media/s19_~s26_` 규칙으로 추가
 
-## Slide 19 — 표지 (hero)
+## Slide 18 — 표지 (hero)
 - 상단: `대체` (취소선) → `확장` 배지
 - 제목 **AI 동화 제작 서비스의 독서 활성화 방안**
 - 거버닝: AI 동화책 서비스는 독서를 대체하는 것이 아니라, **독서의 진입장벽을 낮추고 독서 행동을 확장하는 도구**입니다.
 - 하단 4개 키: 1 시작하게 한다 · 2 읽기를 만들기로 · 3 혼자에서 함께로 · 4 도서관 프로그램으로
 
-## Slide 20 — ① 시작하게 한다 — 독서의 진입장벽을 낮춥니다 (2×2 카드)
+## Slide 19 — ① 시작하게 한다 — 독서의 진입장벽을 낮춥니다 (2×2 카드)
 - 거버닝 메시지는 줄바꿈 없이 한 줄로 노출 (`.slide[data-id="20"] .gov{white-space:nowrap}`)
 관심사 맞춤 이야기 · 연령·수준별 콘텐츠 · 음성 낭독 · 다국어 동화책 (각 요약 1줄 + 근거 2개, 클릭 없이 모두 노출)
 
-## Slide 21 — ② 읽기를 만들기로 바꿉니다 (순환)
+## Slide 20 — ② 읽기를 만들기로 바꿉니다 (순환)
 - 좌: 원형 궤도 4노드 `이야기 생성 → 삽화 생성 → 완성된 책 읽기 → 다시 만들기`, 중앙 `창작 ↔ 독서 · 반복되는 순환`
 - 우: `수동적 ‘읽기’에서 능동적 ‘참여’로` 카드 + 4단계 설명 리스트 (노드와 2.2초 간격으로 동기 점등 · 모션 최소화 시 전체 점등)
 
-## Slide 22 — ③ 혼자 읽기에서 함께 읽기로 (2 카드, 세로형)
+## Slide 21 — ③ 혼자 읽기에서 함께 읽기로 (2 카드, 세로형)
 가족이 함께 만드는 동화책 · 자신이 만든 책의 소장 / 하단 칩: 개인 활동 → 가족 문화 | 한 번 읽는 콘텐츠 → 반복해 읽는 소장품
 
-## Slide 23 — ④ 도서관 프로그램으로 확장합니다 (3 카드, 세로형)
+## Slide 22 — ④ 도서관 프로그램으로 확장합니다 (3 카드, 세로형)
 방문 목적 전환 · 참여율과 지속성 · 관심 낮은 어린이의 통로 / 하단 칩: AI가 재미있어서 참여 → 이야기가 궁금해서 읽음 → 다른 책도 찾아봄
 
-## Slide 24 — 어린이실에서 달라지는 것 (도입 전/후)
+## Slide 23 — 어린이실에서 달라지는 것 (도입 전/후)
 좌 `도입 전 · 대출 중심의 이용` 4행 ↔ 우 `도입 후 · 창작·독서 체험으로 확장` 4행, 행 단위로 순차 등장
 
-## Slide 25 — 읽기를 대신하지 않고, 읽기로 데려갑니다 (hero · 마무리)
+## Slide 24 — 읽기를 대신하지 않고, 읽기로 데려갑니다 (hero · 마무리)
 - 상단 3단 흐름: AI가 재미있어서 참여하고 → 이야기가 궁금해서 읽고 → 그래서 다른 책도 찾아보게
 - 최종 문장 **읽기를 대신하지 않고, 읽기로 데려갑니다.** + `AI 동화책 서비스가 도서관에서 맡는 역할은 여기까지입니다.`
 - DEMO 버튼 (Enter) — 시연 종료 시 시연을 연 장표(18 또는 25)로 복귀

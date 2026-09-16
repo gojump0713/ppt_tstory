@@ -25,8 +25,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
     }, label);
     r.forEach(x => { const k = x.cls + "|" + x.fs; if (!all[k]) all[k] = { ...x, where: new Set() }; all[k].where.add(label); });
   };
-  for (let i = 1; i <= 18; i++) { await p.goto(URL + "#slide-" + String(i).padStart(2,"0"), { waitUntil: "load" }); await sleep(4200); await scan("s"+i); }
-  await p.goto(URL + "#slide-18", { waitUntil: "load" }); await sleep(900); await p.keyboard.press("Enter"); await sleep(4200);
+  for (let i = 1; i <= 17; i++) { await p.goto(URL + "#slide-" + String(i).padStart(2,"0"), { waitUntil: "load" }); await sleep(4200); await scan("s"+i); }
+  await p.goto(URL + "#slide-17", { waitUntil: "load" }); await sleep(900); await p.keyboard.press("Enter"); await sleep(4200);
   for (let i = 1; i <= 5; i++) { if (i>1){ await p.keyboard.press("ArrowRight"); await sleep(3200);} await scan("d"+i); }
   const rows = Object.values(all).sort((a,b)=>a.fs-b.fs);
   rows.forEach(r => console.log(String(r.fs).padStart(5), "|", String(r.cls).slice(0,32).padEnd(32), "|", [...r.where].slice(0,5).join(","), "|", r.txt));

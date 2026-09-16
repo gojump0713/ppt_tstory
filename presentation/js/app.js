@@ -3,7 +3,7 @@
    - 1920×1080 캔버스 스케일 (Letterbox)
    - 한 번의 조작 = 정확히 한 장 (휠 디바운스 700ms)
    - 키보드: ↓→Space PgDn 다음 / ↑← PgUp 이전 / Home End / F P M T S D R
-   - 시연(DEMO): 마지막 장(32장)에서 Enter, 18·25장의 DEMO 버튼, 또는 어느 장표에서든 D. 종료 시 시연을 연 장표로 복귀
+   - 시연(DEMO): 마지막 장(31장)에서 Enter, 17·24장의 DEMO 버튼, 또는 어느 장표에서든 D. 종료 시 시연을 연 장표로 복귀
    - URL Hash #slide-NN 유지, 새로고침 시 복원
    - 장표 진입 시 자동 시퀀스 재생, 재진입 시 처음부터
    ============================================================ */
@@ -85,7 +85,7 @@
 
     // 목차
     $("#tocList").innerHTML = SLIDES.map((s, i) => `<li data-i="${i}"><span class="n">${pad2(s.id)}</span><div><span class="t">${plain(s.title)}</span><span class="c">${s.chapter}</span></div></li>`).join("")
-      + `<li class="demo-row" data-demo="1"><span class="n">${ic("monitor")}</span><div><span class="t">서비스 시연 ${DEMO_SCREENS.length}화면</span><span class="c">18장 · 25장 DEMO 버튼 · D 키</span></div></li>`;
+      + `<li class="demo-row" data-demo="1"><span class="n">${ic("monitor")}</span><div><span class="t">서비스 시연 ${DEMO_SCREENS.length}화면</span><span class="c">17장 · 24장 DEMO 버튼 · D 키</span></div></li>`;
     $$("#tocList li").forEach(li => li.addEventListener("click", () => {
       closeOverlays();
       if (li.dataset.demo) { goTo(SLIDES.length - 1); openDemo(); return; }

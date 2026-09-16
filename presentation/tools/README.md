@@ -3,7 +3,7 @@
 ```bash
 cd presentation/tools
 npm init -y && npm i puppeteer-core@23
-node qa.js                 # 18장 순회 + 시연 + 스케일 검증 → tools/qa-shots/*.png, report.json
+node qa.js                 # 31장 순회 + 시연 + 스케일 검증 → tools/qa-shots/*.png, report.json
 node shot.js 01 07 d1 d5   # 지정 장표/시연 화면만 스크린샷 (d1~d5 = 시연 화면)
 node shot_special.js       # 키 반복·IME·Ctrl 조합·슬라이더 포커스·전체화면 히어로 텍스트 등 동작 검사
 

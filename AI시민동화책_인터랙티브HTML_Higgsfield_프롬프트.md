@@ -222,28 +222,7 @@ AI가 시민 모두에게 닿는 공공적 도구라는 인상을 제공
 
 ---
 
-# Slide 08 — 도서관의 강점은 충분합니다. 빠진 것은 연결 장치입니다
-## 용도
-- 상징적 보조 이미지
-
-## 권장 타입
-- 이미지
-
-## 권장 모델
-- `gpt_image_2`
-
-## 권장 비율
-- `16:9`
-
-## 연출 목표
-기존 자원은 있으나 연결 장치가 부족한 상태를 메타포로 표현
-
-## 메인 이미지 프롬프트
-`Metaphorical editorial scene inside a public library: four meaningful activity zones representing reading, writing, digital access, and librarian support, each visually present but subtly disconnected, with an unfinished pathway or bridge between them, realistic architectural photography style, warm public-service tone, clean composition for overlay cards, no text, no logos, no watermark`
-
----
-
-# Slide 09 — 아이디어에서 실물 책까지, 시민이 5단계로 직접 완성합니다
+# Slide 08 — 아이디어에서 실물 책까지, 시민이 5단계로 직접 완성합니다
 ## 용도
 - 배경 영상
 - 서비스 5단계의 변환감을 강화하는 핵심 장표 영상
@@ -269,7 +248,7 @@ AI가 시민 모두에게 닿는 공공적 도구라는 인상을 제공
 
 ---
 
-# Slide 10 — 공공도서관 운영을 기준으로 설계합니다
+# Slide 09 — 공공도서관 운영을 기준으로 설계합니다
 ## 용도
 - 선택적 배경 영상 또는 보조 이미지
 
@@ -294,7 +273,7 @@ AI가 시민 모두에게 닿는 공공적 도구라는 인상을 제공
 
 ---
 
-# Slide 11 — 어린이·청소년
+# Slide 10 — 어린이·청소년
 ## 용도
 - 배경 영상
 
@@ -318,7 +297,7 @@ AI가 시민 모두에게 닿는 공공적 도구라는 인상을 제공
 
 ---
 
-# Slide 12 — 청년·직장인
+# Slide 11 — 청년·직장인
 ## 용도
 - 배경 영상
 
@@ -342,7 +321,7 @@ AI가 시민 모두에게 닿는 공공적 도구라는 인상을 제공
 
 ---
 
-# Slide 13 — 부모·양육자
+# Slide 12 — 부모·양육자
 ## 용도
 - 보조 이미지 또는 약한 배경 영상
 
@@ -366,7 +345,7 @@ AI가 시민 모두에게 닿는 공공적 도구라는 인상을 제공
 
 ---
 
-# Slide 14 — 노년층
+# Slide 13 — 노년층
 ## 용도
 - 배경 영상
 
@@ -390,7 +369,7 @@ AI가 시민 모두에게 닿는 공공적 도구라는 인상을 제공
 
 ---
 
-# Slide 15 — 왜 정부가, 왜 도서관이, 왜 동화인가
+# Slide 14 — 왜 정부가, 왜 도서관이, 왜 동화인가
 ## 용도
 - 질문 카드 장표의 배경 이미지
 
@@ -411,7 +390,7 @@ AI가 시민 모두에게 닿는 공공적 도구라는 인상을 제공
 
 ---
 
-# Slide 16 — 한 개의 창작 서비스가 7개의 공공가치를 동시에 만듭니다
+# Slide 15 — 한 개의 창작 서비스가 7개의 공공가치를 동시에 만듭니다
 ## 용도
 - 보조 배경 이미지
 
@@ -432,7 +411,7 @@ AI가 시민 모두에게 닿는 공공적 도구라는 인상을 제공
 
 ---
 
-# Slide 17 — 한 번의 체험을 재방문·행사·지역 아카이브로 확장합니다
+# Slide 16 — 한 번의 체험을 재방문·행사·지역 아카이브로 확장합니다
 ## 용도
 - 배경 영상
 
@@ -456,7 +435,7 @@ AI가 시민 모두에게 닿는 공공적 도구라는 인상을 제공
 
 ---
 
-# Slide 18 — 지식의 보관소에서, 시민 상상력의 발원지로
+# Slide 17 — 지식의 보관소에서, 시민 상상력의 발원지로
 ## 용도
 - 클로징 배경 영상
 
@@ -491,17 +470,16 @@ AI가 시민 모두에게 닿는 공공적 도구라는 인상을 제공
 | 05 | 독서·도서관 정책 | 영상 | 높음 |
 | 06 | 법·제도 5×5 | 정적/이미지 | 낮음 |
 | 07 | 독서율 격차 | 이미지 | 중간 |
-| 08 | 정책 공백 | 이미지 | 중간 |
-| 09 | 서비스 5단계 | 영상 | 매우 높음 |
-| 10 | 공공도서관 전용 설계 | 이미지 | 중간 |
-| 11 | 어린이·청소년 | 영상 | 높음 |
-| 12 | 청년·직장인 | 영상 | 높음 |
-| 13 | 부모·양육자 | 이미지 | 중간 |
-| 14 | 노년층 | 영상 | 높음 |
-| 15 | 왜 정부/도서관/동화인가 | 이미지 | 낮음 |
-| 16 | 공공적 가치 7가지 | 이미지 | 중간 |
-| 17 | 도서관 지표 개선 | 영상 | 높음 |
-| 18 | 마무리 | 영상 | 매우 높음 |
+| 08 | 서비스 5단계 | 영상 | 매우 높음 |
+| 09 | 공공도서관 전용 설계 | 이미지 | 중간 |
+| 10 | 어린이·청소년 | 영상 | 높음 |
+| 11 | 청년·직장인 | 영상 | 높음 |
+| 12 | 부모·양육자 | 이미지 | 중간 |
+| 13 | 노년층 | 영상 | 높음 |
+| 14 | 왜 정부/도서관/동화인가 | 이미지 | 낮음 |
+| 15 | 공공적 가치 7가지 | 이미지 | 중간 |
+| 16 | 도서관 지표 개선 | 영상 | 높음 |
+| 17 | 마무리 | 영상 | 매우 높음 |
 
 ---
 
@@ -511,23 +489,22 @@ AI가 시민 모두에게 닿는 공공적 도구라는 인상을 제공
 - `s01_cover_library_story.mp4`
 - `s02_library_role_expand.mp4`
 - `s05_policy_read_create_loop.mp4`
-- `s09_five_step_creation.mp4`
-- `s11_child_story_to_borrow.mp4`
-- `s12_after_work_story_program.mp4`
-- `s14_senior_memory_to_book.mp4`
-- `s17_revisit_exhibit_archive.mp4`
-- `s18_closing_origin_of_imagination.mp4`
+- `s08_five_step_creation.mp4`
+- `s10_child_story_to_borrow.mp4`
+- `s11_after_work_story_program.mp4`
+- `s13_senior_memory_to_book.mp4`
+- `s16_revisit_exhibit_archive.mp4`
+- `s17_closing_origin_of_imagination.mp4`
 
 ## 이미지
 - `s03_collectible_literary_entry.jpg`
 - `s04_civic_ai_library.jpg`
 - `s06_policy_function_mapping_bg.jpg`
 - `s07_reading_gap_library.jpg`
-- `s08_missing_link_library.jpg`
-- `s10_librarian_dashboard_scene.jpg`
-- `s13_family_picture_book.jpg`
-- `s15_public_library_qa_bg.jpg`
-- `s16_public_value_circle.jpg`
+- `s09_librarian_dashboard_scene.jpg`
+- `s12_family_picture_book.jpg`
+- `s14_public_library_qa_bg.jpg`
+- `s15_public_value_circle.jpg`
 
 ---
 
@@ -579,18 +556,18 @@ AI가 시민 모두에게 닿는 공공적 도구라는 인상을 제공
 # 5. 실무 권장 제작 순서
 1. 반드시 먼저 제작
    - 01 표지
-   - 09 서비스 5단계
-   - 11 어린이·청소년
-   - 12 청년·직장인
-   - 14 노년층
-   - 17 재방문·행사·아카이브
-   - 18 마무리
+   - 08 서비스 5단계
+   - 10 어린이·청소년
+   - 11 청년·직장인
+   - 13 노년층
+   - 16 재방문·행사·아카이브
+   - 17 마무리
 
 2. 다음 단계 제작
-   - 02, 05, 10, 13, 16
+   - 02, 05, 09, 12, 15
 
 3. 필요 시 제작
-   - 03, 04, 06, 07, 08, 15
+   - 03, 04, 06, 07, 14
 
 ---
 

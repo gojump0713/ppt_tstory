@@ -9,7 +9,7 @@ const slides = process.argv.slice(2).length ? process.argv.slice(2) : ["03","07"
   const page = await browser.newPage(); await page.setViewport({ width: 1920, height: 1080 });
   const errs = []; page.on("pageerror", e => errs.push(e.message));
   for (const s of slides) {
-    if (s.startsWith("d")) { await page.goto(URL + "#slide-18", { waitUntil: "load" }); await sleep(800); await page.keyboard.press("Enter"); await sleep(4200);
+    if (s.startsWith("d")) { await page.goto(URL + "#slide-17", { waitUntil: "load" }); await sleep(800); await page.keyboard.press("Enter"); await sleep(4200);
       const n = parseInt(s.slice(1)); for (let i = 1; i < n; i++) { await page.keyboard.press("ArrowRight"); await sleep(3000); }
       await page.screenshot({ path: path.join(OUT, `${s}.png`) }); continue; }
     await page.goto(URL + "#slide-" + s, { waitUntil: "load" }); await sleep(5000);

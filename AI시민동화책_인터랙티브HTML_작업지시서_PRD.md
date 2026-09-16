@@ -105,7 +105,7 @@ ai-library-presentation/
 ---
 
 ## 6. 발표 구조
-총 **18장**으로 구현한다.
+총 **17장**으로 구현한다.
 
 1. 표지
 2. 도서관 역할의 확장
@@ -114,17 +114,16 @@ ai-library-presentation/
 5. 독서·도서관 정책
 6. 법·제도 5×5 매핑
 7. 성인 독서율 38.5%
-8. 정책 공백 4개
-9. 서비스 5단계
-10. 공공도서관 전용 설계
-11. 어린이·청소년
-12. 청년·직장인
-13. 부모·양육자
-14. 노년층
-15. 왜 정부/도서관/동화인가
-16. 공공적 가치 7가지
-17. 재방문·행사·지역 아카이브
-18. 마무리/시연 전환
+8. 서비스 5단계
+9. 공공도서관 전용 설계
+10. 어린이·청소년
+11. 청년·직장인
+12. 부모·양육자
+13. 노년층
+14. 왜 정부/도서관/동화인가
+15. 공공적 가치 7가지
+16. 재방문·행사·지역 아카이브
+17. 마무리/시연 전환
 
 원고의 `Ⅰ~Ⅵ`는 별도 장표로 늘리지 말고 Chapter Label로 표시한다.
 
@@ -173,7 +172,7 @@ type SlideData = {
   - ↓ / → / Space / PageDown = 다음
   - ↑ / ← / PageUp = 이전
   - Home = 1장
-  - End = 18장
+  - End = 17장
   - F = Fullscreen
   - P = Presenter Note
   - M = Motion 최소화
@@ -326,18 +325,18 @@ type SlideData = {
 - 단순 차이 70.2%p
 - **연도별 원자료가 없으면 2013~2025 추이선을 임의 생성하지 말 것**
 
-### Slide 09
+### Slide 08
 - 5단계
 - 1~5분
 
-### Slide 10
+### Slide 09
 - 조사 20여 종
 - 3대 공공도서관 설계
 
-### Slide 16
+### Slide 15
 - 7대 공공가치
 
-### Slide 17
+### Slide 16
 - 재방문 3~4회
 - `연간 지역자료 ○○○권`은 Placeholder
 
@@ -385,17 +384,16 @@ type SlideData = {
 | 5 | 3개 정책 원 Converge |
 | 6 | 5개 정책-기능 Line Draw |
 | 7 | Goal Gap + 막대 비교 |
-| 8 | Broken Link → Connected |
-| 9 | 장표 진입 후 5-Step 자동 순차 활성화 |
-| 10 | 운영 허브 + 관리자 Mockup |
-| 11 | 낙서 → 책 → 대출 흐름 |
-| 12 | 낮 → 야간 도서관 |
-| 13 | Before/After 자동 Slider + 선택적 Drag |
-| 14 | Voice Wave → Story → Book |
-| 15 | Q&A 카드 자동 순차 Reveal |
-| 16 | 7개 Value Orbit |
-| 17 | 1→4회 방문 + 아카이브 축적 |
-| 18 | 3문장 → Final Statement → Demo |
+| 8 | 장표 진입 후 5-Step 자동 순차 활성화 |
+| 9 | 운영 허브 + 관리자 Mockup |
+| 10 | 낙서 → 책 → 대출 흐름 |
+| 11 | 낮 → 야간 도서관 |
+| 12 | Before/After 자동 Slider + 선택적 Drag |
+| 13 | Voice Wave → Story → Book |
+| 14 | Q&A 카드 자동 순차 Reveal |
+| 15 | 7개 Value Orbit |
+| 16 | 1→4회 방문 + 아카이브 축적 |
+| 17 | 3문장 → Final Statement → Demo |
 
 ---
 
@@ -583,13 +581,13 @@ type Source = {
 기본 발표에는 배경음악을 넣지 않는다.
 - 발표자 음성을 방해할 수 있음
 - 영상은 모두 무음 자동재생
-- Slide 14 음성 Waveform도 시각 효과이며 실제 음성을 자동재생하지 않음
+- Slide 13 음성 Waveform도 시각 효과이며 실제 음성을 자동재생하지 않음
 - 시연 페이지에서만 별도 오디오 기능 가능
 
 ---
 
 ## 25. 시연 전환
-Slide 18의 `DEMO →`는 다음 중 하나를 환경변수로 지정한다.
+Slide 17의 `DEMO →`는 다음 중 하나를 환경변수로 지정한다.
 
 ```ts
 const DEMO_URL = import.meta.env.VITE_DEMO_URL;
@@ -598,7 +596,7 @@ const DEMO_URL = import.meta.env.VITE_DEMO_URL;
 동작:
 1. 발표 중 클릭/Enter
 2. 새 탭이 아니라 같은 화면에서 전환하는 옵션 우선
-3. `Backspace` 또는 브라우저 뒤로가기로 Slide 18 복귀
+3. `Backspace` 또는 브라우저 뒤로가기로 Slide 17 복귀
 4. 네트워크 없는 발표를 대비해 로컬 Demo Route도 허용
 
 ---
@@ -651,7 +649,7 @@ const DEMO_URL = import.meta.env.VITE_DEMO_URL;
 아래 내용을 코딩 에이전트에게 그대로 전달해도 된다.
 
 ```text
-첨부된 screen-spec.md와 본 PRD를 기준으로 18장짜리 공공도서관 발표용 인터랙티브 HTML 프레젠테이션을 구현하라.
+첨부된 screen-spec.md와 본 PRD를 기준으로 17장짜리 공공도서관 발표용 인터랙티브 HTML 프레젠테이션을 구현하라.
 
 핵심 요구사항:
 1. 1920x1080, 16:9 Full-screen을 기준으로 한다.
@@ -665,7 +663,7 @@ const DEMO_URL = import.meta.env.VITE_DEMO_URL;
 9. 필요 시 각 장표는 Full-bleed 배경 영상을 사용할 수 있으며, 배경 영상은 무음·자동재생·반복으로 동작한다.
 10. 모든 영상과 이미지는 Higgsfield로 제작한다.
 11. 화면에 발표멘트 전체를 넣지 말고 screen-spec.md의 본문 카피만 노출한다.
-12. Slide 03, 07, 09, 16, 17은 숫자와 도식을 중심으로 강하게 시각화한다.
+12. Slide 03, 07, 08, 15, 16은 숫자와 도식을 중심으로 강하게 시각화한다.
 13. 수치는 하드코딩 중복하지 말고 data/slides.ts에서 단일 관리한다.
 14. 2013~2025 연도별 독서율 데이터가 제공되지 않았으므로 임의의 추이선을 생성하지 않는다.
 15. 연간 지역자료는 ○○○권 또는 TBD로 유지하고 숫자를 만들지 않는다.
@@ -676,7 +674,7 @@ const DEMO_URL = import.meta.env.VITE_DEMO_URL;
 20. 영상은 muted, playsInline, loop. Slide 1만 우선 로딩하고 나머지는 lazy load한다.
 21. prefers-reduced-motion을 지원한다.
 22. P 키로 발표자 메모, F 키로 전체화면, M 키로 모션 최소화 모드를 제공한다.
-23. Slide 18의 DEMO 버튼은 환경변수 VITE_DEMO_URL로 연결한다.
+23. Slide 17의 DEMO 버튼은 환경변수 VITE_DEMO_URL로 연결한다.
 24. 민음사 문학빵 사례는 생성 이미지로 실제 상품을 대체하지 말고, 실제 사용권 확보 이미지가 없으면 Higgsfield 제작 보조 이미지 + 텍스트/수치 구조로 구현한다.
 25. 전체 분위기는 공공기관의 신뢰감 60%, 동화책의 따뜻함 40%로 한다. 사이버펑크/홀로그램 중심의 AI 연출은 금지한다.
 26. 화면 설계상의 모든 핵심 문장은 한 화면에서 3초 내 읽히도록 계층을 설계한다.
@@ -690,7 +688,7 @@ const DEMO_URL = import.meta.env.VITE_DEMO_URL;
 ## 28. 완료 기준
 다음 상태이면 완료로 본다.
 
-- 18장 전체가 끊김 없이 발표 가능
+- 17장 전체가 끊김 없이 발표 가능
 - 발표자가 화면을 읽지 않아도 시각자료가 논리를 보조함
 - 핵심 수치가 오독되지 않음
 - 생애주기 장표가 서로 다른 시민 장면으로 명확히 구분됨

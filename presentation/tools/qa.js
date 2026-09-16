@@ -34,7 +34,7 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
   // 2) 처음부터 키보드로 순회
   await page.goto(URL, { waitUntil: "load" });
   await sleep(4800);
-  for (let i = 1; i <= 32; i++) {
+  for (let i = 1; i <= 31; i++) {
     if (i > 1) { await page.keyboard.press("ArrowRight"); await sleep(5200); }
     const st = await state();
     const extra = await page.evaluate((i) => {
@@ -66,7 +66,7 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
   }
   // 3) 뒤로 이동, End/Home
   await page.keyboard.press("ArrowLeft"); await sleep(900);
-  report.push({ test: "ArrowLeft from 32", ...(await state()) });
+  report.push({ test: "ArrowLeft from 31", ...(await state()) });
   await page.keyboard.press("Home"); await sleep(900);
   report.push({ test: "Home", ...(await state()) });
   await page.keyboard.press("End"); await sleep(900);
@@ -91,8 +91,8 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
   await page.screenshot({ path: path.join(OUT, "sources.png") });
   await page.keyboard.press("Escape"); await sleep(200);
 
-  // 6) 마지막 장(32) → Enter → DEMO 5화면 → 32장 복귀 (시연은 연 장표로 복귀)
-  await page.goto(URL + "#slide-32", { waitUntil: "load" }); await sleep(3200);
+  // 6) 마지막 장(31) → Enter → DEMO 5화면 → 31장 복귀 (시연은 연 장표로 복귀)
+  await page.goto(URL + "#slide-31", { waitUntil: "load" }); await sleep(3200);
   await page.keyboard.press("Enter"); await sleep(4500);
   report.push({ test: "demo 1", hash: await page.evaluate(() => location.hash) });
   await page.screenshot({ path: path.join(OUT, "d1.png") });
@@ -106,11 +106,11 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
   await page.screenshot({ path: path.join(OUT, "d5.png") });
   report.push({ test: "demo 5", hash: await page.evaluate(() => location.hash), steps: await page.$$eval("#demoSteps i", a => a.length) });
   await page.keyboard.press("Enter"); await sleep(1500);
-  report.push({ test: "after demo Enter → expect 26", ...(await state()) });
+  report.push({ test: "after demo Enter → expect 31", ...(await state()) });
   // Backspace 복귀
   await page.keyboard.press("d"); await sleep(800);
   await page.keyboard.press("Backspace"); await sleep(800);
-  report.push({ test: "demo Backspace → expect 26", ...(await state()) });
+  report.push({ test: "demo Backspace → expect 31", ...(await state()) });
 
   // 7) 1366x768 스케일 + 1024 미만 안내
   await page.setViewport({ width: 1366, height: 768 });
