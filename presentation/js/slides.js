@@ -1062,7 +1062,7 @@ const VISUALS = {
           </div>
         </div>
         <div class="ops-bars rv" ${d(900)}>
-          <div class="bar-head"><span class="lg d">${ic("book")}수업용 AI동화책 만들기 이용권</span><span class="lg p">${ic("print")}책제작 포함</span></div>
+          <div class="bar-head"><span class="lg d">${ic("book")}AI동화책 만들기 이용권</span><span class="lg p">${ic("print")}책제작 포함</span></div>
           ${bars}
         </div>
       </div>`;
